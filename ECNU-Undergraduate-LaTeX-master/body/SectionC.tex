@@ -1,6 +1,43 @@
 \section{评估NVIDIA新架构GPU的机器学习应用性能}
-\subsection{实验动机、过程与结果}
 \subsection{实验工具与环境}
+\subsubsection{实验环境}
+\par 本文的实验得到了NVIDIA公司在软件和硬件方面的支持，故有2个实验平台，分别为作者与NVIDIA公司所有。分别在表\ref{table-自用环境}和表\ref{table-公司环境}中列出。\\
+\begin{table}
+	\centering
+	\caption{自用实验环境}
+	\begin{tabular}{cc}
+		\toprule
+		项目	&	内容\\
+		\midrule
+		CPU		&	AMD Ryzen ThreadRipper 2990WX 32C64T @ 3.0GHz\\
+		主板		&	MSI X399\\
+		内存		&	CORSAIR DDR4 3200 @ 16-15-15-15-34-1T 128GB\\
+		GPU		&	NVIDIA Geforce RTX 2080TI (Turing)\\
+		硬盘		&	INTEL750 NVMe PCIe 1.2TB * 2 @ RAID 0\\
+		系统		&	Windows 10 64-bit build 17763\\	
+		CUDA	&	10.1, 10.0, 9.2, 9.0\\
+		\bottomrule
+	\end{tabular} \label{table-自用环境}
+\end{table}
+\begin{table}
+	\centering
+	\caption{NVIDIA提供实验环境}
+	\begin{tabular}{cc}
+		\toprule
+		项目	&	内容\\
+		\midrule
+		CPU		&	Intel Core i7-8850H 6C12T @ 2.6GHz\\
+		主板		&	Lenovo Thinkpad P1\\
+		内存		&	SAMSUNG DDR4L 32GB\\
+		GPU		&	NVIDIA Quadro P1000\\
+		硬盘		&	INTEL750 NVMe PCIe 1.2TB * 2 @ RAID 0\\
+		系统		&	Windows 10 64-bit build 15036\\	
+		CUDA	&	10.1, 10.0, 9.2, 9.0\\
+		其他		&	Jetson TX2\\
+		\bottomrule
+	\end{tabular} \label{table-公司环境} 
+\end{table}
+\subsubsection{实验工具}
 \subsection{实验详细过程}
 \subsubsection{基于测试样例的Benchmark}
 \par 为了为接下来的实验设定基准，这一步先使用用途单一的测试样例测试绝对性能以及相应的提升，因不同架构的硬件各项参数(包括流处理器数量、显存容量等)不尽相同，所以直接对比不同架构硬件的性能是没有意义的，这里选择对比不同架构硬件在不同SDK下性能提升的比例。此处选用了CUDA 10.0，CUDA 9.2，CUDA 9.0三种SDK，同时选用9.2与9.0的原因是因为9.2版本是为了图灵架构的GPU Tesla V100发布的\parencite{CUDA92}，也在本文的研究范围内。
