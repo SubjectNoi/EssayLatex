@@ -12,6 +12,7 @@
 \usepackage{float} %图片与表格的更好排版
 \usepackage{ulem} %更好的下划线
 \usepackage{bicaption}
+\usepackage{listings}
 \usepackage[top=2.5cm, bottom=2.0cm, left=3.0cm, right=2.0cm]{geometry} %设置页边距
 
 \usepackage{fontspec} %设置字体需要的宏包
@@ -151,7 +152,7 @@
 \WarningFilter*{biblatex}{Conflicting options.\MessageBreak'eventdate=iso' requires 'seconds=true'.\MessageBreak Setting 'seconds=true'}
 
 %使用biblatex管理文献，输出格式使用gb7714-2015标准，后端为biber
-\usepackage[backend=biber,style=gb7714-2015,hyperref=true]{biblatex}
+\usepackage[backend=biber,style=gb7714-2015,hyperref=true,gbpunctin=false]{biblatex}
 
 %提供了附录支持并显示在目录中
 \usepackage[titletoc,title]{appendix}
@@ -197,12 +198,15 @@
 
 %设置目录字体
 \usepackage{tocloft}
-\renewcommand{\contentsname}{\hfill \bfseries \sffamily \zihao{-4} 目\hspace*{2em}录 \hfill}
+\usepackage{tocstyle}
+\renewcommand{\contentsname}{\hfill \sffamily \zihao{3} 目\hspace{1cm}录 \hfill}
 \renewcommand{\cftaftertoctitle}{\hfill}
-\renewcommand{\cfttoctitlefont}{\sffamily}
-\renewcommand{\cftsubsubsecfont}{\sffamily}
-\renewcommand{\cftsubsecfont}{\sffamily}
-\renewcommand{\cftsecfont}{\bfseries \sffamily}
+\renewcommand{\cfttoctitlefont}{\mdseries}
+\renewcommand{\cftsubsubsecfont}{\mdseries}
+\renewcommand{\cftsubsecfont}{\mdseries}
+\renewcommand{\cftsecfont}{\mdseries}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftsecdotsep}}
+\renewcommand\cftsecdotsep{\cftdot}
 
 %灵活的行距定义（用于封面）
 \usepackage{setspace}

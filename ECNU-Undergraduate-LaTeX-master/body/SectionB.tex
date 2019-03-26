@@ -186,3 +186,56 @@ $ * $ 在本世代图灵架构及以前，TPC与SM可以等价，因为一个TPC
 \end{itemize}
 
 \subsubsection{PTX中间代码结构}
+\par PTX(Parallel Thread eXecution)代码是一种底层的并行线程执行虚拟机代码，但这种代码可以直接运行在目标硬件；实际在运行时，PTX代码会编译成更为底层的SASS代码，由于涉及企业机密，此处不再详述。关于CUDA程序的调用、执行方式，线程调度等内容已经在2.1.2节中详细描述，这里只介绍编译生成的PTX代码的简单语法和文件结构。
+\par PTX代码有两种语句：Directive Statement和Instruction Statement，前者起到申明的作用，以.开头，如.entry, .func, .extern, .reg等，后者则是具体ALU动作，如add, div, idp4等。在这些语句后需要指明进行操作的值的类型以及位数，如.reg	.f32就是申明了32位float的寄存器变量，.global	.b32就是申明了32位整数的全局内存变量。因Directive Statement在PTX代码中起到寻找函数入口、观察优化方法(比如将全局内存使用优化为寄存器使用)起到非常重要的作用，所以下表详细列出了一些Directive Statement以及相应作用。而ALU动作则较为直观，且大部分为算术运算，这里就不在赘述\parencite{PTX}。
+\begin{table}
+	\centering
+	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
+	\renewcommand{\tablename}{表}
+	\caption{部分PTX代码关键词及含义}
+	\addtocounter{table}{-1}
+	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
+	\renewcommand{\tablename}{Table}
+	\caption{Part of PTX keywords and meanings}
+	\begin{tabular}{cc}
+		\toprule
+		项目	&	内容	 \\
+		\midrule
+		.target & 指明目标硬件的架构和平台 \\
+		.address\_size & 指明PTX代码所能访问的地址空间 \\
+		.entry & 指明作为入口的核函数地址以及函数体 \\
+		.func & 函数定义(包含被CPU调用和GPU的函数) \\
+		.branchtargets & 指明潜在的分支目标(线程束分化用) \\
+		.calltargets & 表明潜在的被调用目标 \\
+		.extern & 可见的外部符号的申明(如C中的extern) \\
+		.weak & 可见的外部符号申明(weak指优先级低于global等) \\
+		.pragma & 将控制权转交给后台PTX编译器 \\
+		.max[nreg,…] & 最大可用的寄存器文件大小，等 \\
+		
+		\bottomrule
+	\end{tabular} \label{table-PTX关键词}\\
+	
+\end{table}
+\par PTX代码的结构较为简单，开头有若干Directive Statement用于指定目标平台和硬件架构等：
+\begin{lstlisting}[language={[ANSI]C},numbers=left,numberstyle=\tiny,%frame=shadowbox,  
+rulesepcolor=\color{red!20!green!20!blue!20},  
+keywordstyle=\color{blue!70!black},  
+commentstyle=\color{blue!90!},  
+basicstyle=\ttfamily] 
+.version 6.3			// 指明PTX代码的版本
+.target sm_35, debug		// 指明编译模式和目标硬件架构
+.address_size 64		// 指明最大可用地址空间
+\end{lstlisting}
+之后就是一些列函数入口，包含相当于main函数的：
+\begin{lstlisting}[language={[ANSI]C},numbers=left,numberstyle=\tiny,%frame=shadowbox,  
+rulesepcolor=\color{red!20!green!20!blue!20},  
+keywordstyle=\color{blue!70!black},  
+commentstyle=\color{blue!90!},  
+basicstyle=\ttfamily] 
+.visible .entry _Z19HostCallDeviceTest0v()
+.extern .func (.param .b32 func_retval0) vprintf()
+.visible .func (.param .b32 func_retval0) _Z21DeviceCallDevice-Test0i()
+
+\end{lstlisting}
+\par 该程序片段中，第一行的函数时CPU调用GPU的入口。其函数签名与根据exe文件反汇编出的汇编代码中的函数签名应一致，如图\ref{Fig.CUDA-Assembly}所示。第二行为外部符号，在CUDA中无需实现；第三行则为由设备调用、运行于设备的函数，故没有.entry关键字。
+\par 注意在生成函数时会出现\_Z19、\_Z21等字样和i、v等后缀，这是由编译器产生函数签名的方法所致，不同编译器产生的函数签名不尽相同，本文使用的编译器为Microsoft VS。在本文进行的研究中，主要重点放在作为PTX入口的由CPU调用的GPU函数（由\_\_global\_\_修饰）以及由GPU调用的GPU函数（由\_\_device\_\_修饰），而外部符号除涉及GPU全局内存、共享内存、寄存器文件等申请、访问、释放的API等，别的外部符号不做过多讨论。
