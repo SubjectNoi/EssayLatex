@@ -7,9 +7,11 @@
 \usepackage{url} %更好的超链接显示
 \usepackage{array,booktabs} %表格相关的宏包
 \usepackage{caption} %实现图片的多行说明
+\captionsetup[table]{labelsep=space}
+\captionsetup[figure]{labelsep=space}
 \usepackage{float} %图片与表格的更好排版
 \usepackage{ulem} %更好的下划线
-
+\usepackage{bicaption}
 \usepackage[top=2.5cm, bottom=2.0cm, left=3.0cm, right=2.0cm]{geometry} %设置页边距
 
 \usepackage{fontspec} %设置字体需要的宏包
@@ -61,11 +63,11 @@
 
 %设置各级系统的编号格式
 \setcounter{secnumdepth}{5}
-\ctexset { section = { name={,、},number={\chinese{section}},format={\centering \sffamily \zihao {-4}} } }
-\ctexset { subsection = { name={（,）},number={\chinese{subsection}},format={\centering \sffamily \zihao {-4}} } }
-\ctexset { subsubsection = { name={,.},number={\arabic{subsubsection}},format={\sffamily \zihao {-4}} } }
-\ctexset { paragraph = { name={（,）},number={\arabic{paragraph}},format={\sffamily \zihao {-4}} } }
-\ctexset { subparagraph = { name={,）},number={\arabic{subparagraph}},format={\sffamily \zihao {-4}} } }
+\ctexset { section = { name={,},number={第\chinese{section}章},format={\centering \sffamily \bfseries \zihao{-3}} } }
+\ctexset { subsection = { name={,},number={\arabic{section}.\arabic{subsection}},format={\sffamily \bfseries \zihao {-4}} } }
+\ctexset { subsubsection = { name={,},number={\arabic{section}.\arabic{subsection}.\arabic{subsubsection}},format={\sffamily \bfseries \zihao {-4}} } }
+\ctexset { paragraph = { name={,},number={\arabic{section}.\arabic{subsection}.\arabic{subsubsection}.\arabic{paragraph}},format={\sffamily \bfseries \zihao {-4}} } }
+\ctexset { subparagraph = { name={,},number={\Roman{subparagraph}},format={\sffamily \bfseries \zihao {-4}} } }
 
 \usepackage[bottom,perpage]{footmisc}               %脚注，显示在每页底部，编号按页重置
 \renewcommand*{\footnotelayout}{\zihao{-5}\rmfamily}  %设置脚注为小五号宋体

@@ -1,10 +1,19 @@
+\newpage
 \section{评估NVIDIA新架构GPU的机器学习应用性能}
+\setcounter{table}{0}
+\setcounter{figure}{0}
 \subsection{实验工具与环境}
 \subsubsection{实验环境}
 \par 本文的实验得到了NVIDIA公司在软件和硬件方面的支持，故有2个实验平台，分别为作者与NVIDIA公司所有。分别在表\ref{table-自用环境}和表\ref{table-公司环境}中列出。\\
 \begin{table}
 	\centering
+	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
+	\renewcommand{\tablename}{表}
 	\caption{自用实验环境}
+	\addtocounter{table}{-1}
+	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
+	\renewcommand{\tablename}{Table}
+	\caption{Self environment}
 	\begin{tabular}{cc}
 		\toprule
 		项目	&	内容\\
@@ -17,11 +26,18 @@
 		系统		&	Windows 10 64-bit build 17763\\	
 		CUDA	&	10.1, 10.0, 9.2, 9.0\\
 		\bottomrule
-	\end{tabular} \label{table-自用环境}
+	\end{tabular} 
+	\label{table-自用环境}
 \end{table}
 \begin{table}
 	\centering
+	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
+	\renewcommand{\tablename}{表}
 	\caption{NVIDIA提供实验环境}
+	\addtocounter{table}{-1}
+	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
+	\renewcommand{\tablename}{Table}
+	\caption{NVIDIA provided environment}
 	\begin{tabular}{cc}
 		\toprule
 		项目	&	内容\\

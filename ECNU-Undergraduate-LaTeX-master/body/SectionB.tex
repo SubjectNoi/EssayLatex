@@ -1,5 +1,7 @@
+\newpage
 \section{背景及相关工作}
-
+\setcounter{table}{0}
+\setcounter{figure}{0}
 \subsection{基于GPU的机器学习应用与CUDA}
 
 \subsubsection{基于GPU的机器学习应用}
@@ -13,20 +15,40 @@
 \begin{figure}
 	\centering
 	\includegraphics[width=15cm]{figures/CODE1.png}
-	\caption{\label{Fig.2} CUDA中的三种函数}
+	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
+	\renewcommand{\figurename}{图}
+	\caption{CUDA中的三种函数}
+	\addtocounter{figure}{-1}
+	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
+	\renewcommand{\figurename}{Figure}
+	\caption{3 types of function in CUDA}
+	\label{Fig.2}
 \end{figure}
 \par 以上代码段加粗部分为CUDA关键字，对于函数有三种修饰：\_\_global\_\_, \_\_device\_\_, \_\_host\_\_. 分别代表被CPU调用运行于GPU、被GPU调用运行于GPU和被CPU调用运行于CPU的函数。其中被CPU调用运行于GPU的函数只能拥有void返回值，且所有运行于GPU的函数都不支持可变参数列表\parencite{EVENEASIER}。\_\_device\_\_和\_\_host\_\_关键字修饰的函数的调用方式与传统函数别无二致，\_\_global\_\_关键字修饰的函数调用方式如图\ref{Fig.4}所示。
 \begin{figure}
 	\centering
 	\includegraphics[width=15cm]{figures/CODE3.png}
-	\caption{\label{Fig.4} \_\_global\_\_函数调用方式}
+	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
+	\renewcommand{\figurename}{图}
+	\caption{CUDA核函数调用方式}
+	\addtocounter{figure}{-1}
+	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
+	\renewcommand{\figurename}{Figure}
+	\caption{Invoking method of kernel function in CUDA}
+	\label{Fig.4}
 \end{figure}
 BlockNumber和ThreadNumber分别代表要启动的线程块数目和每个线程块中线程的数目，这一部分取值对程序性能影响较大，之后会详细说明。
 
 \par 之前提到了GPU端的缓存，CUDA程序的另一个重点是存储系统的管理。传统CPU编程模型中，寄存器、缓存等资源都是由CPU自行管理，而不开放给程序员。其原因在于CPU拥有的寄存器、缓存资源较为紧缺，为提高指令级并行能力，需要采用多队列乱序发射与寄存器重命名等技术。相对得，GPU有较为充足的物理寄存器、缓存资源，程序员也对这部分资源掌握有一定的控制权\parencite{CUDAPROG}。CUDA中的存储设备如表\ref{table-存储}所示。
 \begin{table}
 	\centering
-	\caption{CUDA中的存储系统层级}
+	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
+	\renewcommand{\tablename}{表}
+	\caption{CUDA存储系统层级}
+	\addtocounter{table}{-1}
+	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
+	\renewcommand{\tablename}{Table}
+	\caption{CUDA storage system hierarchy}
 	\begin{tabular}{cccc}
 		\toprule
 		项目				&	大小			&	延迟(时钟周期)	&	访问权限	\\
@@ -44,12 +66,26 @@ BlockNumber和ThreadNumber分别代表要启动的线程块数目和每个线程
 \begin{figure}
 	\centering
 	\includegraphics[width=15cm]{figures/Fig1.jpg}
-	\caption{\label{Fig.1} 纹理内存访存方式}
+	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
+	\renewcommand{\figurename}{图}
+	\caption{纹理内存}
+	\addtocounter{figure}{-1}
+	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
+	\renewcommand{\figurename}{Figure}
+	\caption{Texture Memory}
+	\label{Fig.1}
 \end{figure}
 \begin{figure}
 	\centering
 	\includegraphics[width=15cm]{figures/CODE2.png}
-	\caption{\label{Fig.3} 不同存储系统使用方式}
+	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
+	\renewcommand{\figurename}{图}
+	\caption{不同存储单元的使用方式}
+	\addtocounter{figure}{-1}
+	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
+	\renewcommand{\figurename}{Figure}
+	\caption{Methods of using different storage unit}
+	\label{Fig.3}
 \end{figure}
 \paragraph{编译方式}
 \par CUDA程序的编译较为简单，只需使用$ nvcc $对源文件进行编译生成可执行文件。首先将从C/C++/CUDA文件编译生成PTX中间代码，再从PTX中间代码生成SASS机器代码。本实验中由于需要观察、研究具体GPU代码的生成方式、特征，故在编译时加入$ --keep $保留编译产生的PTX中间代码文件。而SASS机器代码则在NVIDIA的支持下通过捕捉CUDA应用的指令流获得。
@@ -63,7 +99,13 @@ BlockNumber和ThreadNumber分别代表要启动的线程块数目和每个线程
 	\item CPU仅仅支持数十个硬件线程，而GPU则支持数千个硬件线程。在GPU上开启过少的硬件线程会极大降低硬件使用率，进而导致性能降低。具体开启线程数量取决于硬件SM最大并发线程数、最大并发线程束数和最大并发块数等。表\ref{table-占用率}显示了在不同计算能力上开启不同数量的线程时设备的利用率以及所能开启包含该数量线程的线程块的数量。\\
 	\begin{table}
 	\centering
-	\caption{线程数与占用率的关系}
+	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
+	\renewcommand{\tablename}{表}
+	\caption{可分配线程数与占用率的关系}
+	\addtocounter{table}{-1}
+	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
+	\renewcommand{\tablename}{Table}
+	\caption{Available thread number and corresponding occupancy rate}
 	\begin{tabular}{cccccc}
 		\toprule
 			&	1.0	&1.2	&2.0	&2.1	&3.0 \\
@@ -86,7 +128,13 @@ BlockNumber和ThreadNumber分别代表要启动的线程块数目和每个线程
 \par 表\ref{table-粒度}详细说明了CUDA应用中不同不同粒度的线程组织形式。
 \begin{table}
 	\centering
+	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
+	\renewcommand{\tablename}{表}
 	\caption{线程组织形式}
+	\addtocounter{table}{-1}
+	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
+	\renewcommand{\tablename}{Table}
+	\caption{Type of organizing threads}
 	\begin{tabular}{ccc}
 		\toprule
 		粒度	&	调度者	& 	分配给 \\
@@ -115,5 +163,26 @@ $ * $ 在本世代图灵架构及以前，TPC与SM可以等价，因为一个TPC
 \subsection{CUDA应用的汇编代码与PTX中间代码的结构}
 
 \subsubsection{CUDA应用汇编代码结构}
+\begin{figure}
+	\centering
+	\includegraphics[width=15cm]{figures/CODE4.png}
+	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
+	\renewcommand{\figurename}{图}
+	\caption{CUDA程序部分反汇编代码}
+	\addtocounter{figure}{-1}
+	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
+	\renewcommand{\figurename}{Figure}
+	\caption{Part of assembly code of CUDA application}
+	\label{Fig.CUDA-Assembly}
+\end{figure}
+\par 这一节通过CUDA程序在x86\_64架构的CPU下使用静态反汇编生成的汇编代码说明涉及运行于GPU的核函数的调用与返回方式、控制权转交方式等。
+\begin{itemize}
+\item CUDA中三种函数只有被\_\_global\_\_修饰的函数在讨论范围内，因为只有这种函数跨越CPU与GPU，该函数被称为内核函数(Kernel Function)。调用核函数的加载过程与核函数的地址被存储在数据区(仅有核函数地址，因核函数实际运行于GPU)。
+\item 主函数需要定位到核函数加载过程，将核函数加载过程的地址通过lea指令加载进相关寄存器(rcx或rdx)，该过程并非被call指令直接调用。
+\item 进入加载过程，在执行一系列堆栈检查后，使用call指令调用传递CUDA函数执行时$ <<< >>> $中参数的过程。
+\item 正式将核函数地址使用lea指令加载进相关寄存器(r8、r9)，然后使用call指令调用正式调用过程，该过程中还包含一系列安全性检查，核函数执行控制权交予GPU，如图\ref{Fig.CUDA-Assembly}所示。
+\item 因调用核函数时并非用call指令直接调用，而是使用lea指令加载地址进入寄存器，故CPU端不会等待核函数返回，而是直接执行之后的函数或语句。
+\item \_\_device\_\_修饰的函数调用都在PTX代码中。
+\end{itemize}
 
 \subsubsection{PTX中间代码结构}
