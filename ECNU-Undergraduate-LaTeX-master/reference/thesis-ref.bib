@@ -110,14 +110,6 @@
 	MONTH	=	"MAR.",
 }
 
-@MANUAL{CUDAZONE,
-	AUTHOR	=	"NVIDIA",
-	TITLE	=	"CUDA Zone",
-	NOTE	=	"",
-	YEAR	=	"2019",
-	MONTH	=	"",
-}
-
 @ARTICLE{EXPLORING,
 	AUTHOR 	=	"Mahmoud Khairy and Akshay Jain and Tor M. Aamodt and Timothy G. Rogers",
 	TITLE	=	"Exploring Modern GPU Memory System Design Challenges through Accurate Modeling",
@@ -135,31 +127,12 @@
 	YEAR	=	"1997",
 }
 
-@MANUAL{EVENEASIER,
-	AUTHOR	=	"Mark Harris",
-	TITLE	=	"An Even Easier Introduction to CUDA",
-	NOTE	=	"",
-	YEAR	=	"2017",
-	MONTH	=	"JAN.",
-}
-
 @MANUAL{CUDA92,
 	AUTHOR	=	"NVIDIA",
 	TITLE	=	"CUDA Toolkit Documentation v9.2.148",
 	NOTE	=	"",
 	YEAR	=	"2018",
 	MONTH	=	"MAY."
-}
-
-@ARTICLE {FLYNN,
-	AUTHOR	=	"Michael J. Flynn",
-	TITLE	=	"Some Computer Organizations and Their Effectiveness",
-	JOURNAL	=	"IEEE Trans. Computers",
-	VOLUME	=	"21",
-	NUMBER	=	"9",
-	PAGES	=	"948--960",
-	YEAR	=	"1972",
-	DOI		=	"10.1109/TC.1972.5009071",
 }
 
 @BOOK{CUDAPROG,
@@ -196,17 +169,6 @@
 	PAGES	=	"176--185",
 	YEAR	=	"2015",
 	DOI		=	"10.1145/2723742.2723760",
-}
-
-@INPROCEEDINGS{STREAM,
-	AUTHOR	=	"Hao Li and Anand Kumar and YiCheng Tu",
-	TITLE	=	"Performance modeling in CUDA streams - A means for high-throughput
-	data processing",
-	BOOKTITLE	=	"2014 IEEE International Conference on Big Data, Big Data 2014, Washington,
-	DC, USA, October 27-30, 2014",
-	PAGES	=	"301--310",
-	YEAR	=	"2014",
-	DOI		=	"10.1109/BigData.2014.7004245",
 }
 
 @INPROCEEDINGS{GPUFORML,
@@ -303,7 +265,7 @@
 	doi       = "10.1109/ISPASS.2009.4919648",
 }
 
-@article{GPGPUSIM2,
+@ARTICLE{GPGPUSIM2,
 	author    = {Mahmoud Khairy and Akshay Jain and Tor M. Aamodt and Timothy G. Rogers},
 	title     = {Exploring Modern {GPU} Memory System Design Challenges through Accurate
 	Modeling},
@@ -327,7 +289,7 @@
 	MONTH	=	"SEPT.",
 }
 
-@article{MOBILE,
+@ARTICLE{MOBILE,
 	author    = {Andrew G. Howard and Menglong Zhu and Bo Chen and Dmitry Kalenichenko and Weijun Wang and Tobias Weyand and Marco Andreetto and Hartwig Adam},
 	title     = {MobileNets: Efficient Convolutional Neural Networks for Mobile Vision
 	Applications},
@@ -336,10 +298,135 @@
 	year      = {2017},
 }
 
-@MANUAM{PTX,
+@MANUAL{PTX,
 	AUTHOR	=	"NVIDIA",
 	TITLE	=	"Parallel Thread Execution ISA Version 6.4",
 	NOTE	=	"",
 	YEAR	=	"2019",
 	MONTH	=	"FEB.",
+}
+
+@MANUAL{TFBUILD,
+	AUTHOR	=	"TensorFlow",
+	TITLE	=	"Building TensorFlow from source",
+	NOTE	=	"",
+	YEAR	=	"2019",
+	MONTH	=	"APR.",
+}
+
+@MANUAL{CUDAZONE,
+	AUTHOR	=	"NVIDIA",
+	TITLE	=	"CUDA Zone",
+	NOTE	=	"",
+	YEAR	=	"2019",
+	MONTH	=	"",
+}
+
+@MANUAL{EVENEASIER,
+	AUTHOR	=	"Mark Harris",
+	TITLE	=	"An Even Easier Introduction to CUDA",
+	NOTE	=	"",
+	YEAR	=	"2017",
+	MONTH	=	"JAN.",
+}
+
+@INPROCEEDINGS{STREAM,
+	AUTHOR	=	"Hao Li and Anand Kumar and YiCheng Tu",
+	TITLE	=	"Performance modeling in CUDA streams - A means for high-throughput
+	data processing",
+	BOOKTITLE	=	"2014 IEEE International Conference on Big Data, Big Data 2014, Washington,
+	DC, USA, October 27-30, 2014",
+	PAGES	=	"301--310",
+	YEAR	=	"2014",
+	DOI		=	"10.1109/BigData.2014.7004245",
+}
+
+@ARTICLE {FLYNN,
+	AUTHOR	=	"Michael J. Flynn",
+	TITLE	=	"Some Computer Organizations and Their Effectiveness",
+	JOURNAL	=	"IEEE Trans. Computers",
+	VOLUME	=	"21",
+	NUMBER	=	"9",
+	PAGES	=	"948--960",
+	YEAR	=	"1972",
+	DOI		=	"10.1109/TC.1972.5009071",
+}
+
+@MANUAL{10.0PATCH,
+	AUTHOR	=	"NVIDIA",
+	TITLE	=	"NVIDIA CUDA Toolkit v10.0.130 Release Notes",
+	NOTE	=	"",
+	YEAR	=	"2018",
+	MONTH	=	"OCT.",
+	URL		=	"https://docs.nvidia.com/cuda/archive/10.0/cuda-toolkit-release-notes/index.html",
+}
+
+@MANUAL{10.1PATCH,
+	AUTHOR	=	"NVIDIA",
+	TITLE	=	"NVIDIA CUDA Toolkit v10.1.105 Release Notes",
+	NOTE	=	"",
+	YEAR	=	"2019",
+	MONTH	=	"MAR.",
+	URL		=	"https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html",
+}
+
+@MANUAL{9.2PATCH,
+	AUTHOR	=	"NVIDIA",
+	TITLE	=	"NVIDIA CUDA Toolkit v9.2.148 Release Notes",
+	NOTE	=	"",
+	YEAR	=	"2018",
+	MONTH	=	"AUG.",
+	URL		=	"https://docs.nvidia.com/cuda/archive/9.2/cuda-toolkit-release-notes/index.html",
+}
+
+@inproceedings{PAGELOCK,
+	author    = {S. Mukherji and
+	A. Rami},
+	title     = {Speeding Up the Computation of Cross-Correlation Using the FHT and
+	FFT by Page-locking},
+	booktitle = {{IEEE} International Geoscience {\&} Remote Sensing Symposium,
+	{IGARSS} 2006, July 31 - August 4, 2006, Denver, Colorado, USA, Proceedings},
+	pages     = {992--994},
+	year      = {2006},
+	doi       = {10.1109/IGARSS.2006.255},
+}
+
+@inproceedings{HIER,
+	author    = {Minsoo Rhu and
+	Michael B. Sullivan and
+	Jingwen Leng and
+	Mattan Erez},
+	title     = {A locality-aware memory hierarchy for energy-efficient GPU architectures},
+	booktitle = {The 46th Annual IEEE/ACM International Symposium on Microarchitecture,
+	MICRO-46, Davis, CA, USA, December 7-11, 2013},
+	pages     = {86--98},
+	year      = {2013},
+	doi       = {10.1145/2540708.2540717},
+}
+
+@MANUAL{NVPROF,
+	AUTHOR		=	"NVIDIA",
+	TITLE		=	"NVIDIA Profiler User's Guide",
+	NOTE		=	"",
+	YEAR		=	"2019",
+	MONTH		=	"MAR.",
+	URL			=	"https://docs.nvidia.com/cuda/profiler-users-guide/index.html",
+}
+
+@MANUAL{TENSORRT,
+	AUTHOR		=	"NVIDIA",
+	TITLE		=	"NVIDIA TensorRT, Programmable Inference Accelerator",
+	NOTE		=	"",
+	YEAR		=	"2019",
+	MONTH		=	"MAR.",
+	URL			=	"https://developer.nvidia.com/tensorrt",
+}
+
+@MANUAL{TENSORRTDOC,
+	AUTHOR		=	"NVIDIA",
+	TITLE		=	"Deep Learning SDK Documentation: What is TensorRT",
+	NOTE		=	"",
+	YEAR		=	"2018",
+	MONTH		=	"DEC.",
+	URL			=	"https://docs.nvidia.com/deeplearning/sdk/tensorrt-developer-guide/index.html",
 }
