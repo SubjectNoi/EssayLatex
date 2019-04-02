@@ -133,11 +133,10 @@
 	\caption{SM diagram of Volta and Pascal architecture}
 	\label{Fig.VoltaPascal}
 \end{figure}
-\subsubsection{通用矩阵乘法(GEMM)与张量核心(Tensor Core)}  
-\par 作为本文的重点，张量核心(Tensor Core)将在本文详细介绍。张量核心是一种专为通用矩阵乘法运算(GEMM, GEneral Matrix Multiple)设计的运算单元,对该运算进行了硬件、指令级别的优化，是与老架构最鲜明的区别所在。其混合体现在：运算中同时有加法和乘法，且精度同时涉及半精度浮点、单精度浮点和8位整数。与矩阵乘法相比，通用矩阵乘法被定义为：
-$$ C \leftarrow \alpha AB + \beta C $$
-\par 若将$ \beta $置为0，则该运算变为矩阵乘法运算。通用矩阵乘法这一运算在神经网络训练、推理中十分常见，根据官方文档，目前张量核心仅能用在CNN/RNN等特定结构的神经网络上，且只能用于前馈和反馈两部分。这个范围看起来很宅，然而在深度学习中占到了非常高的比重。式中操作数分别代表输入、权重和偏置，下文将简写为矩阵乘加。NVIDIA在新的伏特架构与图灵架构中加入的张量核心(Tensor Core)正是专门加速这种运算的硬件。
-\par 在底层的实现中，张量核心以$ 4 \times 4 $的矩阵作为最小的计算单元，被称为$ tile $，任何输入都会被划分为$ tile $进行分块运算，如图\ref{Fig.Tile}所示\parencite{CUTLASS}。在伏特架构以前(Volta)的帕斯卡架构(Pascal)，一次$ 4 \times 4 $矩阵乘加需要首先调用16次整数点积运算，再将结果累加到乘加矩阵中。而使用张量核心则仅通过一条指令直接完成。根据官方文档给出的描述，这种机制能使伏特架构相比帕斯卡架构再FP16, INT8, INT4精度中分别提供8倍、16倍、32倍的吞吐量提升。实际测试中，Tesla V100再FP16精度下的$ m=2048, k=2048, n = 2048 $规模的矩阵乘加中比Tesla P100块9.3倍\parencite{VOLTAWHITEPAPER}，这也是上文提到的官方宣称的9倍。本节将在各种规模、精度、形状的情况下考察张量实际能够带来的性能提升并探究相应原因。
+\subsubsection{张量核心(Tensor Core)}  
+\par 作为本文的重点，张量核心(Tensor Core)将在本文详细介绍。张量核心是一种专为通用矩阵乘法运算(GEMM, GEneral Matrix Multiple)设计的运算单元，对该运算进行了硬件、指令级别的优化，是与老架构最鲜明的区别所在。
+\par 在底层的实现中，张量核心以$ 4 \times 4 $的矩阵作为最小的计算单元，被称为$ tile $，任何输入都会被划分为$ tile $进行分块运算，如图\ref{Fig.Tile}所示\parencite{CUTLASS}。在伏特架构以前(Volta)的帕斯卡架构(Pascal)，一次$ 4 \times 4 $矩阵乘加需要首先调用16次整数点积运算，再将结果累加到乘加矩阵中。而使用张量核心则仅通过一条指令直接完成。根据官方文档给出的描述，这种机制能使伏特架构相比帕斯卡架构再FP16, INT8, INT4精度中分别提供8倍、16倍、32倍的吞吐量提升。实际测试中，Tesla V100再FP16精度下的$ m=2048, k=2048, n = 2048 $规模的矩阵乘加中比Tesla P100块9.3倍\parencite{VOLTAWHITEPAPER}，这也是上文提到的官方宣称的9倍。在基于Pascal架构以及之前的架构的GPU上，一次4x4矩阵乘法需要调用16次向量点积加和运算，在有idp4a指令支持的GPU上在16个周期内运算出乘积矩阵，若没有指令支持则需要64个周期，而运算得出的乘积矩阵还需要累加；而张量则在更少的周期内完成乘积和加和的运算，具体周期数由hmma指令的操作数决定，对于被分割为$ m=8,n=8,k=4 $的子矩阵的运算，张量核心仅需要八个周期完成所有乘积和加和运算\parencite{HMMA}。本节将在各种规模、精度、形状的情况下考察张量实际能够带来的性能提升并探究相应原因。
+\par 值得注意的是，在流处理器单元中，张量核心是与其他运算单元包括浮点单元、整数单元共用调度器，调度器每个时钟向分支单元、张量核心阵列、数学分派单元或访存单元发出一个线程束调度指令，这就表明一个周期内硬件不能同时执行张量核心负责的的混合矩阵运算和其他运算，单一周期只能执行单一类型的运算\parencite{AMPEREPOR}。张量核心有一定程度的可编程性，但是4x4矩阵仍然是操作的最小单元，在LLVM IR的级别观察其指令仍是如此。尽管被描述为最小4x4为单元的矩阵的混合运算，但实际上张量核心进行的运算总是使用16x16矩阵，并且跨两个Tensor Core进行处理\parencite{TENSORCORE}，这与其最小调度单元为线程束，也就是32个线程有关。
 \begin{figure}
 	\centering
 	\includegraphics[width=15cm]{figures/Tile.jpg}
@@ -191,7 +190,7 @@ $$ C \leftarrow \alpha AB + \beta C $$
 \paragraph{性能评估(Profiling)工具}
 \par 为了详细地考察硬件底层的运行机理，实验中采用了若干不同层级的性能评估工具。
 \begin{itemize}
-	\item Nsight：该工具用于在后台监听CUDA程序的执行流，结合Visual Studio中的工具可以通过可视化的方式直观地观察CPU/GPU调用、各API运行时间等信息\parencite{NSIGHT}。
+	\item Nsight：该工具用于在后台监听CUDA程序的执行流，结合Visual Studio中的工具可以通过可视化的方式直观地观察CPU/GPU调用、上下文切换等信息\parencite{NSIGHT}。
 	\item nvprof：通过该工具分析某一CUDA程序，可以获得程序执行时的分支效率、访存效率、各API调用占比等信息\parencite{NVPROF}。
 	\item GPGPU-SIM：该工具支持从中间代码(PTX)层级对CUDA程序的运行进行模拟、仿真，该工具能够提供缓存是否命中、分支是否执行、指令执行周期数等信息\parencite{GPGPUSIM}。
 	\item SMart：NVIDIA内部使用的硬件代码(SASS)层级的仿真工具，该工具能够更为详细地提供指令运行时硬件的各种信息。
