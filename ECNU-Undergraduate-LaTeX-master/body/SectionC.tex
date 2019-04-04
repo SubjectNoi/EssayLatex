@@ -118,7 +118,7 @@ $$ C \leftarrow \alpha AB + \beta C $$
 \end{figure}
 \subparagraph{结果分析}
 \par 首先，本实验通过Nsight和nvprof的搭配对应用程序中包括API调用、核函数运行时间等运行时细节进行研究。图\ref{Fig.GEMMPROFTF}和图\ref{Fig.GEMMPROFNOTF}是开启和关闭张量核心的情况下，使用nvprof运行通用矩阵乘法应用所得到的报告，该报告主要侧重于API的调用、运行。由于本文关心的重点在GPU硬件，故仅截取硬件相关的API调用(API Call)部分。图中由左至右边分别代表API调用占比、运行总时长、调用次数、平均运行时长、最短运行时长、最长运行时长和API名称。
-\par 根据nvprof生成的报告，可以看出在开启张量核心的情况下，用于设备上线程束同步的API：cudaDeviceSynchronize()，无论是在运行总时长还是调用占比中都显著小于不开启张量核心的情况。另外用于开启内核运行和异步访存的API的调用次数在开启张量核心时都明显小于不开启张量核心的情况。可见开启张量核心后，由于原先需要多条点积指令的矩阵乘法运算被合并为仅用一条wmma指令替代，其计算更加密集、设备同步更少，故性能提升明显。
+\par 根据nvprof生成的报告，可以看出在开启张量核心的情况下，用于设备上线程束同步的API：cudaDeviceSynchronize()，无论是在运行总时长还是调用占比中都显著小于不开启张量核心的情况。另外用于开启内核运行和异步访存的API的调用次数在开启张量核心时都明显小于不开启张量核心的情况。可见开启张量核心后，由于原先需要多条点积指令的矩阵乘法运算被合并为仅用一条wmma指令替代，其计算更加密集、设备同步更少，故性能提升明显。表\ref{table-时钟周期}显示了根据GPGPU-SIM测得的张量核心相关指令与一般点积运算指令所需要的运行周期数，以及相应开启内核(Launch Kernel)指令所需的运行周期数，根据指令运行周期级别的数据可以看出使用张量核心相关指令(wmma)不仅能极大减少计算所花费的时间，用于开启内核、上下文切换的时间也会显著减少。
 \par 图\ref{Fig.GEMMSIGHTTF}和图\ref{Fig.GEMMSIGHTNOTF}则是开启和关闭张量核心的情况下，使用Nsight运行通用矩阵乘法应用所得到的报告，该报告主要侧重于上下文切换、线程调度等信息。在这些信息中本实验重点关注线程就绪(Ready Thread)和上下文切换(Context Switch)两部分。
 \par 根据Nsight生成的报告，可以看出无论是否开启张量核心，其上下文切换仍然是一笔较大的开销。正如上文提到的，在GPU上进行上下文切换，其寄存器可以简单地通过更改寄存器文件指针保存/还原，然而上下文切换所需要做的清空流水线等工作还是无法被省略，造成较大的开销。相比较而言开启张量核心的应用在上下文切换中的开销下降了10\%左右，而因为就算不使用张量核心, $ 4\times4 $规模的混合矩阵运算也能使用点积指令在16个周期内完成，故应用中运算开销相对于上下文切换、加载内核映像的工作占用资源较小。且使用张量核心的应用中硬件中断(IRQ)占比也较小，说明使用张量核心不仅在运算速度上有极大提升，在与外围设备数据交换，缓存读取、命中等方面都有较大优势。当然，因计算优势在缓存读取、命中等方面体现，故输入数据的“形状”能否符合张量的硬件特性变得尤为重要。
 \par 在上文的实验中，可以看出矩阵乘加运算中，两输入矩阵共享的维度$ K $对性能影响较为显著。在$ M\times N$ 的结果矩阵中，每个单元格都是由$ 1\times K $的矩阵与$ K\times 1 $矩阵相乘，这个运算将被拆分并分发给张量核心进行处理，那么在这一步，若$ K $无法被张量核心正好拆分，则会引发一个数据缺失，进而造成硬件中断，旨在从共享/全局内存获取新的数据以拼成完整的可以交予张量核心进行处理的单元。若没有这种数据则调用传统运算核心进行运算。那么张量核心硬件上是以$ 4\times 4 $作为计算单元，调度时以$ 16\times 16 $作为调度单元，那么隐含的就要求$ K $能被恰好拆分为16或4，到此，我们根据官方文档、硬件架构做出了猜想，根据下面两张图中的实验数据，我们将对这个猜想进行验证。图\ref{Fig-PerfGemmByratio}左侧为按照开启与关闭张量核心情况下的半精度混合矩阵运算的加速比进行排序，并记录下实验编号的顺序，然后使用记录下的实验编号的顺序对单精度混合矩阵运算的实验结果进行排序得到右侧图表(右侧图表并不是按照单精度混合矩阵运算实验的加速比排序，而是根据基于加速比排序后的半精度混合矩阵运算实验得到的实验编号的顺序排序)。两张图中的加速比可被分为三段：加速比低于1、加速比介于1-2.5之间和加速比大于3的部分，且两图中突变坐标吻合，故可以推测与精度无关、在硬件上张量核心对于输入操作数的形状较为敏感。
@@ -211,12 +211,80 @@ $$ C \leftarrow \alpha AB + \beta C $$
 	\caption{Matrix size supported in wmma instruction based on official documentation}
 	\label{Fig.WMMADOC}
 \end{figure}
+\begin{table}
+	\centering
+	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
+	\renewcommand{\tablename}{表}
+	\caption{GPGPU-SIM测得的各指令运行所需时钟周期}
+	\addtocounter{table}{-1}
+	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
+	\renewcommand{\tablename}{Table}
+	\caption{Clock cycle the instructions will cost based on GPGPU-SIM}
+	\begin{tabular}{cc}
+		\toprule
+		指令	&	周期\\
+		\midrule
+		
+		\bottomrule
+	\end{tabular} \label{table-时钟周期} 
+\end{table}
 \paragraph{矩阵乘法运算}
-\par 在新架构以矩阵乘加运算进行深度学习性能评估之前，大部分评估都采用单纯的矩阵乘法运算进行。自CUDA 6.0开始，NVIDIA推出了优化线性代数运算的cuBLAS库，而每次硬件架构更新，cuBLAS库均会针对新硬件做出改进、优化。最新的CUDA SDK 10.1则推出了cuBLASt轻量级库，在生成的应用程序大小方面做出了明显优化，性能方面则并无太多优化。本节将考察使用和不使用cuBLAS库的情况下使用GPU进行矩阵乘法运算的性能。
+\par 在新架构以矩阵乘加运算进行深度学习性能评估之前，大部分评估都采用单纯的矩阵乘法运算进行。自CUDA 6.0开始，NVIDIA推出了优化线性代数运算的cuBLAS库，而每次硬件架构更新，cuBLAS库均会针对新硬件做出改进、优化。最新的CUDA SDK 10.1则推出了cuBLASt轻量级库，在生成的应用程序大小方面做出了明显优化，性能方面则并无太多优化；由于本节旨在评估不使用张量核心的情况下，使用和不使用cuBLAS库的性能，而最新的cuBLAS库均针对张量核心进行优化，故本节中使用的cuBLAS库是基于CUDA SDK 8.0。本节将考察使用和不使用CUDA SDK 8.0中的cuBLAS库的情况下使用GPU进行矩阵乘法运算的性能。
 \subparagraph{实验结果}
+\par 图\ref{Fig.CUBLASPerf}显示了使用和不使用CUDA SDK 8.0中cuBLAS库进行矩阵乘法运算的性能。随着数据规模的增长，基于cuBLAS库的应用的单精度浮点矩阵乘法运算性能稳定在13TFlops左右；而不适用cuBLAS库的应用尽管不明显，其单精度浮点矩阵运算性能仍随着数据规模的增长而增长，最终稳定在0.13TFlops左右。实验中使用的数据集并未如上一节中测试张量核心时的数据，分为能否被8整除，而是全部随机。实验结果发现在张量核心以及相关指令尚未出现时，使用cuBLAS库时矩阵形状并不会对性能造成显著影响。
+\begin{figure}
+	\centering
+	\includegraphics[width=15cm]{figures/CUBLASPerf.jpg}
+	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
+	\renewcommand{\figurename}{图}
+	\caption{使用和不使用cuBLAS库时的矩阵乘法运算性能}
+	\addtocounter{figure}{-1}
+	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
+	\renewcommand{\figurename}{Figure}
+	\caption{Performance of Matrix Multiply with and without cuBLAS library}
+	\label{Fig.CUBLASPerf}
+\end{figure}
 \subparagraph{结果分析}
+\par 需要注意的是，在实验中不使用cuBLAS库的矩阵乘法是基于GPU直接进行数值计算的，性能较差的同时支持的数据量也不够理想(因系统、硬件和驱动的原因，CUDA程序的一个内核在Windows 10操作系统下运行超过一定时间即会抛出超时异常，而不使用cuBLAS、采用直接计算的方法计算矩阵乘积速度较慢，导致大数据量下程序超时)。且由于内存分配模式的原因，在直接计算中，无法被32整除的维数需要被填充为32的倍数，在某些情况下会造成大量的内存浪费。故考虑到性能、程序健壮性等因素，在不支持张量核心的设备上进行矩阵乘法运算应尽可能使用cuBLAS库。
+
 \paragraph{卷积运算}
+\par 在深度学习中，卷积作为提取特征、过滤图像噪声的一种方式，无疑是从业者最为熟悉、存在于最多应用中的计算。且在图像处理中，卷积运算也是非常重要的一环。计算卷积有若干方法，本节将使用NVIDIA官方发布的Benchmark样例评估这些不同方法在不同情况下的性能。当然，由于还存在解卷积运算，故精度也在本实验考虑范围之内，以满足不同任对队速度和精度的取舍。
 \subparagraph{实验结果}
+\par 本节的实验涉及如下几种卷积计算方法：基于快速傅里叶变换的卷积；基于通用矩阵乘法的卷积和基于传统的直接计算的卷积(cudnn中将这一方法命名为Conv\_Direct)，即分别计算输出图像每一个单元的值。而这三种方法在CUDA的实现中也有差异，如表\ref{table-CONV}所示。
+\begin{table}
+	\centering
+	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
+	\renewcommand{\tablename}{表}
+	\caption{实验中的几种卷积计算方式}
+	\addtocounter{table}{-1}
+	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
+	\renewcommand{\tablename}{Table}
+	\caption{Methods to calculate convolution}
+	\begin{tabular}{cc}
+		\toprule
+		卷积计算方式	&	描述\\
+		\midrule
+		基于快速傅里叶变换(FFT)的CUDA内建的卷积 & 使用CUDA提供的基于FFT的卷积库\\
+		基于快速傅里叶变换(FFT)的自定义卷积 & 使用CUDA提供的FFT库实现卷积\\
+		基于通用矩阵乘法(GEMM)的CUDA内建的卷积 & 使用CUDA提供的利用张量核心的API\\
+		直接卷积(全局内存，Global Memory) & 直接计算每一个单元的值，基于全局内存\\
+		直接卷积(纹理内存，Texture Memory) & 直接计算每一个单元的值，基于纹理内存\\
+		\bottomrule
+	\end{tabular} \label{table-CONV} 
+\end{table}
+\par 其中，访问纹理内存时使用传统的OpenCL/GL中的实现方式。因纹理内存的访存、缓存方式与一般存储系统不同，在测试时分为行卷积和咧卷积。实验中卷积核步进、图像填充(padding)均不变，性能采用兆像素每秒(MPix/s)计算。
+\begin{figure}
+	\centering
+	\includegraphics[width=15cm]{figures/CONVPerf.jpg}
+	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
+	\renewcommand{\figurename}{图}
+	\caption{使用不同计算方法的卷积性能}
+	\addtocounter{figure}{-1}
+	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
+	\renewcommand{\figurename}{Figure}
+	\caption{Performance of convolution based on different algorithm}
+	\label{Fig.CONVPerf}
+\end{figure}
 \subparagraph{结果分析}
 \paragraph{神经网络推理}
 \subparagraph{实验结果}
