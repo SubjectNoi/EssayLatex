@@ -215,18 +215,26 @@ $$ C \leftarrow \alpha AB + \beta C $$
 	\centering
 	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
 	\renewcommand{\tablename}{表}
-	\caption{GPGPU-SIM测得的各指令运行所需时钟周期}
+	\caption{GPGPU-SIM测得的各指令运行所需时钟周期(图灵架构)}
 	\addtocounter{table}{-1}
 	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
 	\renewcommand{\tablename}{Table}
-	\caption{Clock cycle the instructions will cost based on GPGPU-SIM}
+	\caption{Clock cycle the instructions will cost based on GPGPU-SIM(Turing Arch)}
 	\begin{tabular}{cc}
 		\toprule
-		指令	&	周期\\
+		指令、操作类型	&	周期\\
 		\midrule
-		
+		FMA(Float point Multiply Accumulation) @ FP32 & 3-5 \\
+		FMA @ FP64	&	6-9\\
+		WMMA(Warp-level Matrix Multiply Accumulation)@FP16 & 7-8\\
+		ALU 	&	4\\
+		MIO(内存访问) & 16-20\\
+		TRAP(内核陷阱) & 77-92\\
+		L1缓存未命中 & 139-167\\
 		\bottomrule
-	\end{tabular} \label{table-时钟周期} 
+	\end{tabular} \label{table-时钟周期} \\
+
+$ * $因硬件运行时存在随机性，故测得时钟周期为在基于图灵架构的GPGPU-SIM上运行后计算得出。
 \end{table}
 \paragraph{矩阵乘法运算}
 \par 在新架构以矩阵乘加运算进行深度学习性能评估之前，大部分评估都采用单纯的矩阵乘法运算进行。自CUDA 6.0开始，NVIDIA推出了优化线性代数运算的cuBLAS库，而每次硬件架构更新，cuBLAS库均会针对新硬件做出改进、优化。最新的CUDA SDK 10.1则推出了cuBLASt轻量级库，在生成的应用程序大小方面做出了明显优化，性能方面则并无太多优化；由于本节旨在评估不使用张量核心的情况下，使用和不使用cuBLAS库的性能，而最新的cuBLAS库均针对张量核心进行优化，故本节中使用的cuBLAS库是基于CUDA SDK 8.0。本节将考察使用和不使用CUDA SDK 8.0中的cuBLAS库的情况下使用GPU进行矩阵乘法运算的性能。
@@ -278,14 +286,30 @@ $$ C \leftarrow \alpha AB + \beta C $$
 	\includegraphics[width=15cm]{figures/CONVPerf.jpg}
 	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
 	\renewcommand{\figurename}{图}
-	\caption{使用不同计算方法的卷积性能}
+	\caption{使用不同计算方法的卷积计算速度}
 	\addtocounter{figure}{-1}
 	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
 	\renewcommand{\figurename}{Figure}
-	\caption{Performance of convolution based on different algorithm}
+	\caption{Performance in speed of convolution based on different algorithm}
 	\label{Fig.CONVPerf}
 \end{figure}
+\par 根据图\ref{Fig.CONVPerf}中得到的关于卷积计算速度的实验结果可以得到如下结论。首先，在输入图像尺寸较大时，基于通用矩阵乘法、使用张量核心的卷积计算方式和CUDA内建的基于快速傅里叶变换的卷积方式的性能优势相对于其他几种计算方式极为明显，而基于通用矩阵乘法的方法相比内建的基于快速傅里叶变换的方法性能高30\%-50\%、且随着图像尺寸的增加性能也增加，而卷积核尺寸对性能影响不大。在输入图像尺寸较小时，之前提到的两种方法性能急剧下降，而直接方法计算卷积性能较稳定；对于使用纹理内存的直接方法，行、列卷积差别不大。
+\par 图\ref{Fig.CONVPr}则是卷积计算精度的实验结果。首先，使用cuFFT库自行编写的基于快速傅里叶变换的卷积误差较大，达到$ 1\times 10^{-7} $级别，在许多实际应用中已经无法满足要求。而CUDA内建的基于快速傅里叶变换的卷积计算方式和基于通用矩阵乘法使用张量核心的卷积计算方式误差相近，都在$ 5\times 10^{-8} $级别；最后，直接方法计算卷积误差极低，基本为0，可以看作浮点数存储方式引发的误差。
+\begin{figure}
+	\centering
+	\includegraphics[width=15cm]{figures/CONVError.jpg}
+	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
+	\renewcommand{\figurename}{图}
+	\caption{使用不同计算方法的卷积计算精度}
+	\addtocounter{figure}{-1}
+	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
+	\renewcommand{\figurename}{Figure}
+	\caption{Performance in accuracy of convolution based on different algorithm}
+	\label{Fig.CONVPr}
+\end{figure}
 \subparagraph{结果分析}
+\par 在卷积计算速度方面，在图像尺寸较大的情况下，基于通用矩阵乘法的卷积计算方法和CUDA内建的基于快速傅里叶变换的卷积计算方法性能优势明显，且随着尺寸增大优势也愈大；在实际应用中可以根据SDK版本、硬件是否支持张量核心选择这两种计算方法。然而在图像尺寸较小时，直接方法计算卷积性能极大领先于其他方法，尤其是使用纹理内存进行优化后，性能达到基于通用矩阵乘法和快速傅里叶变换的计算方法的4-6倍。值得注意的是，在许多神经网络中，包括之后进行实验的卷积神经网络，其输入图像尺寸都是$ 10^2 $数量级，如$ 224\times 224, 128\times 128 $等，在该数量级上使用纹理内存优化的直接计算方法优势极大，本文也将基于这一结论对完整的卷积神经网络进行调整、优化。
+\par 在卷积计算精度方面，基于通用矩阵乘法使用张量核心的方法基于FP16的精度进行计算；而基于快速傅里叶变换的方法在计算过程中需要将实数转为复数，再从复数转为实数，从而引入较大误差。而直接方法计算卷积由于直接对输出图像的每个单元进行计算，故误差极小可以忽略不计。在对精度要求极高的情况下，应选用直接方法计算卷积；值得注意的是，基于通用矩阵乘法和快速傅里叶变换的方法的精度已经达到$ 1\times 10^{-8} $级别，能够满足大部分情况的需求，故选择计算方法时仍需考虑输入图像大小。最后，基于快速傅里叶变换，但不使用内建API的方法不推荐使用，因在计算速度、计算精度方面，每种数据规格下都有更优选择。
 \paragraph{神经网络推理}
 \subparagraph{实验结果}
 \subparagraph{结果分析}
