@@ -24,7 +24,8 @@
 		GPU		&	NVIDIA Geforce RTX 2080TI (Turing)\\
 		硬盘		&	INTEL750 NVMe PCIe 1.2TB * 2 @ RAID 0\\
 		系统		&	Windows 10 64-bit build 17763\\	
-		CUDA	&	10.1, 10.0, 9.2, 9.0\\
+		CUDA	&	Ver. 10.1, 10.0, 9.2, 9.0\\
+		CUTLASS & Ver. 1.2, 1.3\\
 		其他		&	Jetson TX2 $ * $\\
 		\bottomrule
 	\end{tabular} 
@@ -66,22 +67,22 @@
 \end{table}
 \subsection{实验详细过程}
 \subsubsection{基于测试样例的Benchmark}
-\par 为了为接下来的实验设定基准，这一步先使用用途单一的测试样例测试绝对性能以及相应的提升，因不同架构的硬件各项参数(包括流处理器数量、显存容量等)不尽相同，所以直接对比不同架构硬件的性能是没有意义的，这里选择对比不同架构硬件在不同SDK下性能提升的比例。此处选用了CUDA 10.0，CUDA 9.2，CUDA 9.0三种SDK，同时选用9.2与9.0的原因是因为9.2版本是为了图灵架构的GPU Tesla V100发布的\parencite{CUDA92}，也在本文的研究范围内。
+\par 为了为接下来的实验设定基准，这一步先使用用途单一的测试样例测试绝对性能以及相应的提升，因不同架构的硬件各项参数(包括流处理器数量、显存容量等)不尽相同，所以直接对比不同架构硬件的性能是没有意义的，这里选择对比不同架构硬件在不同SDK下性能提升的比例。此处选用了CUDA 10.0，CUDA 9.2，CUDA 9.0三种SDK，同时选用9.2与9.0的原因是因为9.2版本是为了图灵架构的GPU Tesla V100发布的\cite{CUDA92}，也在本文的研究范围内。
 \par 因为本文主要讨论新架构GPU在机器学习应用中带来的性能提升，故选用的评测样例大部分都与机器学习应用相关；主要从以下角度进行评估：通用矩阵乘法(GEMM, General Matrix Multiply)、矩阵乘法运算性能、卷积运算性能、神经网络推理性能以及结合框架的综合性能。在评估这些性能时也会包含单/双精度浮点计算性能。
 \paragraph{通用矩阵乘法(GEMM, General Matrix Multiply)}
 \par 作为新硬件最为鲜明的特点，本节将对张量核心以及相应的通用矩阵乘法运算进行评估，通用矩阵乘法运算又被称为混合矩阵运算，其混合体现在：运算中同时有加法和乘法，且精度同时涉及半精度浮点、单精度浮点和8位整数。与矩阵乘法相比，通用矩阵乘法被定义为：
 $$ C \leftarrow \alpha AB + \beta C $$
 \par 若将$ \beta $置为0，则该运算变为矩阵乘法运算。通用矩阵乘法这一运算在神经网络训练、推理中十分常见，根据官方文档，目前张量核心仅能用在CNN/RNN等特定结构的神经网络上，且只能用于前馈和反馈两部分。这个范围看起来很宅，然而在深度学习中占到了非常高的比重。式中操作数分别代表输入、权重和偏置，下文将简写为矩阵乘加。NVIDIA在新的伏特架构与图灵架构中加入的张量核心(Tensor Core)正是专门加速这种运算的硬件。
 \subparagraph{实验结果}
-\par 根据开发者社区的反映，新架构硬件性能的差别主要体现在问题规模、问题类型等方面(张量维度、形状，训练/推理任务等)，而NVIDIA官方仅给出一种规模的结果，所以本节使用了自行编写的一系列测试用例，辅以深度学习测试套件DeepBench\parencite{DEEPBENCH}，在开启和关闭新架构中张量核心的情况下进行测试。实验性能使用TFlops/s统计，方法为简单的运算数除以运算时间，运算时间的统计采用CUDA内置的$ cudaEvent $记录。
-\par 首先评估的是在不同问题规模下，开启和关闭新架构中的张量核心所能达到的性能，如图 \ref{Fig-PerfGemm}所示。随着问题规模的上升，总体加速比呈上升趋势，在大规模数据时半精度通用矩阵运算性能的加速比能达到3到3.5倍、单精度通用矩阵运算性能的加速比能达到2倍。然而，单纯考察数据规模发现加速比差距非常大，甚至是在大规模数据中仍然存在开启张量核心后性能不如不开启张量核心的情况，结合文档在通用矩阵运算一章中在指令中需要指明运算的最小单元这一点中\parencite{PTX}；可以推测出输入矩阵的“形状”对张量核心的性能由较大影响。
+\par 根据开发者社区的反映，新架构硬件性能的差别主要体现在问题规模、问题类型等方面(张量维度、形状，训练/推理任务等)，而NVIDIA官方仅给出一种规模的结果，所以本节使用了自行编写的一系列测试用例，辅以深度学习测试套件DeepBench\cite{DEEPBENCH}，在开启和关闭新架构中张量核心的情况下进行测试。实验性能使用TFlops/s统计，方法为简单的运算数除以运算时间，运算时间的统计采用CUDA内置的$ cudaEvent $记录。
+\par 首先评估的是在不同问题规模下，开启和关闭新架构中的张量核心所能达到的性能，如图 \ref{Fig-PerfGemm}所示。随着问题规模的上升，总体加速比呈上升趋势，在大规模数据时半精度通用矩阵运算性能的加速比能达到3到3.5倍、单精度通用矩阵运算性能的加速比能达到2倍。然而，单纯考察数据规模发现加速比差距非常大，甚至是在大规模数据中仍然存在开启张量核心后性能不如不开启张量核心的情况，结合文档在通用矩阵运算一章中在指令中需要指明运算的最小单元这一点中\cite{PTX}；可以推测出输入矩阵的“形状”对张量核心的性能由较大影响。
 \par 为了研究输入矩阵“形状”对于加速比的影响，由于两个输入矩阵涉及三个维度，故采用控制变量法，控制$ m,n,k $中某一维度考察另外两个维度对于加速比的影响。由于测试数据中存在部分离群值($ N\geq 500000 $)，这会对作图精度产生极大影响，故先予以剔除。实验结果如图 \ref{Fig-MNKRatio}所示。可见在两个输入矩阵的三个维度中，两矩阵共享的维度$ K $对于性能的影响最为显著。
-\par 关于矩阵的形状、维度对于性能的影响，其原因将在后文结果分析中详细说明。以上实验数据以及性能旨在考查开启和关闭张量核心时性能提升幅度，故开启的线程块数量和线程数量较小，相应的GPU占用率也较小，导致所得性能并非GPU峰值性能。为测量峰值性能，这里还是用NVIDIA官方发布的用于线性代数计算的模板库CUTLASS(CUDA Template Linear Algebra Subroutines)，该模板库根据新架构硬件特性编写，提供了许多测试样例供参考，这里使用CUTLASS测试得到的性能作为峰值性能基准。
+\par 关于矩阵的形状、维度对于性能的影响，其原因将在后文结果分析中详细说明。以上实验数据以及性能旨在考查开启和关闭张量核心时性能提升幅度，故开启的线程块数量和线程数量较小，相应的GPU占用率也较小，导致所得性能并非GPU峰值性能。为测量峰值性能，这里还是用NVIDIA官方发布的用于线性代数计算的模板库CUTLASS(CUDA Template Linear Algebra Subroutines)，该模板库根据新架构硬件特性编写，提供了许多测试样例供参考，目前版本已经更新到1.3，相比于1.2使用了新加入CUDA SDK 10.1的mma.sync以优化性能，这里使用CUTLASS测试得到的性能作为峰值性能基准。
 \par CUTLASS库中的GEMM运算有多种精度可供选择：HGEMM、SGEMM、DGEMM、CGEMM、ZGEMM和IGEMM，分别代表半精度浮点、单精度浮点、双精度浮点、单精度复数、双精度复数和八位整数。鉴于之前的测试并不涉及复数，此处也不选用复数精度作为基准。需要注意的是测试样例后缀中存在$ \_[n/t][n/t] $分别代表运算中输入矩阵的数据存储、分布方式，即行列是否转置(如上文提到的，CUDA中矩阵存储分行主元素和列主元素存储)。图 \ref{Fig-GEMM-CUTLASS}为测得的性能基准。
 \begin{figure}
 	\centering
-	\includegraphics[width=7.5cm]{figures/GEMM-Half-TF.jpg}
-	\includegraphics[width=7.5cm]{figures/GEMM-Single-TF.jpg}
+	\includegraphics[width=15cm]{figures/GEMM-Half-TF.jpg}\\
+	\includegraphics[width=15cm]{figures/GEMM-Single-TF.jpg}
 	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
 	\renewcommand{\figurename}{图}
 	\caption{半精度/单精度GEMM性能}
@@ -211,8 +212,8 @@ $$ C \leftarrow \alpha AB + \beta C $$
 \par 在上文的实验中，可以看出矩阵乘加运算中，两输入矩阵共享的维度$ K $对性能影响较为显著。在$ M\times N$ 的结果矩阵中，每个单元格都是由$ 1\times K $的矩阵与$ K\times 1 $矩阵相乘，这个运算将被拆分并分发给张量核心进行处理，那么在这一步，若$ K $无法被张量核心正好拆分，则会引发一个数据缺失，进而造成硬件中断，旨在从共享/全局内存获取新的数据以拼成完整的可以交予张量核心进行处理的单元。若没有这种数据则调用传统运算核心进行运算。那么张量核心硬件上是以$ 4\times 4 $作为计算单元，调度时以$ 16\times 16 $作为调度单元，那么隐含的就要求$ K $能被恰好拆分为16或4，到此，我们根据官方文档、硬件架构做出了猜想，根据下面两张图中的实验数据，我们将对这个猜想进行验证。图 \ref{Fig-PerfGemmByratio}左侧为按照开启与关闭张量核心情况下的半精度混合矩阵运算的加速比进行排序，并记录下实验编号的顺序，然后使用记录下的实验编号的顺序对单精度混合矩阵运算的实验结果进行排序得到右侧图表(右侧图表并不是按照单精度混合矩阵运算实验的加速比排序，而是根据基于加速比排序后的半精度混合矩阵运算实验得到的实验编号的顺序排序)。两张图中的加速比可被分为三段：加速比低于1、加速比介于1-2.5之间和加速比大于3的部分，且两图中突变坐标吻合，故可以推测与精度无关、在硬件上张量核心对于输入操作数的形状较为敏感。
 \begin{figure}
 	\centering
-	\includegraphics[width=7.5cm]{figures/GEMM-Half-TF-Byratio.jpg}
-	\includegraphics[width=7.5cm]{figures/GEMM-Single-TF-Byratio.jpg}
+	\includegraphics[width=15cm]{figures/GEMM-Half-TF-Byratio.jpg}\\
+	\includegraphics[width=15cm]{figures/GEMM-Single-TF-Byratio.jpg}
 	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
 	\renewcommand{\figurename}{图}
 	\caption{半精度/单精度GEMM性能(按加速比排序)}
@@ -225,8 +226,8 @@ $$ C \leftarrow \alpha AB + \beta C $$
 \par 图 \ref{Fig-PerfGemmByratioTri}中根据实验中输入矩阵共享的维度$ k $对加速比进行着色。可见无法被8整除的测试样例的加速比较低，接近1；而能够被8整除的测试样例大部分都能被张量核心有效地加速；而随着$ K $值的上升，加速比也呈现上升趋势。结合GPU实际在线程调度中的特征，以及中间代码(PTX)中给出的子矩阵分割形状参数，如图 \ref{Fig.WMMADOC}所示(图中wmma指令为跨线程束矩阵乘加，而mma则非跨线程束)，在实际使用中应尽量确保输入矩阵共享的维度$ K $能够被8整除，且最好为32的倍数；且尽量不要使用太“扁”或太“长”的矩阵作为输入。
 \begin{figure}
 	\centering
-	\includegraphics[width=7.5cm]{figures/GEMM-Half-TF-Byratio-Tri.jpg}
-	\includegraphics[width=7.5cm]{figures/GEMM-Single-TF-Byratio-Tri.jpg}
+	\includegraphics[width=15cm]{figures/GEMM-Half-TF-Byratio-Tri.jpg}\\
+	\includegraphics[width=15cm]{figures/GEMM-Single-TF-Byratio-Tri.jpg}
 	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
 	\renewcommand{\figurename}{图}
 	\caption{半精度/单精度GEMM性能(按加速比排序，根据维度K特征着色)}
@@ -241,14 +242,15 @@ $$ C \leftarrow \alpha AB + \beta C $$
 	\includegraphics[width=15cm]{figures/WMMADOC.jpg}
 	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
 	\renewcommand{\figurename}{图}
-	\caption{官方文档给出的wmma指令支持的分割尺寸\parencite{PTX}}
+	\caption{官方文档给出的wmma指令支持的分割尺寸\cite{PTX}}
 	\addtocounter{figure}{-1}
 	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
 	\renewcommand{\figurename}{Figure}
 	\caption{Matrix size supported in wmma instruction based on official documentation}
 	\label{Fig.WMMADOC}
 \end{figure}
-\par 由于以上评估进行时GPU均为到达满载，故使用CUTLASS库评估了GPU满载时的矩阵乘加性能，如图 \ref{Fig-GEMM-CUTLASS}所示，可见在CUTLASS中以半精度浮点进行运算，开启张量核心(hgemm-wmma)后性能相比未开启张量核心(hgemm)提升了约3倍，与前文实验中相符；而其输入矩阵数据分布方式对性能有一定影响，总体来看两矩阵均以行主元素存储的情况下性能较强(nt代表矩阵$ A $不进行转置，而矩阵$ B $进行转置，然而由于矩阵乘法运算的特征，矩阵$ B $转置表示其本身存储方式仍是行主元素存储；而tn则代表$ A $和$ B $都以列主元素存储)，而两矩阵均以列主元素存储时性能较弱。在实验平台中的NVIDIA Geforce RTX 2080TI搭载的TU102核心中有68个流多处理器单元\parencite{2080TI}，结合之前单个流处理器单元测试的性能，大约是60倍，这与硬件特征亦相符合，该结果将作为基准性能。从该试验得到的结果以及NVIDIA官方文档的资料，正如前文提到过，张量核心的计算最小粒度是$ 4\times 4 $然而在调度时仍然是以$ 16\times 16 $为单位，且两个线程束也被组织到一起进行执行；我们可以提出合理地猜想，在下一代架构的硬件中(安培架构)，将会出现规模更大、跨越更多个线程束的矩阵乘加的指令集，以提高并行度进而进一步增加计算密集型任务的性能；当然，这样的指令也会在线程束之间的同步带来挑战。
+\par 由于以上评估进行时GPU均为到达满载，故使用CUTLASS库评估了GPU满载时的矩阵乘加性能，如图 \ref{Fig-GEMM-CUTLASS}所示，可见在CUTLASS中以半精度浮点进行运算，开启张量核心(hgemm-wmma)后性能相比未开启张量核心(hgemm)提升了约3倍，与前文实验中相符；而其输入矩阵数据分布方式对性能有一定影响，总体来看，在半精度情况下(FP16)，两矩阵均以行主元素存储的情况下性能较强(nt代表矩阵$ A $不进行转置，而矩阵$ B $进行转置，然而由于矩阵乘法运算的特征，矩阵$ B $转置表示其本身存储方式仍是行主元素存储；而tn则代表$ A $和$ B $都以列主元素存储)，而两矩阵均以列主元素存储时性能较弱；然而在单精度情况下(FP32)时，四种运算性能差距不大，而总体运算性能也低于半精度时的运算性能，这也与在硬件层面张量核心以半精度为操作单元有关；而在双精度下(dgemm, double gemm)性能较差，这也与其硬件特征有关，即需要若干个低精度核心同步、合作计算高精度结果。值得注意的是，相对于CUTLASS 1.2版本，1.3版本新增了$ m=8,n=8,k=4 $的非跨线程束通用矩阵乘法(mma-gemm)，这也是考虑到在数据规模较小时wmma会引发数量可观的同步、上下文切换，故新增了这一粒度的通用矩阵乘法。
+\par 在实验平台中的NVIDIA Geforce RTX 2080TI搭载的TU102核心中有68个流多处理器单元\cite{2080TI}，结合之前单个流处理器单元测试的性能，大约是60倍，这与硬件特征亦相符合，该结果将作为基准性能。从该试验得到的结果以及NVIDIA官方文档的资料，正如前文提到过，张量核心的计算最小粒度是$ 4\times 4 $然而在调度时仍然是以$ 16\times 16 $为单位，且两个线程束也被组织到一起进行执行；我们可以提出合理地猜想，在下一代架构的硬件中(安培架构)，将会出现规模更大、跨越更多个线程束的矩阵乘加的指令集，以提高并行度进而进一步增加计算密集型任务的性能；当然，这样的指令也会在线程束之间的同步带来挑战。
 
 \paragraph{矩阵乘法运算}
 \par 在新架构以矩阵乘加运算进行深度学习性能评估之前，大部分评估都采用单纯的矩阵乘法运算进行。自CUDA 6.0开始，NVIDIA推出了优化线性代数运算的cuBLAS库，而每次硬件架构更新，cuBLAS库均会针对新硬件做出改进、优化。最新的CUDA SDK 10.1则推出了cuBLASt轻量级库，在生成的应用程序大小方面做出了明显优化，性能方面则并无太多优化；由于本节旨在评估不使用张量核心的情况下，使用和不使用cuBLAS库的性能，而最新的cuBLAS库均针对张量核心进行优化，故本节中使用的cuBLAS库是基于CUDA SDK 8.0。本节将考察使用和不使用CUDA SDK 8.0中的cuBLAS库的情况下使用GPU进行矩阵乘法运算的性能。
@@ -460,38 +462,49 @@ $$ C \leftarrow \alpha AB + \beta C $$
 	\end{tabular} \label{table-BWDALGO} 
 \end{table}
 \subparagraph{实验结果}
-\par 实验结果如图 \ref{Fig.CNNPerf}所示。该实验结果在一定程度上应证了猜想：张量核心能够为网络的前向传播部分带来大约20\%-40\%的提升，稍低于前文中评估的基于矩阵乘加使用张量核心进行的卷积计算相对于内建快速傅里叶变换的卷积计算的性能提升幅度，因前向传播并非纯粹的卷积计算，该差距在合理范围内；然而其余部分的性能开启张量核心后均有一定程度的落后。
+\par 实验结果如图 \ref{Fig.CNNPerf-1}和图 \ref{Fig.CNNPerf-2}所示。该实验结果在一定程度上应证了猜想：张量核心能够为网络的前向传播部分带来大约20\%-40\%的提升，稍低于前文中评估的基于矩阵乘加使用张量核心进行的卷积计算相对于内建快速傅里叶变换的卷积计算的性能提升幅度，因前向传播并非纯粹的卷积计算，该差距在合理范围内；然而其余部分的性能开启张量核心后均有一定程度的落后。
 \begin{figure}
 	\centering
-	\includegraphics[width=7.5cm]{figures/CNN-HALF-FWD.jpg}
-	\includegraphics[width=7.5cm]{figures/CNN-HALF-BWD-FILTER.jpg}\\
-	\includegraphics[width=7.5cm]{figures/CNN-HALF-BWD-DATA.jpg}
-	\includegraphics[width=7.5cm]{figures/CNN-HALF-TOTAL.jpg}\\
+	\includegraphics[width=15cm]{figures/CNN-HALF-FWD.jpg}\\
+	\includegraphics[width=15cm]{figures/CNN-HALF-BWD-FILTER.jpg}
 	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
 	\renewcommand{\figurename}{图}
-	\caption{实验中卷积神经网络不同部分性能}
+	\caption{实验中卷积神经网络不同过程性能(第一部分)}
 	\addtocounter{figure}{-1}
 	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
 	\renewcommand{\figurename}{Figure}
-	\caption{Performance of different part in CNN in experiment}
-	\label{Fig.CNNPerf}
+	\caption{Performance of different process in CNN in experiment(Part 1)}
+	\label{Fig.CNNPerf-1}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width=15cm]{figures/CNN-HALF-BWD-DATA.jpg}\\
+	\includegraphics[width=15cm]{figures/CNN-HALF-TOTAL.jpg}
+	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
+	\renewcommand{\figurename}{图}
+	\caption{实验中卷积神经网络不同过程性能(第二部分)}
+	\addtocounter{figure}{-1}
+	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
+	\renewcommand{\figurename}{Figure}
+	\caption{Performance of different process in CNN in experiment(Part 2)}
+	\label{Fig.CNNPerf-2}
 \end{figure}
 \par 将卷积神经网络中三个部分的计算整合便得到图 \ref{Fig.CNNPerf3Part}。可以发现开启张量核心时前向传播部分的性能相比反向传播中两个部分的性能高50\%-100\%，而关闭张量核心时三个部分性能相近。
 \begin{figure}
 	\centering
-	\includegraphics[width=7.5cm]{figures/CNN-HALF-3PART-TF.jpg}
-	\includegraphics[width=7.5cm]{figures/CNN-HALF-3PART-NOTF.jpg}
+	\includegraphics[width=15cm]{figures/CNN-HALF-3PART-TF.jpg}\\
+	\includegraphics[width=15cm]{figures/CNN-HALF-3PART-NOTF.jpg}
 	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
 	\renewcommand{\figurename}{图}
-	\caption{实验中卷积神经网络不同部分性能整合}
+	\caption{实验中卷积神经网络不同过程性能整合}
 	\addtocounter{figure}{-1}
 	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
 	\renewcommand{\figurename}{Figure}
-	\caption{Collection of performance of different part in CNN in experiment}
+	\caption{Collection of performance of different process in CNN in experiment}
 	\label{Fig.CNNPerf3Part}
 \end{figure}
 \subparagraph{结果分析}
-\par 根据实验结果可以发现，在卷积神经网络中张量核心所能加速的部分较为有限。且尽管根据Benchmark实验中的结果表明计算卷积时，卷积核的尺寸并不会对加速性能造成显著影响，然而神经网络涉及多层卷积，卷积层间需要相连接，从而存在大量参数传播。若开启张量核心对参数传播过程进行加速，由于在卷积神经网络的前向传播中，每一层图像尺寸、神经元连接规模都会被输入图像尺寸、卷积核尺寸、边缘填充尺寸、卷积核步进等因素影响，即使原始输入尺寸满足张量核心的理想需求，在卷积之后也很难保证，故开启张量核心后前向传播部分提升也有限。而如图 \ref{Fig.CNNPerf3Part}中所示，开启张量核心后三部分性能差距较大，这也是导致图 \ref{Fig.CNNPerf}中总体性能较差的原因。
+\par 根据实验结果可以发现，在卷积神经网络中张量核心所能加速的部分较为有限。且尽管根据Benchmark实验中的结果表明计算卷积时，卷积核的尺寸并不会对加速性能造成显著影响，然而神经网络涉及多层卷积，卷积层间需要相连接，从而存在大量参数传播。若开启张量核心对参数传播过程进行加速，由于在卷积神经网络的前向传播中，每一层图像尺寸、神经元连接规模都会被输入图像尺寸、卷积核尺寸、边缘填充尺寸、卷积核步进等因素影响，即使原始输入尺寸满足张量核心的理想需求，在卷积之后也很难保证，故开启张量核心后前向传播部分提升也有限。而如图 \ref{Fig.CNNPerf3Part}中所示，开启张量核心后三部分性能差距较大，这也是导致图 \ref{Fig.CNNPerf-2}中总体性能较差的原因。
 \par 而在反向传播的两个部分的实验中，采用了NSight与nvprof对其运行进行观察。由于是一个完整的神经网络，nvprof所得的报告条目较多，且有些条目并不必要。这里选取神经网络中典型的操作：ReLU作为除卷积、矩阵乘加运算外其他运算的代表，考察开启和不开启张量核心时该操作花费的时间，如表 \ref{table-RELU}所示。开启张量核心后，会使用针对新架构的API(turing)进行运算，然而，不仅调用的API数量明显增加，基于图灵架构的API的运行时间仍更长。可以推断出，由于完整神经网络中存在的其他运算较多，而在第二章提到过张量核心使用的指令流水线(M-pipe)与其他算术指令的流水线是互斥的，这就导致张量核心指令与一般算数指令在同一流多处理器中无法同时执行，张量核心在以较低效率执行不适合它的操作的同时还阻塞了其他算术运算的进行。
 \begin{table}
 	\centering
@@ -523,7 +536,7 @@ $$ C \leftarrow \alpha AB + \beta C $$
 		\bottomrule
 	\end{tabular} \label{table-RELU} 
 \end{table}
-\par 结合上文对卷积性能的评估，又考虑到实验中使用的数据集中有大量$ 10^2 $规模的图像，而cudnn中选择的卷积方式中包括直接方法均并不使用纹理内存。由于cuDNN将底层运算进行了封装，故无法在cudnn上将直接方法调整为使用纹理内存。故首先本文选择将cuDNN卷积计算方法更换为直接方法。之后采用原生CUDA代码而不包含cuDNN库的方式搭建卷积神经网络，考察使用纹理内存优化的直接方法相比不适用纹理内存优化的直接方法的运算速度提升幅度，原生CUDA代码参考了Eric Yuan的实现\parencite{ERICYUAN}。
+\par 结合上文对卷积性能的评估，又考虑到实验中使用的数据集中有大量$ 10^2 $规模的图像，而cudnn中选择的卷积方式中包括直接方法均并不使用纹理内存。由于cuDNN将底层运算进行了封装，故无法在cudnn上将直接方法调整为使用纹理内存。故首先本文选择将cuDNN卷积计算方法更换为直接方法。之后采用原生CUDA代码而不包含cuDNN库的方式搭建卷积神经网络，考察使用纹理内存优化的直接方法相比不适用纹理内存优化的直接方法的运算速度提升幅度，原生CUDA代码参考了Eric Yuan的实现\cite{ERICYUAN}。
 \par 将cuDNN中卷积计算方法更换为直接方法后的性能如图 \ref{Fig.CNNDIRECT}所示。可以发现在图像尺寸较小的情况下，使用直接方法优于使用快速傅里叶变换的方法。然而使用张量核心的方法性能优势依旧明显，仅在图像尺寸极小的情况下落后于直接方法，这也与上文提实验中的现象相符。其原因为卷积神经网络前向传播过程中，除卷积计算，根据权重进行前向传播也是主要计算。这一部分使用张量核心优势较大。在实际使用中，若硬件支持张量核心，应尽可能选用张量核心进行前向传播计算；然而，若设备不支持张量核心，在图像尺寸较小时可以选用直接方法进行计算，所以在反向传播过程中开启张量核心反而会导致性能下降。
 \begin{figure}
 	\centering
@@ -581,7 +594,7 @@ $$ C \leftarrow \alpha AB + \beta C $$
 \par 由于完整的卷积神经网络结构、运算较复杂，在计算时难免引入许多控制依赖/数据以来，导致无法完美发挥新架构在矩阵运算方面地优势。这种依赖需要通过同步机制解决，然而正如上文所提到的，被组织为线程束地32个线程时同步操作的基本单位，这就意味着在复杂网络中被阻塞的线程数量十分可观，因此可以提出合理的猜想，即在下一代硬件中将会引入更小粒度、更灵活的同步机制，使CUDA的同步机制更加完善。
 \paragraph{并行支持向量机}
 \par 前文中出现的评测、研究都是针对深度学习应用的，如网络推理、卷积神经网络等。然而在实际应用中，传统机器学习方法凭借其易于部署、响应时间快、占用资源小、模型本身较小等特点仍然占有很大时长。故本节中选用非常经典的支持向量机算法(Support Vector Machine, SVM)，基于SMO并行化。旨在全方位评估实际应用场景中新架构所能带来的性能提升。实验代码和数据集方面选用了并行SVM库thunderSVM，并根据事前得到的实验结果中的结论对源代码进行调整、优化。
-\par 支持向量机本质上是求解一个凸优化问题，如公式 (\ref{eqn.SVMRAW})所示，而常见的解决方法为将该优化问题使用拉格朗日函数法转化为对偶问题，如公式 (\ref{eqn.SVMDUAL})所示。在转化后的对偶问题中，需要优化的变量为$ \alpha $，需要注意的是这是一个序列，为SVM的优化，序列最小优化(Sequential Minimal Optimization, SMO)出现了\parencite{SMO}。SMO算法的核心思路为通过将原问题分解为一些列小规模凸二次规划问题而获得原问题的解，每次迭代只优化2个点组成的工作集，SMO算法每次启发式地选择两个拉格朗日乘子同时固定其他拉格朗日乘子来找到选定的两个拉格朗日乘子地最优值，直至到达停止条件。既然需要将问题分解成子问题，那么其中就有可并行的部分。且优化过程中也涉及矩阵运算，可以利用新硬件中的张量核心进行。
+\par 支持向量机本质上是求解一个凸优化问题，如公式 (\ref{eqn.SVMRAW})所示，而常见的解决方法为将该优化问题使用拉格朗日函数法转化为对偶问题，如公式 (\ref{eqn.SVMDUAL})所示。在转化后的对偶问题中，需要优化的变量为$ \alpha $，需要注意的是这是一个序列，为SVM的优化，序列最小优化(Sequential Minimal Optimization, SMO)出现了\cite{SMO}。SMO算法的核心思路为通过将原问题分解为一些列小规模凸二次规划问题而获得原问题的解，每次迭代只优化2个点组成的工作集，SMO算法每次启发式地选择两个拉格朗日乘子同时固定其他拉格朗日乘子来找到选定的两个拉格朗日乘子地最优值，直至到达停止条件。既然需要将问题分解成子问题，那么其中就有可并行的部分。且优化过程中也涉及矩阵运算，可以利用新硬件中的张量核心进行。
 \begin{equation}
 \begin{aligned}
 &\max_{w, b} \quad \frac{2}{||w||} \\
