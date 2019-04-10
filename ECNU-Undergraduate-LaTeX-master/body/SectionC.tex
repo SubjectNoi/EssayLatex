@@ -269,7 +269,7 @@ $$ C \leftarrow \alpha AB + \beta C $$
 \subsubsection{卷积运算}
 \par 在深度学习中，卷积作为提取特征、过滤图像噪声的一种方式，无疑是从业者最为熟悉、存在于最多应用中的计算。且在图像处理中，卷积运算也是非常重要的一环。计算卷积有若干方法，本节将使用NVIDIA官方发布的Benchmark样例评估这些不同方法在不同情况下的性能。当然，由于还存在解卷积运算，故精度也在本实验考虑范围之内，以满足不同任对队速度和精度的取舍。
 \paragraph{实验结果}
-\par 本节的实验涉及如下几种卷积计算方法：基于快速傅里叶变换的卷积；基于通用矩阵乘法的卷积和基于传统的直接计算的卷积(cudnn中将这一方法命名为Conv\_Direct)，即卷积核滑动计算输出值。而这三种方法在CUDA的实现中也有差异，如表 \ref{table-CONV}所示。
+\par 本节的实验涉及如下几种卷积计算方法：基于快速傅里叶变换的卷积；基于通用矩阵乘法的卷积和基于传统的直接计算的卷积(cuDNN中将这一方法命名为Conv\_Direct)，即卷积核滑动计算输出值。而这三种方法在CUDA的实现中也有差异，如表 \ref{table-CONV}所示。
 \begin{table}
 	\centering
 	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
@@ -394,7 +394,7 @@ $$ C \leftarrow \alpha AB + \beta C $$
 \par 本节将基于CUDA代码编写一系列实际的机器学习应用，以全方位评估实际使用中新架构硬件的加速性能以及相对于老架构硬件的加速幅度。本节选用如下几种算法：简单的卷积神经网络(CNN)和并行支持向量机算法(SVM)。在这些算法中包含了矩阵乘法、矩阵乘加、卷积以及浮点数值计算。评估中将采用NSight与nvprof分析运行情况。
 \subsubsection{基于cuDNN的卷积神经网络(CNN)}
 \par 由于本文的目的并不是提高特定一种机器学习应用或特定一种网络结构的性能，而是找到普适规律，故本节中的网络搭建参考了LeNet-5，并省略了池化层，仅保留输入/输出层、卷积层、全连接层。其原因是池化层中没有太多与本节需要评估的性能相关的运算，而输入/输出层时基本结构，卷积层中存在大量矩阵相关运算，全连接层由于其神经元大规模链接，是评估矩阵乘加的较好媒介。按照该网络结构，本节借助cuDNN搭建不同输入、连接、卷积尺寸的简化版卷积神经网络。实验数据集采用DeepBench中卷积神经网络对应的数据集。
-\par 然而，与前文中单独评估卷积性能不同，在卷积神经网络中除卷积外还有另外的运算，故本节中对卷积神经网络的运算分为表 \ref{table-CONVSTEP}中所示的3个部分，旨在更准确、完善地评估新架构硬件在一个完整的卷积神经网络运算中所能带来的提升。表 \ref{table-FWDALGO}和表 \ref{table-BWDALGO}列出了cudnnConvolution中的前向传播和反向传播算法根据表中描述的特征，在试验前猜测前向传播部分的性能能通过张量核心获得一定提升，而另外两个部分的性能提升幅度不会太明显，即基本持平。
+\par 然而，与前文中单独评估卷积性能不同，在卷积神经网络中除卷积外还有另外的运算，故本节中对卷积神经网络的运算分为表 \ref{table-CONVSTEP}中所示的3个部分，旨在更准确、完善地评估新架构硬件在一个完整的卷积神经网络运算中所能带来的提升。表 \ref{table-FWDALGO}和表 \ref{table-BWDALGO}列出了cuDNNConvolution中的前向传播和反向传播算法根据表中描述的特征，在试验前猜测前向传播部分的性能能通过张量核心获得一定提升，而另外两个部分的性能提升幅度不会太明显，即基本持平。
 \begin{table}
 	\centering
 	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
@@ -406,7 +406,7 @@ $$ C \leftarrow \alpha AB + \beta C $$
 	\caption{3 parts in Convulutional Neural Network}
 	\begin{tabular}{ccc}
 		\toprule
-		过程 & cuDNN::cudnnConvolution-	&	描述\\
+		过程 & cuDNN::cuDNNConvolution-	&	描述\\
 		\midrule
 		前向传播 & Forward() & 包含大量卷积、混合矩阵运算 \\
 		反向传播更新卷积核权重 & BackwardFilter() & 包含大量梯度、浮点数值计算，设计卷积运算\\
@@ -418,11 +418,11 @@ $$ C \leftarrow \alpha AB + \beta C $$
 	\centering
 	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
 	\renewcommand{\tablename}{表}
-	\caption{cudnnConvolution中前向传播算法}
+	\caption{cuDNNConvolution中前向传播算法}
 	\addtocounter{table}{-1}
 	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
 	\renewcommand{\tablename}{Table}
-	\caption{Forward algorithm in cudnn}
+	\caption{Forward algorithm in cuDNN}
 	\begin{tabular}{cc}
 		\toprule
 		算法 & 描述\\
@@ -531,7 +531,7 @@ $$ C \leftarrow \alpha AB + \beta C $$
 		\bottomrule
 	\end{tabular} \label{table-RELU} 
 \end{table}
-\par 结合上文对卷积性能的评估，又考虑到实验中使用的数据集中有大量$ 10^2 $规模的图像，而cudnn中选择的卷积方式中包括直接方法均并不使用纹理内存。由于cuDNN将底层运算进行了封装，故无法在cudnn上将直接方法调整为使用纹理内存。故首先本文选择将cuDNN卷积计算方法更换为直接方法。之后采用原生CUDA代码而不包含cuDNN库的方式搭建卷积神经网络，考察使用纹理内存优化的直接方法相比不适用纹理内存优化的直接方法的运算速度提升幅度，原生CUDA代码参考了Eric Yuan的实现\cite{ERICYUAN}。
+\par 结合上文对卷积性能的评估，又考虑到实验中使用的数据集中有大量$ 10^2 $规模的图像，而cuDNN中选择的卷积方式中包括直接方法均并不使用纹理内存。由于cuDNN将底层运算进行了封装，故无法在cuDNN上将直接方法调整为使用纹理内存。故首先本文选择将cuDNN卷积计算方法更换为直接方法。之后采用原生CUDA代码而不包含cuDNN库的方式搭建卷积神经网络，考察使用纹理内存优化的直接方法相比不适用纹理内存优化的直接方法的运算速度提升幅度，原生CUDA代码参考了Eric Yuan的实现\cite{ERICYUAN}。
 \par 将cuDNN中卷积计算方法更换为直接方法后的性能如图 \ref{Fig.CNNDIRECT}所示。可以发现在图像尺寸较小的情况下，使用直接方法优于使用快速傅里叶变换的方法。然而使用张量核心的方法性能优势依旧明显，仅在图像尺寸极小的情况下落后于直接方法，这也与上文提实验中的现象相符。其原因为卷积神经网络前向传播过程中，除卷积计算，根据权重进行前向传播也是主要计算。这一部分使用张量核心优势较大。在实际使用中，若硬件支持张量核心，应尽可能选用张量核心进行前向传播计算；然而，若设备不支持张量核心，在图像尺寸较小时可以选用直接方法进行计算，所以在反向传播过程中开启张量核心反而会导致性能下降。
 \begin{figure}
 	\centering
