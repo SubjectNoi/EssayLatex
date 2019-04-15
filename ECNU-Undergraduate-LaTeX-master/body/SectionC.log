@@ -1,0 +1,1735 @@
+This is LuaTeX, Version 1.07.0 (MiKTeX 2.9.6840 64-bit)  (format=lualatex 2019.3.21)  21 MAR 2019 17:28
+ restricted system commands enabled.
+**SectionC.tex
+(./SectionC.tex
+LaTeX2e <2018-04-01> patch level 5
+Lua module: luaotfload-main 2018/09/24 2.90001 OpenType layout system.
+Lua module: lualibs 2018-09-21 2.6 ConTeXt Lua standard libraries.
+Lua module: lualibs-extended 2018-09-21 2.6 ConTeXt Lua libraries -- extended co
+llection.
+luaotfload | conf : Root cache directory is C:/Users/ILove/AppData/Local/MiKTeX/
+2.9/luatex-cache/generic/names.
+luaotfload | init : Loading fontloader “fontloader-2018-09-24.lua” from kpse
+-resolved path “F:/LaTeX/MikTex/tex/luatex/luaotfload/fontloader-2018-09-24.lu
+a”.
+Lua-only attribute luaotfload@state = 1
+Lua-only attribute luaotfload@noligature = 2
+Lua-only attribute luaotfload@syllabe = 3
+luaotfload | init : Context OpenType loader version “3.104”
+Inserting `luaotfload.node_processor' at position 1 in `pre_linebreak_filter'.
+Inserting `luaotfload.node_processor' at position 1 in `hpack_filter'.
+Inserting `luaotfload.define_font' at position 1 in `define_font'.
+Lua-only attribute luaotfload_color_attribute = 4
+luaotfload | conf : Root cache directory is C:/Users/ILove/AppData/Local/MiKTeX/
+2.9/luatex-cache/generic/names.
+Inserting `luaotfload.aux.set_sscale_dimens' at position 1 in `luaotfload.patch_
+font'.
+Inserting `luaotfload.aux.patch_cambria_domh' at position 2 in `luaotfload.patch
+_font'.
+Inserting `luaotfload.aux.fixup_fontdata' at position 1 in `luaotfload.patch_fon
+t_unsafe'.
+Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
+'.
+Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
+.
+luaotfload | main : initialization completed in 0.554 seconds
+! Undefined control sequence.
+l.1 \section
+          {公式测试}这节用来展示公式，交换图等。
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 \section{公
+              式测试}这节用来展示公式，交换图等。
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 1--2
+[]公式测试这节用来展示公式，交换图等。 
+ []
+
+! Undefined control sequence.
+l.3 \subsection
+             {行内公式}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.3 \subsection{行
+                 内公式}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 4.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 4.
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 3--5
+[]行内公式
+ []
+
+
+Overfull \hbox (71.31229pt too wide) in paragraph at lines 3--5
+典范的同态$[][] \OML/cmm/m/it/10 W[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 S\OT
+1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 !
+ []
+
+
+Overfull \hbox (75.74638pt too wide) in paragraph at lines 3--5
+[][] \OML/cmm/m/it/10 W[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 S=S\OT1/cmr/m/n/10 
+)$\nullfont 是同构。 
+ []
+
+! Undefined control sequence.
+l.6 \subsection
+             {整行公式}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 \subsection{整
+                 行公式}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 6--7
+[]整行公式 
+ []
+
+! Undefined control sequence.
+l.7 $$\mathbb
+           {A}_{inf}=W(S^\flat)\cong \lim_{\leftarrow F} W_r(S)$$
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (120.32436pt too wide) detected at line 7
+\OML/cmm/m/it/10 A[] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 W\OT1/cmr/m/n/10 (\OML/
+cmm/m/it/10 S[]\OT1/cmr/m/n/10 ) [] [] \OML/cmm/m/it/10 W[]\OT1/cmr/m/n/10 (\OM
+L/cmm/m/it/10 S\OT1/cmr/m/n/10 )
+ []
+
+! Undefined control sequence.
+l.9 \subsection
+             {多行公式}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.9 \subsection{多
+                 行公式}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 9--10
+[]多行公式 
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.11 多
+      行公式的情况非常多，对齐与换行的要求也各不相同。..
+.
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Undefined control sequence.
+l.11 ...所以提供一个教程用以参考：\url
+                                                  {http://blog.csdn.net/yanx...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 11--12
+[]多行公式的情况非常多，对齐与换行的要求也各不相同。
+所以选择合适的环境非常重要。这份文档里无法涵盖所有情
+况，所以提供一个教程用以参考：http://blog.csdn.net/yanxiangtianj
+i/article/details/54767265 
+ []
+
+! Undefined control sequence.
+l.16 \subsubsection
+                 {align环境}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.16 \subsubsection{a
+                   lign环境}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: Environment align* undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.17 \begin{align*}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Undefined control sequence.
+l.18     \operatorname
+                    {E} (Z_{n+1} - Z_n | X_1,..., X_n)
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing $ inserted.
+<inserted text> 
+$
+l.18     \operatorname{E} (Z_
+                           {n+1} - Z_n | X_1,..., X_n)
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Misplaced alignment tab character &.
+l.19     &
+        = \operatorname{E} (S_{n+1}^2 - (n+1) \sigma^2 - S_n^2 + n \sigma^2 ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+l.19     &= \operatorname
+                       {E} (S_{n+1}^2 - (n+1) \sigma^2 - S_n^2 + n \sigma^2 ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+<recently read> &
+ 
+l.20     &
+        = \operatorname{E} (S_{n+1}^2 - S_n^2 - (n+1) \sigma^2 + n \sigma^2 ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+l.20     &= \operatorname
+                       {E} (S_{n+1}^2 - S_n^2 - (n+1) \sigma^2 + n \sigma^2 ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+<recently read> &
+ 
+l.21     &
+        = \operatorname{E} (X_{n+1}(X_{n+1} + 2\sum_{i=1}^n X_i) - \sigma^2 ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+l.21     &= \operatorname
+                       {E} (X_{n+1}(X_{n+1} + 2\sum_{i=1}^n X_i) - \sigma^2 ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+<recently read> &
+ 
+l.22     &
+        = \operatorname{E} (X_{n+1}X_{n+1})
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+l.22     &= \operatorname
+                       {E} (X_{n+1}X_{n+1})
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.23        + 2\operatorname
+                          {E} (X_{n+1}) \sum_{i=1}^n X_i - \sigma^2 \\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+<recently read> &
+ 
+l.24     &
+        = \sigma^2  - \sigma^2 =0.
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+
+! LaTeX Error: \begin{document} ended by \end{align*}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.25 \end{align*}
+               
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+$
+l.25 \end{align*}
+               
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 16--26
+[]align环境
+ []
+
+
+Overfull \hbox (23.34618pt too wide) in paragraph at lines 16--26
+(Z$[][] \OMS/cmsy/m/n/10  
+ []
+
+
+Overfull \hbox (73.21303pt too wide) in paragraph at lines 16--26
+\OML/cmm/m/it/10 Z[]\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 X[]; :::; X[]\OT1/cmr/m/
+n/10 ) =
+ []
+
+
+Overfull \hbox (41.32533pt too wide) in paragraph at lines 16--26
+\OML/cmm/m/it/10 E\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 S[] \OMS/cmsy/m/n/10  
+ []
+
+
+Overfull \hbox (17.66905pt too wide) in paragraph at lines 16--26
+\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 n \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (27.22575pt too wide) in paragraph at lines 16--26
+\OT1/cmr/m/n/10 1)\OML/cmm/m/it/10 [] \OMS/cmsy/m/n/10  
+ []
+
+
+Overfull \hbox (19.35307pt too wide) in paragraph at lines 16--26
+\OML/cmm/m/it/10 S[] \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (66.94917pt too wide) in paragraph at lines 16--26
+\OML/cmm/m/it/10 n[]\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 X[]; :::; X[]\OT1/cmr/m
+/n/10 )[] 
+ []
+
+
+Overfull \hbox (7.7778pt too wide) in paragraph at lines 16--26
+\OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (41.32533pt too wide) in paragraph at lines 16--26
+\OML/cmm/m/it/10 E\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 S[] \OMS/cmsy/m/n/10  
+ []
+
+
+Overfull \hbox (19.35307pt too wide) in paragraph at lines 16--26
+\OML/cmm/m/it/10 S[] \OMS/cmsy/m/n/10  
+ []
+
+
+Overfull \hbox (17.66905pt too wide) in paragraph at lines 16--26
+\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 n \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (27.22575pt too wide) in paragraph at lines 16--26
+\OT1/cmr/m/n/10 1)\OML/cmm/m/it/10 [] \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (66.94917pt too wide) in paragraph at lines 16--26
+\OML/cmm/m/it/10 n[]\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 X[]; :::; X[]\OT1/cmr/m
+/n/10 )[] 
+ []
+
+
+Overfull \hbox (7.7778pt too wide) in paragraph at lines 16--26
+\OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (71.22012pt too wide) in paragraph at lines 16--26
+\OML/cmm/m/it/10 E\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 X[]\OT1/cmr/m/n/10 (\OML/cm
+m/m/it/10 X[] \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (55.6239pt too wide) in paragraph at lines 16--26
+\OT1/cmr/m/n/10 2 [][] \OML/cmm/m/it/10 X[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10  
+
+ []
+
+
+Overfull \hbox (60.94682pt too wide) in paragraph at lines 16--26
+\OML/cmm/m/it/10 []\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 X[]; :::; X[]\OT1/cmr/m/
+n/10 )[] 
+ []
+
+
+Overfull \hbox (7.7778pt too wide) in paragraph at lines 16--26
+\OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (71.22012pt too wide) in paragraph at lines 16--26
+\OML/cmm/m/it/10 E\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 X[]X[]\OT1/cmr/m/n/10 ) +
+ []
+
+
+Overfull \hbox (91.32422pt too wide) in paragraph at lines 16--26
+\OT1/cmr/m/n/10 2\OML/cmm/m/it/10 E\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 X[]\OT1/cm
+r/m/n/10 ) [][] \OML/cmm/m/it/10 X[] \OMS/cmsy/m/n/10  
+ []
+
+
+Overfull \hbox (10.55904pt too wide) in paragraph at lines 16--26
+\OML/cmm/m/it/10 [][] 
+ []
+
+
+Overfull \hbox (7.7778pt too wide) in paragraph at lines 16--26
+\OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (18.33684pt too wide) in paragraph at lines 16--26
+\OML/cmm/m/it/10 [] \OMS/cmsy/m/n/10  
+ []
+
+
+Overfull \hbox (21.11455pt too wide) in paragraph at lines 16--26
+\OML/cmm/m/it/10 [] \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (7.7778pt too wide) in paragraph at lines 16--26
+\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :$ 
+ []
+
+! Undefined control sequence.
+l.27 \subsubsection
+                 {split环境（内嵌）}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.27 \subsubsection{s
+                   plit环境（内嵌）}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: Environment equation* undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.28 \begin{equation*}
+                    
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Environment split undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.29     \begin{split}
+                    
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+$
+l.30     (a + b)^
+               4
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Misplaced alignment tab character &.
+l.31       &
+          = (a + b)^2 (a + b)^2      \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+<recently read> &
+ 
+l.32       &
+          = (a^2 + 2ab + b^2)
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+<recently read> &
+ 
+l.34       &
+          = a^4 + 4a^3b + 6a^2b^2 + 4ab^3 + b^4
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+
+! LaTeX Error: \begin{document} ended by \end{split}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.35     \end{split}
+                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+$
+l.35     \end{split}
+                  
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+! LaTeX Error: \begin{document} ended by \end{equation*}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.36 \end{equation*}
+                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 27--37
+[]split环境（内嵌）
+ []
+
+
+Overfull \hbox (15.04164pt too wide) in paragraph at lines 27--37
+b)$[][] \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (16.95259pt too wide) in paragraph at lines 27--37
+\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 a \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (29.61928pt too wide) in paragraph at lines 27--37
+\OML/cmm/m/it/10 b\OT1/cmr/m/n/10 )[](\OML/cmm/m/it/10 a \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (12.66669pt too wide) in paragraph at lines 27--37
+\OML/cmm/m/it/10 b\OT1/cmr/m/n/10 )[][] 
+ []
+
+
+Overfull \hbox (7.7778pt too wide) in paragraph at lines 27--37
+\OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (21.43872pt too wide) in paragraph at lines 27--37
+\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 a[] \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (22.35536pt too wide) in paragraph at lines 27--37
+\OT1/cmr/m/n/10 2\OML/cmm/m/it/10 ab \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (34.10541pt too wide) in paragraph at lines 27--37
+\OML/cmm/m/it/10 b[]\OT1/cmr/m/n/10 )(\OML/cmm/m/it/10 a[] \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (22.35536pt too wide) in paragraph at lines 27--37
+\OT1/cmr/m/n/10 2\OML/cmm/m/it/10 ab \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (12.66669pt too wide) in paragraph at lines 27--37
+\OML/cmm/m/it/10 b[]\OT1/cmr/m/n/10 )[] 
+ []
+
+
+Overfull \hbox (7.7778pt too wide) in paragraph at lines 27--37
+\OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (17.54982pt too wide) in paragraph at lines 27--37
+\OML/cmm/m/it/10 a[] \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (26.84149pt too wide) in paragraph at lines 27--37
+\OT1/cmr/m/n/10 4\OML/cmm/m/it/10 a[]b \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (31.32762pt too wide) in paragraph at lines 27--37
+\OT1/cmr/m/n/10 6\OML/cmm/m/it/10 a[]b[] \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (26.84149pt too wide) in paragraph at lines 27--37
+\OT1/cmr/m/n/10 4\OML/cmm/m/it/10 ab[] \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (8.77779pt too wide) in paragraph at lines 27--37
+\OML/cmm/m/it/10 b[]$
+ []
+
+! Undefined control sequence.
+l.38 \subsubsection
+                 {带大括号的多行公式}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.38 \subsubsection{带
+                     大括号的多行公式}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Undefined control sequence.
+l.39 \paragraph
+             {cases}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 38--40
+[]带大括号的多行公式
+ []
+
+
+Overfull \hbox (107.68358pt too wide) detected at line 46
+\OML/cmm/m/it/10 f \OT1/cmr/m/n/10 = [] + \OML/cmm/m/it/10 y \OT1/cmr/m/n/10 = 
+\OML/cmm/m/it/10 z; [] \OT1/cmr/m/n/10 1 + 2 = 3\OML/cmm/m/it/10 :[] 
+ []
+
+! Undefined control sequence.
+l.48 \paragraph
+             {array}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.48 \paragraph{a
+               rray}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 48--49
+[]array 
+ []
+
+
+Overfull \hbox (128.38206pt too wide) detected at line 55
+\OML/cmm/m/it/10 F[] \OT1/cmr/m/n/10 = []
+ []
+
+! Undefined control sequence.
+l.57 \paragraph
+             {aligned}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.57 \paragraph{a
+               ligned}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 57--58
+[]aligned 
+ []
+
+
+! LaTeX Error: Environment aligned undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.60      \begin{aligned}
+                       
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Undefined control sequence.
+l.61      \overset
+                {.}x(t) &=A_{ci}x(t)+B_{1ci}w(t)+B_{2ci}u(t)  \\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+l.61      \overset{.}x(t) &
+                         =A_{ci}x(t)+B_{1ci}w(t)+B_{2ci}u(t)  \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.62      z(t) &
+              =C_{ci}x(t)+D_{ci}u(t) \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+
+! LaTeX Error: \begin{equation} on input line 58 ended by \end{aligned}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.63      \end{aligned}
+                     
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+luaotfload | db : Font names database not found, generating new one.
+luaotfload | db : This can take several minutes; please be patient.
+Overfull \hbox (273.73056pt too wide) detected at line 65
+[]
+ []
+
+! Undefined control sequence.
+l.67 \subsection
+              {交换图}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.67 \subsection{交
+                  换图}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 67--68
+[]交换图 
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.69 强
+      烈推荐tikzcd-editor：\url{https://github.com/yishn/tikzcd-editor}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Undefined control sequence.
+l.69 强烈推荐tikzcd-editor：\url
+                                   {https://github.com/yishn/tikzcd-editor}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 69--70
+[]强烈推荐tikzcd-
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.72 \begin{center}
+                 
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 72--72
+[] 
+ []
+
+
+! LaTeX Error: Environment tikzcd undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.73 \begin{tikzcd}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Undefined control sequence.
+l.75     \arrow
+             [drr, bend left, "x"]
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.76     \arrow
+             [ddr, bend right, "y"]
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.77     \arrow
+             [dr, dotted, "{(x,y)}" description] & & \\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+l.77     \arrow[dr, dotted, "{(x,y)}" description] &
+                                                   & \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.77 ...arrow[dr, dotted, "{(x,y)}" description] & &
+                                                   \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+<recently read> &
+ 
+l.78     &
+         X \times_Z Y \arrow[r, "p"] \arrow[d, "q"]
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing $ inserted.
+<inserted text> 
+$
+l.78     & X \times_
+                  Z Y \arrow[r, "p"] \arrow[d, "q"]
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Undefined control sequence.
+l.78     & X \times_Z Y \arrow
+                            [r, "p"] \arrow[d, "q"]
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.78     & X \times_Z Y \arrow[r, "p"] \arrow
+                                           [d, "q"]
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+l.79     &
+         X \arrow[d, "f"] \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+l.79     & X \arrow
+                 [d, "f"] \\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.79     & X \arrow[d, "f"] \\
+                            
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+$
+l.79     & X \arrow[d, "f"] \\
+                            
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing } inserted.
+<inserted text> 
+}
+l.79     & X \arrow[d, "f"] \\
+                            
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Overfull \hbox (121.7839pt too wide) in paragraph at lines 78--79
+ \OMS/cmsy/m/n/10 $[][]\OML/cmm/m/it/10 Y\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 r; 
+\OT1/cmr/m/n/10 "\OML/cmm/m/it/10 p\OT1/cmr/m/n/10 "][\OML/cmm/m/it/10 d; \OT1/
+cmr/m/n/10 "\OML/cmm/m/it/10 q\OT1/cmr/m/n/10 "]\OML/cmm/m/it/10 X\OT1/cmr/m/n/
+10 [\OML/cmm/m/it/10 d; \OT1/cmr/m/n/10 "\OML/cmm/m/it/10 f\OT1/cmr/m/n/10 "][]
+$ 
+ []
+
+! Extra }, or forgotten \endgroup.
+\par ...m \@noitemerr {\@@par }\fi \else {\@@par }
+                                                  \fi 
+l.79     & X \arrow[d, "f"] \\
+                            
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Misplaced alignment tab character &.
+<recently read> &
+ 
+l.80     &
+         Y \arrow[r, "g"]
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+l.80     & Y \arrow
+                 [r, "g"]
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+l.81     &
+         Z
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+
+! LaTeX Error: \begin{center} on input line 72 ended by \end{tikzcd}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.82 \end{tikzcd}
+               
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 85--85
+[] 
+ []
+
+
+! LaTeX Error: Environment tikzcd undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.86     \begin{tikzcd}
+                     [row sep=scriptsize, column sep=scriptsize]
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Misplaced alignment tab character &.
+l.87         &
+             f^* E_V \arrow[dl] \arrow[rr] \arrow[dd] & & E_V \arrow[dl] \ar...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing $ inserted.
+<inserted text> 
+$
+l.87         & f^
+               * E_V \arrow[dl] \arrow[rr] \arrow[dd] & & E_V \arrow[dl] \ar...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Undefined control sequence.
+l.87         & f^* E_V \arrow
+                           [dl] \arrow[rr] \arrow[dd] & & E_V \arrow[dl] \ar...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.87         & f^* E_V \arrow[dl] \arrow
+                                      [rr] \arrow[dd] & & E_V \arrow[dl] \ar...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.87         & f^* E_V \arrow[dl] \arrow[rr] \arrow
+                                                 [dd] & & E_V \arrow[dl] \ar...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+l.87 ...& f^* E_V \arrow[dl] \arrow[rr] \arrow[dd] &
+                                                   & E_V \arrow[dl] \arrow[d...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.87 ...f^* E_V \arrow[dl] \arrow[rr] \arrow[dd] & &
+                                                   E_V \arrow[dl] \arrow[dd] \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+l.87 ...row[dl] \arrow[rr] \arrow[dd] & & E_V \arrow
+                                                  [dl] \arrow[dd] \\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.87 ...row[rr] \arrow[dd] & & E_V \arrow[dl] \arrow
+                                                  [dd] \\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.87 ... \arrow[dd] & & E_V \arrow[dl] \arrow[dd] \\
+                                                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+$
+l.87 ... \arrow[dd] & & E_V \arrow[dl] \arrow[dd] \\
+                                                  
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing } inserted.
+<inserted text> 
+}
+l.87 ... \arrow[dd] & & E_V \arrow[dl] \arrow[dd] \\
+                                                  
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Overfull \hbox (108.19699pt too wide) in paragraph at lines 86--87
+ f$[][]\OML/cmm/m/it/10 E[]\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 dl\OT1/cmr/m/n/10 
+][\OML/cmm/m/it/10 rr\OT1/cmr/m/n/10 ][\OML/cmm/m/it/10 dd\OT1/cmr/m/n/10 ]\OML
+/cmm/m/it/10 E[]\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 dl\OT1/cmr/m/n/10 ][\OML/cmm/
+m/it/10 dd\OT1/cmr/m/n/10 ][]$ 
+ []
+
+! Extra }, or forgotten \endgroup.
+\par ...m \@noitemerr {\@@par }\fi \else {\@@par }
+                                                  \fi 
+l.87 ... \arrow[dd] & & E_V \arrow[dl] \arrow[dd] \\
+                                                  
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing $ inserted.
+<inserted text> 
+$
+l.88         f^
+             * E \arrow[rr, crossing over] \arrow[dd] & & E \\
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Undefined control sequence.
+l.88         f^* E \arrow
+                       [rr, crossing over] \arrow[dd] & & E \\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.88         f^* E \arrow[rr, crossing over] \arrow
+                                                 [dd] & & E \\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+l.88 ...f^* E \arrow[rr, crossing over] \arrow[dd] &
+                                                   & E \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.88 ...* E \arrow[rr, crossing over] \arrow[dd] & &
+                                                   E \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.88 ...arrow[rr, crossing over] \arrow[dd] & & E \\
+                                                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+$
+l.88 ...arrow[rr, crossing over] \arrow[dd] & & E \\
+                                                  
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing } inserted.
+<inserted text> 
+}
+l.88 ...arrow[rr, crossing over] \arrow[dd] & & E \\
+                                                  
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Overfull \hbox (112.91629pt too wide) in paragraph at lines 88--88
+ []f$[][]\OML/cmm/m/it/10 E\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 rr; crossingover\O
+T1/cmr/m/n/10 ][\OML/cmm/m/it/10 dd\OT1/cmr/m/n/10 ]\OML/cmm/m/it/10 E[]$ 
+ []
+
+! Extra }, or forgotten \endgroup.
+\par ...m \@noitemerr {\@@par }\fi \else {\@@par }
+                                                  \fi 
+l.88 ...arrow[rr, crossing over] \arrow[dd] & & E \\
+                                                  
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Misplaced alignment tab character &.
+<recently read> &
+ 
+l.89         &
+             U \arrow[dl] \arrow[rr] & & V \arrow[dl] \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+l.89         & U \arrow
+                     [dl] \arrow[rr] & & V \arrow[dl] \\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.89         & U \arrow[dl] \arrow
+                                [rr] & & V \arrow[dl] \\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+l.89         & U \arrow[dl] \arrow[rr] &
+                                       & V \arrow[dl] \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.89         & U \arrow[dl] \arrow[rr] & &
+                                         V \arrow[dl] \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+l.89         & U \arrow[dl] \arrow[rr] & & V \arrow
+                                                 [dl] \\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.90         M \arrow
+                   [rr] & & N \arrow[from=uu, crossing over]\\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+l.90         M \arrow[rr] &
+                          & N \arrow[from=uu, crossing over]\\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+l.90         M \arrow[rr] & &
+                            N \arrow[from=uu, crossing over]\\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+l.90         M \arrow[rr] & & N \arrow
+                                    [from=uu, crossing over]\\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: \begin{center} on input line 85 ended by \end{tikzcd}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.91         \end{tikzcd}
+                       
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 94--94
+[] 
+ []
+
+
+! LaTeX Error: Environment tikzpicture undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.95 \begin{tikzpicture}
+                      [commutative diagrams/every diagram]
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Undefined control sequence.
+l.96     \node
+             (P0) at (90:2.3cm) {$X\otimes (Y\otimes (Z\otimes T))$};
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.97     \node
+             (P1) at (90+72:2cm) {$X\otimes ((Y\otimes Z)\otimes T))$} ;
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.98     \node
+             (P2) at (90+2*72:2cm) {\makebox[5ex][r]{$(X\otimes (Y\otimes Z)...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.99     \node
+             (P3) at (90+3*72:2cm) {\makebox[5ex][l]{$((X\otimes Y)\otimes Z...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.100     \node
+              (P4) at (90+4*72:2cm) {$(X\otimes Y)\otimes (Z\otimes T)$};
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.101     \path
+             [commutative diagrams/.cd, every arrow, every label]
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: \begin{center} on input line 94 ended by \end{tikzpicture}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.107 \end{tikzpicture}
+                     
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Overfull \hbox (16.84723pt too wide) in paragraph at lines 95--108
+ \OML/cmm/m/it/10 X \OMS/cmsy/m/n/10 
+ 
+ []
+
+
+Overfull \hbox (19.69449pt too wide) in paragraph at lines 95--108
+ \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 Y \OMS/cmsy/m/n/10 
+ 
+ []
+
+
+Overfull \hbox (19.20837pt too wide) in paragraph at lines 95--108
+ \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 Z \OMS/cmsy/m/n/10 
+ 
+ []
+
+
+Overfull \hbox (15.01045pt too wide) in paragraph at lines 95--108
+ \OML/cmm/m/it/10 T\OT1/cmr/m/n/10 ))$\nullfont ; 
+ []
+
+
+Overfull \hbox (16.84723pt too wide) in paragraph at lines 95--108
+ \OML/cmm/m/it/10 X \OMS/cmsy/m/n/10 
+ 
+ []
+
+
+Overfull \hbox (23.58339pt too wide) in paragraph at lines 95--108
+ \OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 Y \OMS/cmsy/m/n/10 
+ 
+ []
+
+
+Overfull \hbox (19.20837pt too wide) in paragraph at lines 95--108
+ \OML/cmm/m/it/10 Z\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 
+ 
+ []
+
+
+Overfull \hbox (15.01045pt too wide) in paragraph at lines 95--108
+ \OML/cmm/m/it/10 T\OT1/cmr/m/n/10 ))$ 
+ []
+
+
+Overfull \hbox (20.73613pt too wide) in paragraph at lines 95--108
+ \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 X \OMS/cmsy/m/n/10 
+ 
+ []
+
+
+Overfull \hbox (19.69449pt too wide) in paragraph at lines 95--108
+ \OML/cmm/m/it/10 Y\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 
+ 
+ []
+
+
+Overfull \hbox (19.20837pt too wide) in paragraph at lines 95--108
+ \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 Z \OMS/cmsy/m/n/10 
+ 
+ []
+
+
+Overfull \hbox (11.12155pt too wide) in paragraph at lines 95--108
+ \OML/cmm/m/it/10 T\OT1/cmr/m/n/10 )$\nullfont ; 
+ []
+
+
+Overfull \hbox (12.77782pt too wide) in paragraph at lines 95--108
+ \OT1/cmr/m/n/10 1 \OMS/cmsy/m/n/10 
+ 
+ []
+
+
+Overfull \hbox (5.95834pt too wide) in paragraph at lines 95--108
+ \OML/cmm/m/it/10 $ 
+ []
+
+
+Overfull \hbox (5.95834pt too wide) in paragraph at lines 95--108
+ \OML/cmm/m/it/10 $ 
+ []
+
+
+Overfull \hbox (13.73615pt too wide) in paragraph at lines 95--108
+ \OML/cmm/m/it/10  \OMS/cmsy/m/n/10 
+ 
+ []
+
+
+Overfull \hbox (5.00002pt too wide) in paragraph at lines 95--108
+ \OT1/cmr/m/n/10 1$ 
+ []
+
+
+Overfull \hbox (5.95834pt too wide) in paragraph at lines 95--108
+ \OML/cmm/m/it/10 $ 
+ []
+
+
+Overfull \hbox (5.95834pt too wide) in paragraph at lines 95--108
+ \OML/cmm/m/it/10 $ 
+ []
+
+)
+! Emergency stop.
+<*> SectionC.tex
+             
+*** (job aborted, no legal \end found)
+
+
+
+Here is how much of LuaTeX's memory you used:
+ 31 strings out of 494407
+ 100000,89155 words of node,token memory allocated 17672 words of node memory still in use:
+   279 hlist, 13 vlist, 4 rule, 2 disc, 23 local_par, 1 dir, 60 math, 587 glue, 
+85 kern, 117 penalty, 1227 glyph, 178 attribute, 35 glue_spec, 178 attribute_lis
+t nodes
+   avail lists: 2:5,3:80,4:15,5:9,7:67,8:137,10:14
+ 4318 multiletter control sequences out of 65536+200000
+ 25 fonts using 1344807 bytes
+ 18i,7n,12p,278b,101s stack positions out of 5000i,500n,10000p,200000b,50000s
+!  ==> Fatal error occurred, no output PDF file produced!

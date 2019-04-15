@@ -1723,8 +1723,8 @@
       \strng{authorbibnamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authornamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authorfullhash}{a2fe9051fe051f819bd739ef3e340377}
-      \field{sortinit}{4}
-      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -1813,6 +1813,37 @@
       \endverb
       \keyw{TENSORRTDOC}
     \endentry
+    \entry{TFCRESNET}{manual}{}
+      \name{author}{1}{}{%
+        {{hash=4f161a5d9427299c10bf5b021ed74321}{%
+           family={Pentyala},
+           familyi={P\bibinitperiod},
+           given={Shiva},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \strng{namehash}{4f161a5d9427299c10bf5b021ed74321}
+      \strng{fullhash}{4f161a5d9427299c10bf5b021ed74321}
+      \strng{bibnamehash}{4f161a5d9427299c10bf5b021ed74321}
+      \strng{authorbibnamehash}{4f161a5d9427299c10bf5b021ed74321}
+      \strng{authornamehash}{4f161a5d9427299c10bf5b021ed74321}
+      \strng{authorfullhash}{4f161a5d9427299c10bf5b021ed74321}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{langid}{english}
+      \field{month}{8}
+      \field{title}{Mixed-Precision ResNet-50 Using Tensor Cores with TensorFlow}
+      \field{usera}{A}
+      \field{userd}{english}
+      \field{userf}{english}
+      \field{year}{2018}
+      \field{dateera}{ce}
+      \keyw{TFCRESNET}
+    \endentry
     \entry{CUDA92}{manual}{}
       \name{author}{1}{}{%
         {{hash=a2fe9051fe051f819bd739ef3e340377}{%
@@ -1857,8 +1888,8 @@
       \strng{authorbibnamehash}{560bbd88ded1793b57afc13192a9c9f2}
       \strng{authornamehash}{560bbd88ded1793b57afc13192a9c9f2}
       \strng{authorfullhash}{560bbd88ded1793b57afc13192a9c9f2}
-      \field{sortinit}{5}
-      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
