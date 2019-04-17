@@ -1515,34 +1515,6 @@
       \field{dateera}{ce}
       \keyw{TFBUILD}
     \endentry
-    \entry{CUDAZONE}{manual}{}
-      \name{author}{1}{}{%
-        {{hash=a2fe9051fe051f819bd739ef3e340377}{%
-           family={NVIDIA},
-           familyi={N\bibinitperiod}}}%
-      }
-      \list{language}{1}{%
-        {english}%
-      }
-      \strng{namehash}{a2fe9051fe051f819bd739ef3e340377}
-      \strng{fullhash}{a2fe9051fe051f819bd739ef3e340377}
-      \strng{bibnamehash}{a2fe9051fe051f819bd739ef3e340377}
-      \strng{authorbibnamehash}{a2fe9051fe051f819bd739ef3e340377}
-      \strng{authornamehash}{a2fe9051fe051f819bd739ef3e340377}
-      \strng{authorfullhash}{a2fe9051fe051f819bd739ef3e340377}
-      \field{sortinit}{4}
-      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{langid}{english}
-      \field{title}{CUDA Zone}
-      \field{usera}{A}
-      \field{userd}{english}
-      \field{userf}{english}
-      \field{year}{2019}
-      \field{dateera}{ce}
-      \keyw{CUDAZONE}
-    \endentry
     \entry{EVENEASIER}{manual}{}
       \name{author}{1}{}{%
         {{hash=fc01a4ee7c149fd7053ae32206165f0f}{%
@@ -1723,8 +1695,8 @@
       \strng{authorbibnamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authornamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authorfullhash}{a2fe9051fe051f819bd739ef3e340377}
-      \field{sortinit}{5}
-      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -1859,8 +1831,8 @@
       \strng{authorbibnamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authornamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authorfullhash}{a2fe9051fe051f819bd739ef3e340377}
-      \field{sortinit}{6}
-      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
