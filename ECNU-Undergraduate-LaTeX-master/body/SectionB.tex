@@ -185,7 +185,7 @@
 	\caption{Part of actual PTX code}
 	\label{Fig.ActualInst}
 \end{figure}
-\subsection{神经网络推理工具 TensorRT}
+\subsection{神经网络推理工具TensorRT与相应硬件平台Jetson}
 \par 在实际的机器学习应用中，模型的训练只是第一步，在模型完成训练后需要对模型进行部署。当模型构建完毕，实际部署到目标机器、芯片、平台上并发挥作用是，推理就成为了主要工作。与训练的过程和目的不一样，推理首先没有了训练过程中的反向迭代，同时对于吞吐率、延迟、功耗等有着更高的要求；且现有框架在实际部署时因其复杂度高，对部署造成了很大困难，TensorRT由此而生。
 \par TensorRT是一个高性能深度学习推理的平台，包含深度学习推理优化器和运行时应用来提供低延迟、高吞吐量的深度学习推理。本节将考察TensorRT相对于传统神经网络推理的加速性能\cite{TENSORRT}。因TensorRT原生支持Tensor Flow，这就意味着可以直接使用TensorRT自带的模型导入器对训练好的模型进行导入，故本文通过这种方法来考察TensorRT的实际提升。
 \par 在实际使用TensorRT之前，将先对TensorRT的优化以及部署流程进行介绍。首先需要明确的是，TensorRT作为一个GPU Inference Engine(GIE)，它是在项目部署阶段发挥作用的。TensorRT的部署分为两个部分：优化训练好的模型并生成计算流图和使用TensorRT Runtime部署计算流图。其最重要的便是优化过程，如下图\ref{Fig.TensorRT}所示\cite{TENSORRTDOC}。
