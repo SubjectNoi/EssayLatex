@@ -319,44 +319,6 @@
       \endverb
       \keyw{MODELING}
     \endentry
-    \entry{GRAVITATIONAL}{article}{}
-      \name{author}{1}{}{%
-        {{hash=b12cdb4cb002c04f1dfbe7f94ecaa548}{%
-           family={Miki},
-           familyi={M\bibinitperiod},
-           given={Yohei},
-           giveni={Y\bibinitperiod}}}%
-      }
-      \list{language}{1}{%
-        {english}%
-      }
-      \strng{namehash}{b12cdb4cb002c04f1dfbe7f94ecaa548}
-      \strng{fullhash}{b12cdb4cb002c04f1dfbe7f94ecaa548}
-      \strng{bibnamehash}{b12cdb4cb002c04f1dfbe7f94ecaa548}
-      \strng{authorbibnamehash}{b12cdb4cb002c04f1dfbe7f94ecaa548}
-      \strng{authornamehash}{b12cdb4cb002c04f1dfbe7f94ecaa548}
-      \strng{authorfullhash}{b12cdb4cb002c04f1dfbe7f94ecaa548}
-      \field{sortinit}{8}
-      \field{sortinithash}{07edf88d4ea82509b9c4b4d13f41c452}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{CoRR}
-      \field{langid}{english}
-      \field{title}{Gravitational octree code performance evaluation on Volta GPU}
-      \field{usera}{J}
-      \field{userd}{english}
-      \field{userf}{english}
-      \field{volume}{abs/1811.02761}
-      \field{year}{2018}
-      \field{dateera}{ce}
-      \verb{urlraw}
-      \verb http://arxiv.org/abs/1811.02761
-      \endverb
-      \verb{url}
-      \verb http://arxiv.org/abs/1811.02761
-      \endverb
-      \keyw{GRAVITATIONAL}
-    \endentry
     \entry{JETSONNANO}{manual}{}
       \name{author}{1}{}{%
         {{hash=a2fe9051fe051f819bd739ef3e340377}{%
@@ -372,8 +334,8 @@
       \strng{authorbibnamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authornamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authorfullhash}{a2fe9051fe051f819bd739ef3e340377}
-      \field{sortinit}{9}
-      \field{sortinithash}{1dd72ab054147731c9d824b49aba0534}
+      \field{sortinit}{8}
+      \field{sortinithash}{07edf88d4ea82509b9c4b4d13f41c452}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -401,8 +363,8 @@
       \strng{authorbibnamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authornamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authorfullhash}{a2fe9051fe051f819bd739ef3e340377}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{sortinit}{9}
+      \field{sortinithash}{1dd72ab054147731c9d824b49aba0534}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -837,8 +799,8 @@
       \strng{authorbibnamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authornamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authorfullhash}{a2fe9051fe051f819bd739ef3e340377}
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -1380,8 +1342,8 @@
       \strng{authorbibnamehash}{a5f04d2b6e8839e1e8d694238647bb9f}
       \strng{authornamehash}{b8257324f1de81b52c0db2304e25a0e1}
       \strng{authorfullhash}{a5f04d2b6e8839e1e8d694238647bb9f}
-      \field{sortinit}{4}
-      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Proceedings of the 8th India Software Engineering Conference, ISEC 2015, Bangalore, India, February 18-20, 2015}
@@ -1730,8 +1692,8 @@
       \strng{authorbibnamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authornamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authorfullhash}{a2fe9051fe051f819bd739ef3e340377}
-      \field{sortinit}{5}
-      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
