@@ -58,49 +58,49 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.1}实验工具与环境}{14}{subsection.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2}基于性能评估的Benchmark}{14}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.2}基于性能评估的Benchmark}{15}{subsection.3.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {3.2.1}通用矩阵乘法运算(GEMM, General Matrix Multiply)}{15}{subsubsection.3.2.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{\numberline {I}实验结果}{15}{subparagraph.3.2.1.0.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {II}结果分析}{16}{subparagraph.3.2.1.0.2}
+\contentsline {subparagraph}{\numberline {II}结果分析}{17}{subparagraph.3.2.1.0.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.2.2}矩阵乘法运算}{25}{subsubsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.2}矩阵乘法运算}{23}{subsubsection.3.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {I}实验结果}{25}{subparagraph.3.2.2.0.1}
+\contentsline {subparagraph}{\numberline {I}实验结果}{23}{subparagraph.3.2.2.0.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {II}结果分析}{25}{subparagraph.3.2.2.0.2}
+\contentsline {subparagraph}{\numberline {II}结果分析}{23}{subparagraph.3.2.2.0.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {3.2.3}卷积运算}{26}{subsubsection.3.2.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{\numberline {I}实验结果}{26}{subparagraph.3.2.3.0.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {II}结果分析}{27}{subparagraph.3.2.3.0.2}
+\contentsline {subparagraph}{\numberline {II}结果分析}{26}{subparagraph.3.2.3.0.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.2.4}基于TensorRT的神经网络推理}{29}{subsubsection.3.2.4}
+\contentsline {subsubsection}{\numberline {3.2.4}基于TensorRT的神经网络推理}{28}{subsubsection.3.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {I}实验结果}{29}{subparagraph.3.2.4.0.1}
+\contentsline {subparagraph}{\numberline {I}实验结果}{28}{subparagraph.3.2.4.0.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {II}结果分析}{31}{subparagraph.3.2.4.0.2}
+\contentsline {subparagraph}{\numberline {II}结果分析}{30}{subparagraph.3.2.4.0.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3}基于CUDA源码的应用}{31}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.3}基于CUDA源码的应用}{30}{subsection.3.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {3.3.1}基于cuDNN的卷积神经网络(CNN)}{31}{subsubsection.3.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {I}实验结果}{34}{subparagraph.3.3.1.0.1}
+\contentsline {subparagraph}{\numberline {I}实验结果}{32}{subparagraph.3.3.1.0.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {II}结果分析}{34}{subparagraph.3.3.1.0.2}
+\contentsline {subparagraph}{\numberline {II}结果分析}{33}{subparagraph.3.3.1.0.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.3.2}并行最小序列优化支持向量机(SMO-SVM)}{42}{subsubsection.3.3.2}
+\contentsline {subsubsection}{\numberline {3.3.2}并行最小序列优化支持向量机(SMO-SVM)}{41}{subsubsection.3.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {I}实验结果}{42}{subparagraph.3.3.2.0.1}
+\contentsline {subparagraph}{\numberline {I}实验结果}{41}{subparagraph.3.3.2.0.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{\numberline {II}结果分析}{43}{subparagraph.3.3.2.0.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.4}基于Tensor Flow框架的应用}{43}{subsection.3.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {I}实验结果}{44}{subparagraph.3.4.0.0.1}
+\contentsline {subparagraph}{\numberline {I}实验结果}{43}{subparagraph.3.4.0.0.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{\numberline {II}结果分析}{44}{subparagraph.3.4.0.0.2}
 \defcounter {refsection}{0}\relax 

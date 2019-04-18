@@ -5,7 +5,7 @@
 \par 本章主要自底向上评估使用GPU加速的机器学习应用。目前较为流行的开发机器学习应用的方式为使用既存的框架、库搭建应用，通过这种方式，开发人员能够在不必了解硬件机制的情况下快速搭建应用。然而正是由于这些既存的框架、库考虑到开发人员的便利，对许多底层硬件特征进行了封装，为泛用性牺牲了高性能。根据NVIDIA官方发布的白皮书，其中有些项目新架构硬件提升达到9倍\cite{VOLTAWHITEPAPER}，然而在开发者社区中反映新硬件实际使用Tensor Flow-GPU框架搭建的网络上性能提升并没有9倍之多\cite{TFCRESNET}，本章的实验旨在探索这一原因。而Tensor Flow-GPU底层使用了cuDNN搭建网络、基于CUDA C++代码，这些代码又基于一系列CUDA库如cuBLAS, cuFFT以及最新的GEMM等，故本章将从底层的专为性能评估设计的Benchmark开始逐渐向上直到Tensor Flow-GPU框架评估新硬件对于机器学习应用的性能提升。
 \subsection{实验工具与环境}
 \par 表 \ref{table-环境}和表 \ref{table-实验工具}中列出了实验环境与若干软件工具。\\
-\begin{table}[bp]
+\begin{table}[H]
 	\centering
 	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
 	\renewcommand{\tablename}{表}
@@ -14,7 +14,7 @@
 	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
 	\renewcommand{\tablename}{Table}
 	\caption{Environment}
-	\begin{tabular}{cl}
+	\begin{tabular}{cc}
 		\toprule
 		项目	&	内容\\
 		\midrule
@@ -33,7 +33,7 @@
 	
 	$ * $该硬件由NVIDIA提供。\\
 \end{table}
-\begin{table}
+\begin{table}[H]
 	\centering
 	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
 	\renewcommand{\tablename}{表}
@@ -42,7 +42,7 @@
 	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
 	\renewcommand{\tablename}{Table}
 	\caption{Tools}
-	\begin{tabular}{cl}
+	\begin{tabular}{cc}
 		\toprule
 		项目	&	内容\\
 		\midrule
@@ -72,9 +72,6 @@ $$ C \leftarrow \alpha AB + \beta C $$
 \subparagraph{实验结果}
 \par 根据开发者社区的反映，新架构硬件性能的差别主要体现在问题规模、问题类型等方面(张量维度、形状，训练/推理任务等)，而NVIDIA官方仅给出一种规模的结果，所以本节使用了自行编写的一系列测试用例，辅以深度学习测试套件DeepBench\cite{DEEPBENCH}，在开启和关闭新架构中张量核心的情况下进行测试。实验性能使用TFlops/s统计，方法为简单的运算数除以运算时间，运算时间的统计采用CUDA内置的$ cudaEvent $记录。
 \par 首先评估的是在不同问题规模下，开启和关闭新架构中的张量核心所能达到的性能，如图 \ref{Fig-PerfGemm}所示。随着问题规模的上升，总体加速比呈上升趋势，在大规模数据时半精度矩阵乘加运算性能的加速比能达到3到3.5倍、单精度矩阵乘加运算性能的加速比能达到2倍。然而，单纯考察数据规模发现加速比差距非常大，甚至是在大规模数据中仍然存在开启张量核心后性能不如不开启张量核心的情况，结合文档在矩阵乘加运算一章中在指令中需要指明运算的最小单元这一点中\cite{PTX}；可以推测出输入矩阵的“形状”对张量核心的性能由较大影响。
-\par 为了研究输入矩阵“形状”对于加速比的影响，由于两个输入矩阵涉及三个维度，故采用控制变量法，控制$ m,n,k $中某一维度考察另外两个维度对于加速比的影响。由于测试数据中存在部分离群值($ N\geq 500000 $)，这会对作图精度产生极大影响，故先予以剔除。实验结果如图 \ref{Fig-MNKRatio}所示。可见在两个输入矩阵的三个维度中，两矩阵共享的维度$ K $对于性能的影响最为显著。
-\par 关于矩阵的形状、维度对于性能的影响，其原因将在后文结果分析中详细说明。以上实验数据以及性能旨在考查开启和关闭张量核心时性能提升幅度，故开启的线程块数量和线程数量较小，相应的GPU占用率也较小，导致所得性能并非GPU峰值性能。为测量峰值性能，这里还是用NVIDIA官方发布的用于线性代数计算的模板库CUTLASS(CUDA Template Linear Algebra Subroutines)，该模板库根据新架构硬件特性编写，提供了许多测试样例供参考，目前版本已经更新到1.3，相比于1.2使用了新加入CUDA SDK 10.1的mma.sync以优化性能，这里使用CUTLASS测试得到的性能作为峰值性能基准。
-\par CUTLASS库中的GEMM运算有多种精度可供选择：HGEMM、SGEMM、DGEMM、CGEMM、ZGEMM和IGEMM，分别代表半精度浮点、单精度浮点、双精度浮点、单精度复数、双精度复数和八位整数。鉴于之前的测试并不涉及复数，此处也不选用复数精度作为基准。需要注意的是测试样例后缀中存在$ \_[n/t][n/t] $分别代表运算中输入矩阵的数据存储、分布方式，即行列是否转置(如上文提到的，CUDA中矩阵存储分行主元素和列主元素存储)。图 \ref{Fig-GEMM-CUTLASS}为测得的性能基准。
 \begin{figure}
 	\centering
 	\includegraphics[width=15cm]{figures/GEMM-Half-TF.jpg}\\
@@ -88,6 +85,7 @@ $$ C \leftarrow \alpha AB + \beta C $$
 	\caption{Performance of GEMM at Half and Single}
 	\label{Fig-PerfGemm}
 \end{figure}
+\par 为了研究输入矩阵“形状”对于加速比的影响，由于两个输入矩阵涉及三个维度，故采用控制变量法，控制$ m,n,k $中某一维度考察另外两个维度对于加速比的影响。由于测试数据中存在部分离群值($ N\geq 500000 $)，这会对作图精度产生极大影响，故先予以剔除。实验结果如图 \ref{Fig-MNKRatio}所示。可见在两个输入矩阵的三个维度中，两矩阵共享的维度$ K $对于性能的影响最为显著。
 \begin{figure}
 	\centering
 	\includegraphics[height=7.2cm]{figures/GEMM_MK.jpg}\\
@@ -102,6 +100,8 @@ $$ C \leftarrow \alpha AB + \beta C $$
 	\caption{Relationship of input matrix dimension and speed-up ratio}
 	\label{Fig-MNKRatio}
 \end{figure}
+\par 关于矩阵的形状、维度对于性能的影响，其原因将在后文结果分析中详细说明。以上实验数据以及性能旨在考查开启和关闭张量核心时性能提升幅度，故开启的线程块数量和线程数量较小，相应的GPU占用率也较小，导致所得性能并非GPU峰值性能。为测量峰值性能，这里还是用NVIDIA官方发布的用于线性代数计算的模板库CUTLASS(CUDA Template Linear Algebra Subroutines)，该模板库根据新架构硬件特性编写，提供了许多测试样例供参考，目前版本已经更新到1.3，相比于1.2使用了新加入CUDA SDK 10.1的mma.sync以优化性能，这里使用CUTLASS测试得到的性能作为峰值性能基准。
+\par CUTLASS库中的GEMM运算有多种精度可供选择：HGEMM、SGEMM、DGEMM、CGEMM、ZGEMM和IGEMM，分别代表半精度浮点、单精度浮点、双精度浮点、单精度复数、双精度复数和八位整数。鉴于之前的测试并不涉及复数，此处也不选用复数精度作为基准。需要注意的是测试样例后缀中存在$ \_[n/t][n/t] $分别代表运算中输入矩阵的数据存储、分布方式，即行列是否转置(如上文提到的，CUDA中矩阵存储分行主元素和列主元素存储)。图 \ref{Fig-GEMM-CUTLASS}为测得的性能基准。
 \begin{figure}
 	\centering
 	\includegraphics[width=15cm]{figures/CUTLASSGEMM.jpg}
@@ -115,32 +115,63 @@ $$ C \leftarrow \alpha AB + \beta C $$
 	\label{Fig-GEMM-CUTLASS}
 \end{figure}
 \subparagraph{结果分析}
-\par 首先，本实验通过Nsight和nvprof的搭配对应用程序中包括API调用、核函数运行时间等运行时细节进行研究。图 \ref{Fig.GEMMPROFTF}和图 \ref{Fig.GEMMPROFNOTF}是开启和关闭张量核心的情况下，使用nvprof运行矩阵乘加应用所得到的报告，该报告主要侧重于API的调用、运行。由于本文关心的重点在GPU硬件，故仅截取硬件相关的API调用(API Call)部分。图中由左至右边分别代表API调用占比、运行总时长、调用次数、平均运行时长、最短运行时长、最长运行时长和API名称。
-\begin{figure}
+\par 首先，本实验通过Nsight和nvprof的搭配对应用程序中包括API调用、核函数运行时间等运行时细节进行研究。表 \ref{table-GEMMPROFTF}和表 \ref{table-GEMMPROFNOTF}是开启和关闭张量核心的情况下，使用nvprof运行矩阵乘加应用所得到的报告，该报告主要侧重于API的调用、运行。由于本文关心的重点在GPU硬件，故仅截取硬件相关的API调用(API Call)中设备同步、内存访问相关的且运行时长占比较可观的部分。
+\begin{table}
 	\centering
-	\includegraphics[width=15cm]{figures/GEMM-TF.jpg}
-	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
-	\renewcommand{\figurename}{图}
+	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
+	\renewcommand{\tablename}{表}
 	\caption{开启张量核心下矩阵乘加运算的性能分析(API Calls)}
-	\addtocounter{figure}{-1}
-	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
-	\renewcommand{\figurename}{Figure}
+	\addtocounter{table}{-1}
+	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
+	\renewcommand{\tablename}{Table}
 	\caption{Performance analysis of GEMM with Tensor Core On (API Calls)}
-	\label{Fig.GEMMPROFTF}
-\end{figure}
+	\begin{tabular}{lcccc}
+		\toprule
+		API & 运行时长(ms) & 运行时长占比 & 调用次数 & 平均运行时长(ms)\\
+		\midrule
+		cudaDeviceSynchronize & 186156 & 79.29\% & 322 & 578.12\\
+		cudaFree & 45565.9 & 19.41\% & 811 & 56.185\\
+		cudaMalloc & 1835.06 & 0.78\% & 805 & 2.2796\\
+		cudaLaunchKernel & 557.250 & 0.24\% & 64961 & 0.0086\\
+		cudaMemsetAsync & 130.150 & 0.06\% & 27268 & 0.0082\\
+		\bottomrule
+	\end{tabular} \label{table-GEMMPROFTF} 
+\end{table}
+\begin{table}
+	\centering
+	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
+	\renewcommand{\tablename}{表}
+	\caption{关闭张量核心下矩阵乘加运算的性能分析(API Calls)}
+	\addtocounter{table}{-1}
+	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
+	\renewcommand{\tablename}{Table}
+	\caption{Performance analysis of GEMM with Tensor Core Off (API Calls)}
+	\begin{tabular}{lcccc}
+		\toprule
+		API & 运行时长(ms) & 运行时长占比 & 调用次数 & 平均运行时长(ms)\\
+		\midrule
+		cudaDeviceSynchronize & 543509 & 91.40\% & 322 & 168792\\
+		cudaFree & 47447.6 & 7.98\% & 811 & 58.505\\
+		cudaMalloc & 1838.33 & 0.31\% & 805 & 2.2836\\
+		cudaLaunchKernel & 693.12 & 0.12\% & 64961 & 0.0107\\
+		cudaMemsetAsync & 230.83 & 0.04\% & 40501 & 0.0057\\
+		\bottomrule
+	\end{tabular} \label{table-GEMMPROFNOTF} 
+\end{table}
+
+\par 根据nvprof生成的报告，可以看出在开启张量核心的情况下，用于设备上线程束同步的API：cudaDeviceSynchronize()，无论是在运行总时长还是调用占比中都显著小于不开启张量核心的情况，其平均运行时间相差超过2个数量级。另外用于开启内核运行和异步访存的API的调用次数在开启张量核心时都明显小于不开启张量核心的情况。可见开启张量核心后，由于原先需要多条点积指令的矩阵乘法运算被合并为仅用一条wmma指令替代，其计算更加密集、设备同步更少，故性能提升明显。表 \ref{table-时钟周期}显示了根据GPGPU-SIM测得的张量核心相关指令与一般点积运算指令所需要的运行周期数，以及相应开启内核(Launch Kernel)指令所需的运行周期数，在关闭张量核心时，进行矩阵乘加或是通过多条浮点指令、或是通过多条ALU指令(idp4a)实现的，而开启张量核心后则直接通过wmma指令实现，如图 \ref{Fig.HMMASASS}所示，图中为硬件代码(SASS)，wmma经过编译会生成若干条hmma指令，图中hmma指令的动作为：以$ m=8,n=8,k=4 $为最小粒度，在FP32精度E8M10存储方式(即非标准IEEE-754的8位指数10位位数1位符号位的19位浮点数存储方式)的浮点数上进行运算。根据指令运行周期级别的数据可以看出使用张量核心相关指令(wmma)不仅能极大减少计算所花费的时间，用于开启内核、上下文切换的时间也会显著减少。
 \begin{figure}
 	\centering
-	\includegraphics[width=15cm]{figures/GEMM-NOTF.jpg}
+	\includegraphics[width=15cm]{figures/HMMASASS.jpg}
 	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
 	\renewcommand{\figurename}{图}
-	\caption{关闭张量核心下矩阵乘加运算的性能分析(API Calls)}
+	\caption{一段由wmma指令编译出的机器指令}
 	\addtocounter{figure}{-1}
 	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
 	\renewcommand{\figurename}{Figure}
-	\caption{Performance analysis of GEMM with Tensor Core Off (API Calls)}
-	\label{Fig.GEMMPROFNOTF}
+	\caption{Part of SASS code complied from PTX code: wmma}
+	\label{Fig.HMMASASS}
 \end{figure}
-\par 根据nvprof生成的报告，可以看出在开启张量核心的情况下，用于设备上线程束同步的API：cudaDeviceSynchronize()，无论是在运行总时长还是调用占比中都显著小于不开启张量核心的情况。另外用于开启内核运行和异步访存的API的调用次数在开启张量核心时都明显小于不开启张量核心的情况。可见开启张量核心后，由于原先需要多条点积指令的矩阵乘法运算被合并为仅用一条wmma指令替代，其计算更加密集、设备同步更少，故性能提升明显。表 \ref{table-时钟周期}显示了根据GPGPU-SIM测得的张量核心相关指令与一般点积运算指令所需要的运行周期数，以及相应开启内核(Launch Kernel)指令所需的运行周期数，在关闭张量核心时，进行矩阵乘加或是通过多条浮点指令、或是通过多条ALU指令(idp4a)实现的，而开启张量核心后则直接通过wmma指令实现，如图 \ref{Fig.HMMASASS}所示，图中为硬件代码(SASS)，wmma经过编译会生成若干条hmma指令，图中hmma指令的动作为：以$ m=8,n=8,k=4 $为最小粒度，在FP32精度E8M10存储方式(即非标准IEEE-754的8位指数10位位数1位符号位的19位浮点数存储方式)的浮点数上进行运算。根据指令运行周期级别的数据可以看出使用张量核心相关指令(wmma)不仅能极大减少计算所花费的时间，用于开启内核、上下文切换的时间也会显著减少。
 \begin{table}
 	\centering
 	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
@@ -166,18 +197,7 @@ $$ C \leftarrow \alpha AB + \beta C $$
 	
 	$ * $因硬件运行时存在随机性，故测得时钟周期为在基于图灵架构的GPGPU-SIM上运行后计算得出。
 \end{table}
-\begin{figure}
-	\centering
-	\includegraphics[width=15cm]{figures/HMMASASS.jpg}
-	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
-	\renewcommand{\figurename}{图}
-	\caption{一段由wmma指令编译出的机器指令}
-	\addtocounter{figure}{-1}
-	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
-	\renewcommand{\figurename}{Figure}
-	\caption{Part of SASS code complied from PTX code: wmma}
-	\label{Fig.HMMASASS}
-\end{figure}
+
 \par 图 \ref{Fig.GEMMSIGHTTF}和图 \ref{Fig.GEMMSIGHTNOTF}则是开启和关闭张量核心的情况下，使用Nsight运行矩阵乘加应用所得到的报告，该报告主要侧重于上下文切换、线程调度等信息。在这些信息中本实验重点关注线程就绪(Ready Thread)和上下文切换(Context Switch)两部分。
 
 \begin{figure}
@@ -293,6 +313,7 @@ $$ C \leftarrow \alpha AB + \beta C $$
 	\end{tabular} \label{table-CONV} 
 \end{table}
 \par 其中，访问纹理内存时使用传统的OpenCL/GL中的实现方式。因纹理内存的访存、缓存方式与一般存储系统不同，在测试时分为行卷积和列卷积。实验中卷积核步进、图像填充(padding)均不变，性能采用兆像素每秒(MPix/s)计算。
+\par 根据图 \ref{Fig.CONVPerf}中得到的关于卷积计算速度的实验结果可以得到如下结论，由于在图像尺寸较小时所有方法性能都有明显下降，为了清晰比较图片尺寸较小时个方法的性能，图 \ref{Fig.CONVSubPerf}为图像尺寸小于$ 128\times 128 $时各方法的性能。首先，在输入图像尺寸较大时，基于矩阵乘加、使用张量核心的卷积计算方式和CUDA内建的基于快速傅里叶变换的卷积方式的性能优势相对于其他几种计算方式极为明显，而基于矩阵乘加的方法相比内建的基于快速傅里叶变换的方法性能高30\%-50\%、且随着图像尺寸的增加性能也增加，而卷积核尺寸对性能影响不大。在输入图像尺寸较小时，之前提到的两种方法性能急剧下降，而直接方法计算卷积性能较稳定；对于使用纹理内存的直接方法，行、列卷积差别不大；在图像尺寸下降到在$ 10^1 $数量级时，直接方法尤其是使用纹理内存优化后优势明显。
 \begin{figure}
 	\centering
 	\includegraphics[width=15cm]{figures/CONVPerf.jpg}
@@ -317,7 +338,6 @@ $$ C \leftarrow \alpha AB + \beta C $$
 	\caption{Performance in speed of convolution based on different algorithm(Small images)}
 	\label{Fig.CONVSubPerf}
 \end{figure}
-\par 根据图 \ref{Fig.CONVPerf}中得到的关于卷积计算速度的实验结果可以得到如下结论，由于在图像尺寸较小时所有方法性能都有明显下降，为了清晰比较图片尺寸较小时个方法的性能，图 \ref{Fig.CONVSubPerf}为图像尺寸小于$ 128\times 128 $时各方法的性能。首先，在输入图像尺寸较大时，基于矩阵乘加、使用张量核心的卷积计算方式和CUDA内建的基于快速傅里叶变换的卷积方式的性能优势相对于其他几种计算方式极为明显，而基于矩阵乘加的方法相比内建的基于快速傅里叶变换的方法性能高30\%-50\%、且随着图像尺寸的增加性能也增加，而卷积核尺寸对性能影响不大。在输入图像尺寸较小时，之前提到的两种方法性能急剧下降，而直接方法计算卷积性能较稳定；对于使用纹理内存的直接方法，行、列卷积差别不大；在图像尺寸下降到在$ 10^1 $数量级时，直接方法尤其是使用纹理内存优化后优势明显。
 \par 图 \ref{Fig.CONVPr}则是卷积计算精度的实验结果。首先，使用cuFFT库自行编写的基于快速傅里叶变换的卷积误差较大，达到$ 1\times 10^{-7} $级别，在许多实际应用中已经无法满足要求。而CUDA内建的基于快速傅里叶变换的卷积计算方式和基于矩阵乘加使用张量核心的卷积计算方式误差相近，都在$ 5\times 10^{-8} $级别；最后，直接方法计算卷积误差极低，基本为0，可以看作浮点数存储方式引发的误差。
 \begin{figure}
 	\centering
@@ -627,7 +647,6 @@ $$ C \leftarrow \alpha AB + \beta C $$
 	\label{Fig.CNNDIRECT}
 \end{figure}
 \par 在基于原生CUDA代码搭建的卷积神经网络中，图 \ref{Fig.TEXVSSHARED}显示了使用纹理内存优化后的网络前向传播性能与原始代码的前向传播性能比较。根据前文的实验结果，纹理内存仅在小尺寸图像优势较大，故这里仅考察小图像时两者的性能，且由于未使用cuDNN，代码无法使GPU设备满载，故有意义的实验结果仅为比较两者的性能提升幅度。根据图中实验结果所示，在图像尺寸极小时，使用纹理内存和全局内存区别不大，而随着图像尺寸增加，纹理内存优化后的前向传播性能稳定在使用全局内存的1.5-1.7倍，而全局内存仍有增长的趋势，这也与上文实验中稍大的图像上全局内存表现逐渐优于纹理内存相符；同时，上文卷积实验中使用纹理内存的性能在小尺寸图像相对全局内存能够超过2倍，约2.5倍，然而由于前向传播中还有其他运算，这一结果也符合预期。
-\par 图 \ref{Fig.TexCode}是对卷积部分使用纹理内存优化替代原代码中的g\_ConvCFM\_feedforward\_shared()函数后的代码片段。由于行列卷积在上文的实验中差别不大，且代码重复率高，故只展示行卷积代码段。
 \begin{figure}
 	\centering
 	\includegraphics[width=15cm]{figures/CNN-HALF-TEXOPT.jpg}
@@ -640,6 +659,8 @@ $$ C \leftarrow \alpha AB + \beta C $$
 	\caption{Performance of forward on small image optimized by texture memory}
 	\label{Fig.TEXVSSHARED}
 \end{figure}
+\par 图 \ref{Fig.TexCode}是对卷积部分使用纹理内存优化替代原代码中的g\_ConvCFM\_feedforward\_shared()函数后的代码片段。由于行列卷积在上文的实验中差别不大，且代码重复率高，故只展示行卷积代码段。
+
 \begin{figure}
 	\centering
 	\includegraphics[width=15cm]{figures/TEXSRC.jpg}
