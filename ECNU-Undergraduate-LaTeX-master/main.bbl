@@ -149,7 +149,7 @@
       \field{dateera}{ce}
       \keyw{CUTLASS}
     \endentry
-    \entry{VOLTAWHITEPAPER}{report}{}
+    \entry{VOLTAWHITEPAPER}{online}{}
       \name{author}{1}{}{%
         {{hash=a2fe9051fe051f819bd739ef3e340377}{%
            family={NVIDIA},
@@ -176,6 +176,7 @@
       \field{labeltitlesource}{title}
       \field{langid}{english}
       \field{month}{8}
+      \field{note}{report}
       \field{title}{NVIDIA TESLA V100 GPU ARCHITECTURE}
       \field{usera}{R}
       \field{userd}{english}
@@ -184,7 +185,13 @@
       \field{dateera}{ce}
       \field{pages}{14\bibrangedash 15}
       \range{pages}{2}
-      \keyw{VOLTAWHITEPAPER}
+      \verb{urlraw}
+      \verb https://images.nvidia.com/content/volta-architecture/pdf/volta-architecture-whitepaper.pdf
+      \endverb
+      \verb{url}
+      \verb https://images.nvidia.com/content/volta-architecture/pdf/volta-architecture-whitepaper.pdf
+      \endverb
+      \keyw{VOLTAWHITEPAPER,report}
     \endentry
     \entry{EXASCLEDL}{inproceedings}{}
       \name{author}{12}{}{%
@@ -319,6 +326,62 @@
       \endverb
       \keyw{MODELING}
     \endentry
+    \entry{TFCOMPARE}{inproceedings}{}
+      \name{author}{5}{}{%
+        {{hash=8578ec917372d89536147fc8e82e92d2}{%
+           family={Markidis},
+           familyi={M\bibinitperiod},
+           given={Stefano},
+           giveni={S\bibinitperiod}}}%
+        {{hash=b52ded74572b49b3213da0e473ead760}{%
+           family={Chien},
+           familyi={C\bibinitperiod},
+           given={Steven\bibnamedelimb Wei\bibnamedelima Der},
+           giveni={S\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=ec17a112bddf9161115324ede2367682}{%
+           family={Laure},
+           familyi={L\bibinitperiod},
+           given={Erwin},
+           giveni={E\bibinitperiod}}}%
+        {{hash=f32fe1d8b5d00aab84b1d6ef6cca19cc}{%
+           family={Peng},
+           familyi={P\bibinitperiod},
+           given={Ivy\bibnamedelima Bo},
+           giveni={I\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=37b509895282b57b8d63406f80fd3038}{%
+           family={Vetter},
+           familyi={V\bibinitperiod},
+           given={Jeffrey\bibnamedelima S.},
+           giveni={J\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \strng{namehash}{21c28e53865a89f25d34d0d7c0d0d800}
+      \strng{fullhash}{e0bccefa65aa01d5ad2acd5adb23bcac}
+      \strng{bibnamehash}{c6cf56ff51b9d9ecc7f61fb3ebacf066}
+      \strng{authorbibnamehash}{c6cf56ff51b9d9ecc7f61fb3ebacf066}
+      \strng{authornamehash}{21c28e53865a89f25d34d0d7c0d0d800}
+      \strng{authorfullhash}{e0bccefa65aa01d5ad2acd5adb23bcac}
+      \field{sortinit}{8}
+      \field{sortinithash}{07edf88d4ea82509b9c4b4d13f41c452}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2018 IEEE International Parallel and Distributed Processing Symposium Workshops, IPDPS Workshops 2018, Vancouver, BC, Canada, May 21-25, 2018}
+      \field{langid}{english}
+      \field{title}{NVIDIA Tensor Core Programmability, Performance \& Precision}
+      \field{usera}{C}
+      \field{userd}{english}
+      \field{userf}{english}
+      \field{year}{2018}
+      \field{dateera}{ce}
+      \field{pages}{522\bibrangedash 531}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1109/IPDPSW.2018.00091
+      \endverb
+      \keyw{TFCOMPARE}
+    \endentry
     \entry{JETSONNANO}{manual}{}
       \name{author}{1}{}{%
         {{hash=a2fe9051fe051f819bd739ef3e340377}{%
@@ -334,8 +397,8 @@
       \strng{authorbibnamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authornamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authorfullhash}{a2fe9051fe051f819bd739ef3e340377}
-      \field{sortinit}{8}
-      \field{sortinithash}{07edf88d4ea82509b9c4b4d13f41c452}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -363,8 +426,8 @@
       \strng{authorbibnamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authornamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authorfullhash}{a2fe9051fe051f819bd739ef3e340377}
-      \field{sortinit}{9}
-      \field{sortinithash}{1dd72ab054147731c9d824b49aba0534}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -769,8 +832,8 @@
       \strng{authorbibnamehash}{ba5b29f79b4de9a47b67816fb34556b4}
       \strng{authornamehash}{6f801527fad2bb468fb1d2cbdb49d079}
       \strng{authorfullhash}{769667c7d6fd33584b5768117e45b90b}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{CoRR}
@@ -799,8 +862,8 @@
       \strng{authorbibnamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authornamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authorfullhash}{a2fe9051fe051f819bd739ef3e340377}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -1125,8 +1188,8 @@
       \strng{authorbibnamehash}{692a82d112ae807c9f2feaf9d99f78b5}
       \strng{authornamehash}{e7a09bf47841405936f9c9271740e3c3}
       \strng{authorfullhash}{692a82d112ae807c9f2feaf9d99f78b5}
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Proceedings of the 24th International Symposium on Computer Architecture, Denver, Colorado, USA, June 2-4, 1997}
@@ -1306,8 +1369,8 @@
       \strng{authorbibnamehash}{73bb79365e406b3f4433e99889b47cd0}
       \strng{authornamehash}{2b223878db0030fd22276e1c3a4ed021}
       \strng{authorfullhash}{dd4343868023a8ff48ed351b8ddb474c}
-      \field{sortinit}{3}
-      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -1342,8 +1405,8 @@
       \strng{authorbibnamehash}{a5f04d2b6e8839e1e8d694238647bb9f}
       \strng{authornamehash}{b8257324f1de81b52c0db2304e25a0e1}
       \strng{authorfullhash}{a5f04d2b6e8839e1e8d694238647bb9f}
-      \field{sortinit}{3}
-      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Proceedings of the 8th India Software Engineering Conference, ISEC 2015, Bangalore, India, February 18-20, 2015}
@@ -1508,7 +1571,7 @@
       \field{dateera}{ce}
       \keyw{EVENEASIER}
     \endentry
-    \entry{10.0PATCH}{online}{}
+    \entry{10.0PATCH}{manual}{}
       \name{author}{1}{}{%
         {{hash=a2fe9051fe051f819bd739ef3e340377}{%
            family={NVIDIA},
@@ -1535,15 +1598,9 @@
       \field{userf}{english}
       \field{year}{2018}
       \field{dateera}{ce}
-      \verb{urlraw}
-      \verb https://docs.nvidia.com/cuda/archive/10.0/cuda-toolkit-release-notes/index.html
-      \endverb
-      \verb{url}
-      \verb https://docs.nvidia.com/cuda/archive/10.0/cuda-toolkit-release-notes/index.html
-      \endverb
       \keyw{10.0PATCH}
     \endentry
-    \entry{9.2PATCH}{online}{}
+    \entry{9.2PATCH}{manual}{}
       \name{author}{1}{}{%
         {{hash=a2fe9051fe051f819bd739ef3e340377}{%
            family={NVIDIA},
@@ -1570,15 +1627,9 @@
       \field{userf}{english}
       \field{year}{2018}
       \field{dateera}{ce}
-      \verb{urlraw}
-      \verb https://docs.nvidia.com/cuda/archive/9.2/cuda-toolkit-release-notes/index.html
-      \endverb
-      \verb{url}
-      \verb https://docs.nvidia.com/cuda/archive/9.2/cuda-toolkit-release-notes/index.html
-      \endverb
       \keyw{9.2PATCH}
     \endentry
-    \entry{10.1PATCH}{online}{}
+    \entry{10.1PATCH}{manual}{}
       \name{author}{1}{}{%
         {{hash=a2fe9051fe051f819bd739ef3e340377}{%
            family={NVIDIA},
@@ -1605,12 +1656,6 @@
       \field{userf}{english}
       \field{year}{2019}
       \field{dateera}{ce}
-      \verb{urlraw}
-      \verb https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html
-      \endverb
-      \verb{url}
-      \verb https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html
-      \endverb
       \keyw{10.1PATCH}
     \endentry
     \entry{PTX}{manual}{}
@@ -1642,7 +1687,7 @@
       \field{dateera}{ce}
       \keyw{PTX}
     \endentry
-    \entry{TENSORRT}{online}{}
+    \entry{TENSORRT}{manual}{}
       \name{author}{1}{}{%
         {{hash=a2fe9051fe051f819bd739ef3e340377}{%
            family={NVIDIA},
@@ -1657,8 +1702,8 @@
       \strng{authorbibnamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authornamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authorfullhash}{a2fe9051fe051f819bd739ef3e340377}
-      \field{sortinit}{4}
-      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -1669,15 +1714,9 @@
       \field{userf}{english}
       \field{year}{2019}
       \field{dateera}{ce}
-      \verb{urlraw}
-      \verb https://developer.nvidia.com/tensorrt
-      \endverb
-      \verb{url}
-      \verb https://developer.nvidia.com/tensorrt
-      \endverb
       \keyw{TENSORRT}
     \endentry
-    \entry{TENSORRTDOC}{online}{}
+    \entry{TENSORRTDOC}{manual}{}
       \name{author}{1}{}{%
         {{hash=a2fe9051fe051f819bd739ef3e340377}{%
            family={NVIDIA},
@@ -1692,8 +1731,8 @@
       \strng{authorbibnamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authornamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authorfullhash}{a2fe9051fe051f819bd739ef3e340377}
-      \field{sortinit}{4}
-      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -1704,15 +1743,9 @@
       \field{userf}{english}
       \field{year}{2018}
       \field{dateera}{ce}
-      \verb{urlraw}
-      \verb https://docs.nvidia.com/deeplearning/sdk/tensorrt-developer-guide/index.html
-      \endverb
-      \verb{url}
-      \verb https://docs.nvidia.com/deeplearning/sdk/tensorrt-developer-guide/index.html
-      \endverb
       \keyw{TENSORRTDOC}
     \endentry
-    \entry{NVPROF}{online}{}
+    \entry{NVPROF}{manual}{}
       \name{author}{1}{}{%
         {{hash=a2fe9051fe051f819bd739ef3e340377}{%
            family={NVIDIA},
@@ -1739,12 +1772,6 @@
       \field{userf}{english}
       \field{year}{2019}
       \field{dateera}{ce}
-      \verb{urlraw}
-      \verb https://docs.nvidia.com/cuda/profiler-users-guide/index.html
-      \endverb
-      \verb{url}
-      \verb https://docs.nvidia.com/cuda/profiler-users-guide/index.html
-      \endverb
       \keyw{NVPROF}
     \endentry
     \entry{TFCRESNET}{manual}{}
@@ -1793,8 +1820,8 @@
       \strng{authorbibnamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authornamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authorfullhash}{a2fe9051fe051f819bd739ef3e340377}
-      \field{sortinit}{5}
-      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -1807,7 +1834,7 @@
       \field{dateera}{ce}
       \keyw{CUDA92}
     \endentry
-    \entry{2080TI}{online}{}
+    \entry{2080TI}{manual}{}
       \name{author}{1}{}{%
         {{hash=560bbd88ded1793b57afc13192a9c9f2}{%
            family={TECHPOWERUP},
@@ -1834,12 +1861,6 @@
       \field{userf}{english}
       \field{year}{2019}
       \field{dateera}{ce}
-      \verb{urlraw}
-      \verb https://www.techpowerup.com/gpu-specs/geforce-rtx-2080-ti.c3305
-      \endverb
-      \verb{url}
-      \verb https://www.techpowerup.com/gpu-specs/geforce-rtx-2080-ti.c3305
-      \endverb
       \keyw{2080TI}
     \endentry
     \entry{ERICYUAN}{manual}{}
