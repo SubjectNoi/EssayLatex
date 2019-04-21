@@ -643,7 +643,7 @@ $$ C \leftarrow \alpha AB + \beta C $$
 	\caption{Performance of forward on small image optimized by texture memory}
 	\label{Fig.TEXVSSHARED}
 \end{figure}
-\par 图 \ref{Fig.TexCode}是对卷积部分使用纹理内存优化替代原代码中的g\_ConvCFM\_feedforward\_shared()函数后的代码片段。由于行列卷积在上文的实验中差别不大，且代码重复率高，故只展示行卷积代码段。
+\par 图 \ref{Fig.TexCode}是对卷积部分使用纹理内存优化替代原代码中用于计算二维卷积的函数g\_ConvCFM\_feedforward\_shared()之后的代码片段。由于行列卷积在上文的实验中差别不大，且代码重复率高，故只展示行卷积代码段。
 
 \begin{figure}
 	\centering
@@ -787,7 +787,7 @@ $$ C \leftarrow \alpha AB + \beta C $$
 \par 在实验使用的网络中，最具特色的无疑是mobileNet和vgg\_16两种。vgg\_16由于本身网络结构较简单，但是可训练参数的数量异常巨大，在使用原始模型推理时速度最慢，而在经过TensorRT优化后推理速度反超残差链接优化的Inception网络。可以看出结构单一、简单，但数量庞大的模型使用TensorRT优化后效果更佳，正如第二章中介绍的那样，TensorRT中最为重要的优化步骤即为将运算合并，对于结构单一但数量庞大的网络，这一优化的效果无疑是非常显著的。
 \par 而面向嵌入式设备、移动端设备的mobileNet由于产品定位原因，其不使用TensorRT优化的推理速度已经非常理想，而测试集准确度与其余网络不相上下。然而，由TensorRT优化后的模型在FP16精度下的推理性能反而不如在FP32下的推理性能。其原因是mobileNet中将传统的三通道卷积(即长、宽、RGB)分解为针对长、宽的逐点卷积和针对RGB的$ 1\times 1\times Channel $的深度卷积，相应地在逐点和深度方向输出。而张量核心在进行矩阵乘加的加速时大量利用了FP16精度，即用精度换速度，运算时对输入矩阵的形状极为敏感，而$ 1\times 1 $的深度卷积与$ 4 \times 4 $的张量核心运算粒度相去甚远，故在FP16精度下的推理性能相较于FP32精度并无提升。值得注意的是，在mobileNet中随着输入图像尺寸的增加，使用TensorRT加速所取得的提升愈小，这也可以归咎于深度卷积的原因。
 
-\subsection{基于Tensor Flow框架的应用}
+\subsection{基于Tensor Flow-GPU框架的应用}
 \par 本节选用Tensor Flow作为实验框架，在实验开始进行时，Tensor Flow最新版本为1.12.0，基于CUDA SDK 9.2与cuDNN 7.2进行编译，若要使用CUDA SDK 10.0则需要从源码对框架进行编译。而截至目前，Tensor Flow已经跟新1.13.0版本，该版本支持CUDA SDK 10.0，可以直接通过pip进行安装。在2019年第一季度，NVIDIA发布了CUDA SDK 10.1以及cuDNN 7.5，然而在10.1版本的SDK中主要是对部署时模型大小、特定矩阵运算的精度进行了优化，相关矩阵哭的改动也仅为cuBLASt轻量级库，性能差距不大，故本节仍选用10.0版本的SDK。然而，由于需要针对纹理内存做出优化，故对Tensor Flow底层C++源码进行调整并重新编译是无法避免的。编译方式较为繁琐，已在第二章中介绍，此处不再赘述。
 \subparagraph{实验结果}
 \par 本节使用Tensor Flow框架搭建了基于LeNet-5模型的卷积神经网络，基本结构为数据输入卷积层、进行池化、再卷积、再池化、接入全连接采用Softmax进行分类。数据集采用cifar-10，包含50000张$ 32 \times 32 $像素的RGB图像，可被分为十个不同的类。相对于网络精确度，本文更关心网络的训练、推理速度，故这里采用这种结构简单但是完整，能全方位体现Tensor Flow使用GPU加速性能的网络结构，该网络结构能在cifar-10数据集上达到69\%的预测准确率。在考察基本性能后，将根据上文实验得到的结论对网络Python级别代码、Tensor Flow的C++级别源码进行更改，力求再保证精度的情况下达到更快的训练、推理速度。

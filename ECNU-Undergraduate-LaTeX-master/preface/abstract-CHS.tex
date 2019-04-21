@@ -1,5 +1,5 @@
 \clearpage                                          %       
-
+\pagestyle{fancy}
 
 \setcounter{page}{1} 
 \pagenumbering{Roman}% Roman page numbers                             %
@@ -8,7 +8,7 @@
 \addcontentsline{toc}{section}{摘要}
 \begin{abstract}\zihao{5}\songti                    %
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\vspace{3em}
+	\vspace{1em}
 	\par 本文主要针对NVIDIA新架构GPU(伏特、图灵架构)为机器学习应用带来的性能提升进行研究。在新架构中加入了张量核心、改进了调度与分支方式。然而新架构GPU在实际应用中很难达到NVIDIA官方宣传的性能提升幅度。故本文将从应用类型、源代码特征结合硬件、指令特征对这一差异进行研究，并给出相关建议。
 	\par 目前基于GPU加速的机器学习应用迅速发展，无论传统机器学习应用或是深度学习应用，都通过GPU极大加快了训练、推理、部署等过程。本文将借助目前在模式识别、计算机视觉领域广泛应用的卷积神经网络(CNN)，以及经典的传统机器学习算法支持向量机(SVM)，考察新架构GPU在实际应用中所能带来的性能提升的情况。
 	\par 首先，实验从底层基于性能评估的Benchmark出发，考察矩阵乘加、乘法，卷积运算的性能，并从指令、硬件机制等方面进行分析，作为基准。随后借助基于CUDA C++源码的卷积神经网络和最小序列优化支持向量机，考察若干模块整合后应用的总体性能，从调用、运行情况对结果进行分析，并从稀疏矩阵、纹理内存等方面尝试优化。最后，结合既得结论，对基于Tensor Flow-GPU框架的卷积神经网络进行评估，并在Python源码层面、框架底层C++源码层面从卷积方式、纹理内存、超参数、数据精度等方面进行优化。除神经网络的训练外，实验还对推理过程进行评估，并使用TensorRT以及相应硬件Jetson进行加速。
@@ -23,7 +23,7 @@
 \addcontentsline{toc}{section}{Abstract}                 %
 \begin{abstract}\zihao{5}                                         %
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\vspace{3em}
+	\vspace{1em}
 	\par This article focuses on NVIDIA's new architecture GPU(Volta and Turing) for the performance improvement of machine learning applications. The Tensor Core has been added to the new architecture, and scheduling and branching have been improved. However, the new architecture GPU is difficult to achieve the performance improvement of NVIDIA official promotion in practical applications. Therefore, this paper will study the difference from the application type, source code features combined with hardware and instruction features, and give relevant suggestions. 
 	\par Currently, GPU-accelerated machine learning applications are rapidly developing. The GPU greatly accelerates the process of training, inferencing and depployying of both traditional machine learning applications and deep learning applications. This paper will use the convolutional neural network (CNN), which is widely used in computer vision and pattern recognition, and the classic traditional machine learning algorithm supporting vector machine (SVM) to investigate the performance improvement of new architecture GPU in practical applications. 
 	\par First, the experiment start with Benchmark oriented to performance evaluation, the performance of GEMM, matrix multiply and convolution are investigated and analyzed in instructions, hardware functionality, etc. With the result of Benchmark, the experiment use CNN and SMO-SVM based on CUDA C++ to investigate the performance of several modules integrating to a whole application, analyze them from function call, context switch, etc. and try to  optimize the applications using sparse matrix, texture memory, etc. At the end of the experiment, combining the results of Benchmark and CUDA C++, a simple CNN based on Tensor Flow-GPU is investigated and optimized in Texture memory, methods to calculate convolution, meta-parameter, precision, etc. In addition to training stage of neural network, inference stage is also investigated and optimized with TensorRT and corresponding hardware Jetson. 
