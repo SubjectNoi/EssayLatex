@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.3.23)  20 APR 2019 23:48
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.3.23)  21 APR 2019 21:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2997,20 +2997,20 @@ File: figures/HMMASASS.jpg Graphic file (type bmp)
  [18] [19]
 File: figures/GEMMSIGHTTF.jpg Graphic file (type bmp)
 <figures/GEMMSIGHTTF.jpg>
- [20]
 File: figures/GEMMSIGHTNOTF.jpg Graphic file (type bmp)
 <figures/GEMMSIGHTNOTF.jpg>
+ [20] [21]
 File: figures/GEMM-Half-TF-Byratio.jpg Graphic file (type bmp)
 <figures/GEMM-Half-TF-Byratio.jpg>
 File: figures/GEMM-Single-TF-Byratio.jpg Graphic file (type bmp)
 <figures/GEMM-Single-TF-Byratio.jpg>
+ [22]
 File: figures/GEMM-Half-TF-Byratio-Tri.jpg Graphic file (type bmp)
 <figures/GEMM-Half-TF-Byratio-Tri.jpg>
 File: figures/GEMM-Single-TF-Byratio-Tri.jpg Graphic file (type bmp)
 <figures/GEMM-Single-TF-Byratio-Tri.jpg>
 File: figures/WMMADOC.jpg Graphic file (type bmp)
 <figures/WMMADOC.jpg>
- [21] [22] [23]
 File: figures/CUBLASPerf.jpg Graphic file (type bmp)
 <figures/CUBLASPerf.jpg>
 
@@ -3028,7 +3028,7 @@ Overfull \hbox (0.29411pt too wide) in paragraph at lines 274--287
 .\glue 12.045
 .etc.
 
-[24] [25] [26]
+[23] [24] [25] [26]
 File: figures/CONVPerf.jpg Graphic file (type bmp)
 <figures/CONVPerf.jpg>
 File: figures/CONVSubPerf.jpg Graphic file (type bmp)
@@ -3072,7 +3072,6 @@ Overfull \hbox (11.85452pt too wide) in paragraph at lines 492--501
 ..\mathoff
 .\glue(\rightskip) 0.0 plus 1.0fil
 
-[31]
 File: figures/CNN-HALF-FWD.jpg Graphic file (type bmp)
 <figures/CNN-HALF-FWD.jpg>
 File: figures/CNN-HALF-BWD-FILTER.jpg Graphic file (type bmp)
@@ -3081,16 +3080,16 @@ File: figures/CNN-HALF-BWD-DATA.jpg Graphic file (type bmp)
 <figures/CNN-HALF-BWD-DATA.jpg>
 File: figures/CNN-HALF-TOTAL.jpg Graphic file (type bmp)
 <figures/CNN-HALF-TOTAL.jpg>
+[31] [32]
 File: figures/CNN-HALF-3PART-TF.jpg Graphic file (type bmp)
 <figures/CNN-HALF-3PART-TF.jpg>
 File: figures/CNN-HALF-3PART-NOTF.jpg Graphic file (type bmp)
 <figures/CNN-HALF-3PART-NOTF.jpg>
- [32] [33] [34] [35] [36]
 File: figures/CNN-HALF-3ALGOFWD.jpg Graphic file (type bmp)
 <figures/CNN-HALF-3ALGOFWD.jpg>
+ [33] [34] [35] [36]
 File: figures/CNN-HALF-TEXOPT.jpg Graphic file (type bmp)
 <figures/CNN-HALF-TEXOPT.jpg>
- [37]
 File: figures/TEXSRC.jpg Graphic file (type bmp)
 <figures/TEXSRC.jpg>
 File: figures/CNN-CONVN-CH.jpg Graphic file (type bmp)
@@ -3099,7 +3098,7 @@ File: figures/CNN-CONVN-BS.jpg Graphic file (type bmp)
 <figures/CNN-CONVN-BS.jpg>
 File: figures/CNN-CH-BS.jpg Graphic file (type bmp)
 <figures/CNN-CH-BS.jpg>
- [38] [39] [40]
+ [37] [38] [39] [40]
 File: figures/SMOSVMRES.jpg Graphic file (type bmp)
 <figures/SMOSVMRES.jpg>
  [41] [42]
@@ -3191,7 +3190,7 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 Here is how much of TeX's memory you used:
  55773 strings out of 492970
  1151032 string characters out of 6134778
- 1705510 words of memory out of 5000000
+ 1704510 words of memory out of 5000000
  58964 multiletter control sequences out of 15000+600000
  542153 words of font info for 123 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191

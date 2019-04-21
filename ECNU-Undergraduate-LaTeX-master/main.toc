@@ -66,15 +66,15 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{\numberline {II}结果分析}{18}{subparagraph.3.2.1.0.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.2.2}矩阵乘法运算}{24}{subsubsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.2}矩阵乘法运算}{23}{subsubsection.3.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {I}实验结果}{24}{subparagraph.3.2.2.0.1}
+\contentsline {subparagraph}{\numberline {I}实验结果}{23}{subparagraph.3.2.2.0.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {II}结果分析}{24}{subparagraph.3.2.2.0.2}
+\contentsline {subparagraph}{\numberline {II}结果分析}{26}{subparagraph.3.2.2.0.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.2.3}卷积运算}{27}{subsubsection.3.2.3}
+\contentsline {subsubsection}{\numberline {3.2.3}卷积运算}{26}{subsubsection.3.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {I}实验结果}{27}{subparagraph.3.2.3.0.1}
+\contentsline {subparagraph}{\numberline {I}实验结果}{26}{subparagraph.3.2.3.0.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{\numberline {II}结果分析}{27}{subparagraph.3.2.3.0.2}
 \defcounter {refsection}{0}\relax 
@@ -82,9 +82,9 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {3.3.1}基于cuDNN的卷积神经网络(CNN)}{30}{subsubsection.3.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {I}实验结果}{32}{subparagraph.3.3.1.0.1}
+\contentsline {subparagraph}{\numberline {I}实验结果}{33}{subparagraph.3.3.1.0.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {II}结果分析}{35}{subparagraph.3.3.1.0.2}
+\contentsline {subparagraph}{\numberline {II}结果分析}{33}{subparagraph.3.3.1.0.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {3.3.2}并行最小序列优化支持向量机(SMO-SVM)}{41}{subsubsection.3.3.2}
 \defcounter {refsection}{0}\relax 
