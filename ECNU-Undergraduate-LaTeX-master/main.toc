@@ -30,7 +30,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {2.1.2}伏特/图灵架构新硬件}{8}{subsubsection.2.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {I}伏特/图灵架构新硬件}{8}{subparagraph.2.1.2.0.1}
+\contentsline {subparagraph}{\numberline {I}伏特/图灵架构流处理器}{8}{subparagraph.2.1.2.0.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{\numberline {II}张量核心(Tensor Core)}{8}{subparagraph.2.1.2.0.2}
 \defcounter {refsection}{0}\relax 
@@ -76,46 +76,46 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{\numberline {I}实验结果}{32}{subparagraph.3.2.3.0.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {II}结果分析}{34}{subparagraph.3.2.3.0.2}
+\contentsline {subparagraph}{\numberline {II}结果分析}{33}{subparagraph.3.2.3.0.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3}基于CUDA源码的应用}{36}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.3}基于CUDA源码的应用}{37}{subsection.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.3.1}基于cuDNN的卷积神经网络(CNN)}{36}{subsubsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.1}基于cuDNN的卷积神经网络(CNN)}{37}{subsubsection.3.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {I}实验结果}{39}{subparagraph.3.3.1.0.1}
+\contentsline {subparagraph}{\numberline {I}实验结果}{37}{subparagraph.3.3.1.0.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {II}结果分析}{39}{subparagraph.3.3.1.0.2}
+\contentsline {subparagraph}{\numberline {II}结果分析}{40}{subparagraph.3.3.1.0.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.3.2}并行最小序列优化支持向量机(SMO-SVM)}{45}{subsubsection.3.3.2}
+\contentsline {subsubsection}{\numberline {3.3.2}并行最小序列优化支持向量机(SMO-SVM)}{46}{subsubsection.3.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {I}实验结果}{48}{subparagraph.3.3.2.0.1}
+\contentsline {subparagraph}{\numberline {I}实验结果}{49}{subparagraph.3.3.2.0.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {II}结果分析}{49}{subparagraph.3.3.2.0.2}
+\contentsline {subparagraph}{\numberline {II}结果分析}{50}{subparagraph.3.3.2.0.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4}基于TensorRT的神经网络推理}{50}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.4}基于TensorRT的神经网络推理}{51}{subsection.3.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {I}实验结果}{50}{subparagraph.3.4.0.0.1}
+\contentsline {subparagraph}{\numberline {I}实验结果}{51}{subparagraph.3.4.0.0.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {II}结果分析}{52}{subparagraph.3.4.0.0.2}
+\contentsline {subparagraph}{\numberline {II}结果分析}{51}{subparagraph.3.4.0.0.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.5}基于Tensor Flow-GPU框架的应用}{52}{subsection.3.5}
+\contentsline {subsection}{\numberline {3.5}基于Tensor Flow-GPU框架的应用}{53}{subsection.3.5}
 \defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{\numberline {I}实验结果}{53}{subparagraph.3.5.0.0.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{\numberline {II}结果分析}{54}{subparagraph.3.5.0.0.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {第四章}总结与展望}{56}{section.4}
+\contentsline {section}{\numberline {第四章}总结与展望}{57}{section.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1}总结}{56}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.1}总结}{57}{subsection.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2}展望}{58}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.2}展望}{59}{subsection.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {I}更细粒度的同步机制}{58}{subparagraph.4.2.0.0.1}
+\contentsline {subparagraph}{\numberline {I}更细粒度的同步机制}{59}{subparagraph.4.2.0.0.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {II}规模更大的矩阵乘加指令}{58}{subparagraph.4.2.0.0.2}
+\contentsline {subparagraph}{\numberline {II}规模更大的矩阵乘加指令}{59}{subparagraph.4.2.0.0.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {III}针对稀疏矩阵优化的矩阵乘加指令}{58}{subparagraph.4.2.0.0.3}
+\contentsline {subparagraph}{\numberline {III}针对稀疏矩阵优化的矩阵乘加指令}{59}{subparagraph.4.2.0.0.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{参考文献}{59}{section*.52}
+\contentsline {section}{参考文献}{60}{section*.52}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{致谢}{62}{section*.54}
+\contentsline {section}{致谢}{63}{section*.54}
