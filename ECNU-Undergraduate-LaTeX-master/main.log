@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.3.23)  2 MAY 2019 15:59
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.3.23)  2 MAY 2019 16:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2528,7 +2528,7 @@ Package caption Info: End \AtBeginDocument code.
 * paper: a4paper
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: twoside 
+* modes: 
 * h-part:(L,W,R)=(85.35826pt, 455.24411pt, 56.9055pt)
 * v-part:(T,H,B)=(71.13188pt, 717.00946pt, 56.9055pt)
 * \paperwidth=597.50787pt
@@ -2536,13 +2536,13 @@ Package caption Info: End \AtBeginDocument code.
 * \textwidth=455.24411pt
 * \textheight=717.00946pt
 * \oddsidemargin=13.08827pt
-* \evensidemargin=-15.36449pt
+* \evensidemargin=13.08827pt
 * \topmargin=-38.1381pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=10.0pt
 * \footskip=30.0pt
-* \marginparwidth=111.0pt
+* \marginparwidth=57.0pt
 * \marginparsep=11.0pt
 * \columnsep=10.0pt
 * \skip\footins=9.0pt plus 4.0pt minus 2.0pt
@@ -2550,8 +2550,8 @@ Package caption Info: End \AtBeginDocument code.
 * \voffset=0.0pt
 * \mag=1000
 * \@twocolumnfalse
-* \@twosidetrue
-* \@mparswitchtrue
+* \@twosidefalse
+* \@mparswitchfalse
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
@@ -2609,7 +2609,7 @@ Package tocstyle Info: prepare \l@figure for redefinition on input line 22.
 * paper: a4paper
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: twoside 
+* modes: 
 * h-part:(L,W,R)=(90.47955pt, 416.54877pt, 90.47955pt)
 * v-part:(T,H,B)=(56.9055pt, 731.23584pt, 56.9055pt)
 * \paperwidth=597.50787pt
@@ -2623,7 +2623,7 @@ Package tocstyle Info: prepare \l@figure for redefinition on input line 22.
 * \headsep=25.0pt
 * \topskip=10.0pt
 * \footskip=30.0pt
-* \marginparwidth=111.0pt
+* \marginparwidth=57.0pt
 * \marginparsep=11.0pt
 * \columnsep=10.0pt
 * \skip\footins=9.0pt plus 4.0pt minus 2.0pt
@@ -2631,8 +2631,8 @@ Package tocstyle Info: prepare \l@figure for redefinition on input line 22.
 * \voffset=0.0pt
 * \mag=1000
 * \@twocolumnfalse
-* \@twosidetrue
-* \@mparswitchtrue
+* \@twosidefalse
+* \@mparswitchfalse
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
@@ -2649,9 +2649,7 @@ File: ./figures/inner-cover(contains_font).eps Graphic file (type eps)
  [1
 
 
-]) [2
-
-]
+])
 \g__fontspec_family_SimHei_int=\count558
 .................................................
 . fontspec info: "no-font-shape"
@@ -2833,7 +2831,8 @@ text indent by \l@... (toc, 2):  27.70352pt
 number indent by parent (toc, 2):  42.15749pt
 text indent calculated (toc, 2): 21.07874pt
 number indent calculated (toc, 2): 42.15749pt
-[3
+[1
+
 
 ]
 number indent by \l@... (toc, 1):  0.0pt
@@ -2865,7 +2864,7 @@ number indent calculated (toc, 1): 0.0pt
 \tf@toc=\write10
 \openout10 = `main.toc'.
 
- [4] (./preface/abstract-CHS.tex (./paper_info.tex)
+ [2] (./preface/abstract-CHS.tex (./paper_info.tex)
 .................................................
 . fontspec info: "no-font-shape"
 . 
@@ -2984,64 +2983,17 @@ File: figures/Inst.jpg Graphic file (type bmp)
 <figures/Inst.jpg>
 File: figures/ActualInst.jpg Graphic file (type bmp)
 <figures/ActualInst.jpg>
-
-Underfull \vbox (badness 10000) has occurred while \output is active
-\vbox(717.00946+0.0)x455.24411, glue set 6.29814
-.\glue(\topskip) 0.07228
-.\hbox(9.92772+1.22331)x455.24411, glue set - 0.27025
-..\TU/SimSun(1)/m/n/12.045 对
-..\glue 0.0 plus 0.61783
-..\TU/SimSun(1)/m/n/12.045 多
-..\glue 3.01125 plus 1.5041 minus 1.00473
-..\TU/TimesNewRoman(0)/m/n/12.045 GPU
-..etc.
-.\glue(\baselineskip) 12.28024
-.\hbox(9.92772+2.57602)x455.24411, glue set - 0.09584
-..\TU/TimesNewRoman(0)/m/n/12.045 CUDA
-..\kern -0.00021
-..\kern 0.00021
-..\glue 3.01125 plus 1.5041 minus 1.00473
-..\TU/TimesNewRoman(0)/m/n/12.045 SDK
-..etc.
-.\glue(\baselineskip) 10.9746
-.etc.
-
  [14]
 File: figures/TensorRT.jpg Graphic file (type bmp)
 <figures/TensorRT.jpg>
-
-[15] [16]) (./body/SectionC.tex [17] [18]
+ [15] [16]) (./body/SectionC.tex [17] [18]
 Underfull \hbox (badness 10000) in paragraph at lines 7--35
 
 
 \hbox(0.0+0.0)x455.24411
 .\glue(\rightskip) 0.0
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active
-\vbox(717.00946+0.0)x455.24411, glue set 12.85783
-.\special{pdf:dest (section.3) [@thispage /XYZ @xpos @ypos null]}
-.\glue(\topskip) 0.0
-.\hbox(12.46846+1.64676)x455.24411, glue set 36.52823fil
-..\glue(\leftskip) 0.0 plus 1.0fil
-..\hbox(12.46846+1.58795)x60.22498
-...\glue 0.0
-...\TU/SimHei(0)/bx/n/15.05624 第
-...\glue 0.0 plus 0.66475
-...\TU/SimHei(0)/bx/n/15.05624 三
-...\glue 0.0 plus 0.66475
-...etc.
-..\TU/SimHei(0)/bx/n/15.05624 评
-..\glue 0.0 plus 0.66475
-..\TU/SimHei(0)/bx/n/15.05624 估
-..etc.
-.\mark{{\protect \MakeUppercase  {第三章\hskip 1em\relax 评估NVIDIA新架\ETC.}
-.\write9{\protect \BOOKMARK [1][-]{section.3}{\376\377\213\304\117\060\000N\00\
-ETC.}
-.etc.
-
- [19]
-[20]
+[19] [20]
 File: figures/GEMM-Half-TF.jpg Graphic file (type bmp)
 <figures/GEMM-Half-TF.jpg>
 File: figures/GEMM-Single-TF.jpg Graphic file (type bmp)
@@ -3057,35 +3009,7 @@ File: figures/CUTLASSGEMM.jpg Graphic file (type bmp)
  [21] [22] [23]
 File: figures/HMMASASS.jpg Graphic file (type bmp)
 <figures/HMMASASS.jpg>
- [24]
-Underfull \vbox (badness 6204) has occurred while \output is active
-\vbox(717.00946+0.0)x455.24411, glue set 3.96127
-.\vbox(129.4309+0.0)x455.24411
-..\special{color push gray 0}
-..\vbox(129.4309+0.0)x455.24411
-...\rule(0.0+0.0)x*
-...\penalty 10000
-...\glue -5.99998
-...\glue 0.0
-...\special{pdf:dest (table.caption.17) [@thispage /XYZ @xpos @ypos null]}
-...etc.
-..\special{color pop}
-.\glue 12.0 plus 2.0 minus 2.0
-.\vbox(129.4309+0.0)x455.24411
-..\special{color push gray 0}
-..\vbox(129.4309+0.0)x455.24411
-...\rule(0.0+0.0)x*
-...\penalty 10000
-...\glue -5.99998
-...\glue 0.0
-...\special{pdf:dest (table.caption.18) [@thispage /XYZ @xpos @ypos null]}
-...etc.
-..\special{color pop}
-.\glue 12.0 plus 2.0 minus 2.0
-.\glue -12.0 plus -2.0 minus -2.0
-.etc.
-
- [25]
+ [24] [25]
 File: figures/GEMMSIGHTTF.jpg Graphic file (type bmp)
 <figures/GEMMSIGHTTF.jpg>
 File: figures/GEMMSIGHTNOTF.jpg Graphic file (type bmp)
@@ -3094,8 +3018,7 @@ File: figures/GEMM-Half-TF-Byratio.jpg Graphic file (type bmp)
 <figures/GEMM-Half-TF-Byratio.jpg>
 File: figures/GEMM-Single-TF-Byratio.jpg Graphic file (type bmp)
 <figures/GEMM-Single-TF-Byratio.jpg>
-
-[26] [27]
+ [26] [27]
 File: figures/GEMM-Half-TF-Byratio-Tri.jpg Graphic file (type bmp)
 <figures/GEMM-Half-TF-Byratio-Tri.jpg>
 File: figures/GEMM-Single-TF-Byratio-Tri.jpg Graphic file (type bmp)
@@ -3112,26 +3035,8 @@ File: figures/CONVSubPerf.jpg Graphic file (type bmp)
 <figures/CONVSubPerf.jpg>
 File: figures/CONVError.jpg Graphic file (type bmp)
 <figures/CONVError.jpg>
- [33] [34] [35]
-Underfull \vbox (badness 10000) has occurred while \output is active
-\vbox(717.00946+0.0)x455.24411, glue set 8.00948
-.\vbox(279.4835+0.0)x455.24411
-..\special{color push gray 0}
-..\vbox(279.4835+0.0)x455.24411
-...\rule(0.0+0.0)x*
-...\penalty 10000
-...\glue -5.99998
-...\glue 0.0
-...\special{pdf:dest (table.caption.31) [@thispage /XYZ @xpos @ypos null]}
-...etc.
-..\special{color pop}
-.\glue 12.0 plus 2.0 minus 2.0
-.\glue -12.0 plus -2.0 minus -2.0
-.\glue 20.0 plus 2.0 minus 4.0
-.\glue(\topskip) 0.07228
-.etc.
-
- [36]
+ [33]
+[34] [35] [36]
 Overfull \hbox (11.85452pt too wide) in paragraph at lines 492--501
  [][] 
 
@@ -3186,27 +3091,7 @@ File: figures/CNN-HALF-3ALGOFWD.jpg Graphic file (type bmp)
 <figures/CNN-HALF-3ALGOFWD.jpg>
 File: figures/CNN-HALF-TEXOPT.jpg Graphic file (type bmp)
 <figures/CNN-HALF-TEXOPT.jpg>
-
-Underfull \vbox (badness 1721) has occurred while \output is active
-\vbox(717.00946+0.0)x455.24411, glue set 2.58289
-.\vbox(231.48369+0.0)x455.24411
-..\special{color push gray 0}
-..\vbox(231.48369+0.0)x455.24411
-...\rule(0.0+0.0)x*
-...\penalty 10000
-...\glue -5.99998
-...\glue 0.0
-...\special{pdf:dest (table.caption.40) [@thispage /XYZ @xpos @ypos null]}
-...etc.
-..\special{color pop}
-.\glue 12.0 plus 2.0 minus 2.0
-.\glue -12.0 plus -2.0 minus -2.0
-.\glue 20.0 plus 2.0 minus 4.0
-.\glue(\topskip) 0.07228
-.etc.
-
- [44]
-[45]
+ [44] [45]
 File: figures/TEXSRC.jpg Graphic file (type bmp)
 <figures/TEXSRC.jpg>
 File: figures/CNN-CONVN-CH.jpg Graphic file (type bmp)
@@ -3218,57 +3103,13 @@ File: figures/CNN-CH-BS.jpg Graphic file (type bmp)
  [46] [47] [48]
 File: figures/SMOSVMRES.jpg Graphic file (type bmp)
 <figures/SMOSVMRES.jpg>
- [49]
-Underfull \vbox (badness 10000) has occurred while \output is active
-\vbox(717.00946+0.0)x455.24411, glue set 5.4751
-.\vbox(284.59128+0.0)x455.24411
-..\special{color push gray 0}
-..\vbox(284.59128+0.0)x455.24411
-...\rule(0.0+0.0)x*
-...\penalty 10000
-...\glue -5.99998
-...\glue 0.0
-...\special{pdf:dest (figure.caption.46) [@thispage /XYZ @xpos @ypos null]}
-...etc.
-..\special{color pop}
-.\glue 12.0 plus 2.0 minus 2.0
-.\glue -12.0 plus -2.0 minus -2.0
-.\glue 20.0 plus 2.0 minus 4.0
-.\glue(\topskip) 0.07228
-.etc.
-
- [50]
+ [49] [50]
 File: figures/TENSORRTRES.jpg Graphic file (type bmp)
 <figures/TENSORRTRES.jpg>
 File: figures/TENSORRTRATIO.jpg Graphic file (type bmp)
 <figures/TENSORRTRATIO.jpg>
-
-[51] [52] [53] [54] [55]) (./body/SectionD.tex [56] [57]
-Underfull \vbox (badness 10000) has occurred while \output is active
-\vbox(717.00946+0.0)x455.24411, glue set 13.75125
-.\glue(\topskip) 0.07228
-.\hbox(9.92772+1.31741)x455.24411, glue set - 0.18454
-..\TU/SimSun(1)/m/n/12.045 察
-..\glue 0.0 plus 0.61783
-..\TU/SimSun(1)/m/n/12.045 新
-..\glue 0.0 plus 0.61783
-..\TU/SimSun(1)/m/n/12.045 架
-..etc.
-.\glue(\baselineskip) 12.18614
-.\hbox(9.92772+1.27036)x455.24411, glue set 0.1705
-..\TU/SimSun(1)/m/n/12.045 来
-..\glue 3.01125 plus 1.50562 minus 1.00374
-..\TU/TimesNewRoman(0)/m/n/12.045 30%-50%
-..\glue 3.01125 plus 1.50562 minus 1.00374
-..\TU/SimSun(1)/m/n/12.045 的
-..etc.
-.\glue(\baselineskip) 12.2332
-.etc.
-
- [58])
-[59] [60
-
-]
+ [51]
+[52] [53] [54] [55]) (./body/SectionD.tex [56] [57] [58]) [59]
 \g__fontspec_family_FangSong_int=\count559
 .................................................
 . fontspec info: "no-font-shape"
@@ -3297,7 +3138,9 @@ Underfull \vbox (badness 10000) has occurred while \output is active
 . <->"FangSong/OT:script=hani;language=DFLT;"
 . - 'small caps'  (m/sc) with NFSS spec.: 
 .................................................
- [61] [62]
+ [60
+
+] [61]
 Overfull \hbox (2.37288pt too wide) in paragraph at lines 58--58
 []\TU/TimesNewRoman(0)/m/n/10 PLATT J. Sequential Minimal Optimization: A Fast 
 Algorithm for Training Support Vector Machines[R\TU/lmtt/m/n/10 /\TU/TimesNewRo
@@ -3322,16 +3165,15 @@ man(0)/m/n/10 OL].
 .\kern 0.0002
 .etc.
 
-[63] [64
+[62] (./ending/Acknowledgement.tex [63
 
-] (./ending/Acknowledgement.tex [65
 
 
 ])
 \tf@thm=\write11
 \openout11 = `main.thm'.
 
- [66]
+ [64]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 66.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 66.
  (./main.aux)
@@ -3348,12 +3190,12 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 55835 strings out of 492970
- 1154014 string characters out of 6134778
- 1710054 words of memory out of 5000000
- 59020 multiletter control sequences out of 15000+600000
+ 55834 strings out of 492970
+ 1154005 string characters out of 6134778
+ 1710010 words of memory out of 5000000
+ 59019 multiletter control sequences out of 15000+600000
  546814 words of font info for 143 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  63i,12n,93p,10500b,4712s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.pdf (72 pages).
+Output written on main.pdf (69 pages).
