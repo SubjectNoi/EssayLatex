@@ -560,8 +560,8 @@
       \strng{authorbibnamehash}{40f6d5eeb52efd61a83bc0b88354278e}
       \strng{authornamehash}{2e78274b5bf2b13fb661cebf8987cb4a}
       \strng{authorfullhash}{ca2439ee1d9c8da16578bebd4596bfa9}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Neural Computation}
@@ -608,8 +608,8 @@
       \strng{authorbibnamehash}{71d79546c53f4cb5d4b1eb6ce72572bf}
       \strng{authornamehash}{82feac1cdb160c1add9aacc7e2466d11}
       \strng{authorfullhash}{71d79546c53f4cb5d4b1eb6ce72572bf}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{2018 IEEE International Parallel and Distributed Processing Symposium, IPDPS 2018, Vancouver, BC, Canada, May 21-25, 2018}
@@ -644,8 +644,8 @@
       \strng{authorbibnamehash}{db7f16ec5e5f5a7e6a593b06e885d9c0}
       \strng{authornamehash}{db7f16ec5e5f5a7e6a593b06e885d9c0}
       \strng{authorfullhash}{db7f16ec5e5f5a7e6a593b06e885d9c0}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{電子情報通信学会論文誌 A}
@@ -690,8 +690,8 @@
       \strng{authorbibnamehash}{71bc158a2e84d71feae451e1053b1815}
       \strng{authornamehash}{058f6aa7282521dda725a309bd2d3fea}
       \strng{authorfullhash}{71bc158a2e84d71feae451e1053b1815}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Advances in Neural Information Processing Systems 6, [7th NIPS Conference, Denver, Colorado, USA, 1993]}
@@ -941,8 +941,8 @@
       \strng{authorbibnamehash}{3733dbdff90171390240438fddfbc952}
       \strng{authornamehash}{6edb98fe38401d2fe4a026f5ce6e8451}
       \strng{authorfullhash}{42c4b52dc3a62cebabbc11c73e1afb53}
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{2016 IEEE Conference on Computer Vision and Pattern Recognition, CVPR 2016, Las Vegas, NV, USA, June 27-30, 2016}
@@ -1012,8 +1012,8 @@
       \strng{authorbibnamehash}{896ca2b2169d7906df3029c2ff09f2a6}
       \strng{authornamehash}{a7ae5374a8bd3ec72dfa88330d9c9668}
       \strng{authorfullhash}{25f1601bbdee0b81e2761a3c757359c4}
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{CoRR}
@@ -1059,8 +1059,8 @@
       \strng{authorbibnamehash}{ba5b29f79b4de9a47b67816fb34556b4}
       \strng{authornamehash}{6f801527fad2bb468fb1d2cbdb49d079}
       \strng{authorfullhash}{769667c7d6fd33584b5768117e45b90b}
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{CoRR}
@@ -1188,8 +1188,8 @@
       \strng{authorbibnamehash}{692a82d112ae807c9f2feaf9d99f78b5}
       \strng{authornamehash}{e7a09bf47841405936f9c9271740e3c3}
       \strng{authorfullhash}{692a82d112ae807c9f2feaf9d99f78b5}
-      \field{sortinit}{3}
-      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Proceedings of the 24th International Symposium on Computer Architecture, Denver, Colorado, USA, June 2-4, 1997}
@@ -1203,6 +1203,50 @@
       \field{pages}{108\bibrangedash 120}
       \range{pages}{13}
       \keyw{THEDESIGN}
+    \endentry
+    \entry{PASCALWHITEPAPER}{online}{}
+      \name{author}{1}{}{%
+        {{hash=a2fe9051fe051f819bd739ef3e340377}{%
+           family={NVIDIA},
+           familyi={N\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {NVIDIA Corp.}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \list{publisher}{1}{%
+        {NVIDIA Corp.}%
+      }
+      \strng{namehash}{a2fe9051fe051f819bd739ef3e340377}
+      \strng{fullhash}{a2fe9051fe051f819bd739ef3e340377}
+      \strng{bibnamehash}{a2fe9051fe051f819bd739ef3e340377}
+      \strng{authorbibnamehash}{a2fe9051fe051f819bd739ef3e340377}
+      \strng{authornamehash}{a2fe9051fe051f819bd739ef3e340377}
+      \strng{authorfullhash}{a2fe9051fe051f819bd739ef3e340377}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{langid}{english}
+      \field{month}{6}
+      \field{note}{report}
+      \field{title}{NVIDIA Tesla P100 GPU ARCHITECTURE}
+      \field{usera}{R}
+      \field{userd}{english}
+      \field{userf}{english}
+      \field{year}{2016}
+      \field{dateera}{ce}
+      \field{pages}{10\bibrangedash 13}
+      \range{pages}{4}
+      \verb{urlraw}
+      \verb https://images.nvidia.com/content/pdf/tesla/whitepaper/pascal-architecture-whitepaper-v1.2.pdf
+      \endverb
+      \verb{url}
+      \verb https://images.nvidia.com/content/pdf/tesla/whitepaper/pascal-architecture-whitepaper-v1.2.pdf
+      \endverb
+      \keyw{PASCALWHITEPAPER,report}
     \endentry
     \entry{HMMA}{manual}{}
       \name{author}{1}{}{%
@@ -1221,8 +1265,8 @@
       \strng{authorbibnamehash}{6c065399255dd9e3d5099544c9f8bc40}
       \strng{authornamehash}{6c065399255dd9e3d5099544c9f8bc40}
       \strng{authorfullhash}{6c065399255dd9e3d5099544c9f8bc40}
-      \field{sortinit}{3}
-      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -1257,8 +1301,8 @@
       \strng{authorbibnamehash}{c8d255e1d8b07b382e8f6f8782da9cae}
       \strng{authornamehash}{e38ac0787e4d607f0536f4c59722793a}
       \strng{authorfullhash}{c8d255e1d8b07b382e8f6f8782da9cae}
-      \field{sortinit}{3}
-      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -1288,8 +1332,8 @@
       \strng{authorbibnamehash}{2a08797308ff9f0a8442b81a135c866a}
       \strng{authornamehash}{2a08797308ff9f0a8442b81a135c866a}
       \strng{authorfullhash}{2a08797308ff9f0a8442b81a135c866a}
-      \field{sortinit}{4}
-      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{IEEE Trans. Computers}
@@ -1324,8 +1368,8 @@
       \strng{authorbibnamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authornamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authorfullhash}{a2fe9051fe051f819bd739ef3e340377}
-      \field{sortinit}{4}
-      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -1369,8 +1413,8 @@
       \strng{authorbibnamehash}{73bb79365e406b3f4433e99889b47cd0}
       \strng{authornamehash}{2b223878db0030fd22276e1c3a4ed021}
       \strng{authorfullhash}{dd4343868023a8ff48ed351b8ddb474c}
-      \field{sortinit}{4}
-      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -1405,8 +1449,8 @@
       \strng{authorbibnamehash}{a5f04d2b6e8839e1e8d694238647bb9f}
       \strng{authornamehash}{b8257324f1de81b52c0db2304e25a0e1}
       \strng{authorfullhash}{a5f04d2b6e8839e1e8d694238647bb9f}
-      \field{sortinit}{4}
-      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Proceedings of the 8th India Software Engineering Conference, ISEC 2015, Bangalore, India, February 18-20, 2015}
@@ -1451,8 +1495,8 @@
       \strng{authorbibnamehash}{e4a3d68e75a99356f066efe3a6bc8e6a}
       \strng{authornamehash}{daaeb7670772db8a47b015a37e6672bc}
       \strng{authorfullhash}{e4a3d68e75a99356f066efe3a6bc8e6a}
-      \field{sortinit}{4}
-      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{2014 IEEE International Conference on Big Data, Big Data 2014, Washington, DC, USA, October 27-30, 2014}
@@ -1492,8 +1536,8 @@
       \strng{authorbibnamehash}{f05b51623119c374c7300332cb110812}
       \strng{authornamehash}{b7202df943db8c13090366d00106955f}
       \strng{authorfullhash}{f05b51623119c374c7300332cb110812}
-      \field{sortinit}{4}
-      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{{IEEE} International Geoscience {\&} Remote Sensing Symposium, {IGARSS} 2006, July 31 - August 4, 2006, Denver, Colorado, USA, Proceedings}
@@ -1526,8 +1570,8 @@
       \strng{authorbibnamehash}{074dd699710da0ec1eb45f13b31788e3}
       \strng{authornamehash}{074dd699710da0ec1eb45f13b31788e3}
       \strng{authorfullhash}{074dd699710da0ec1eb45f13b31788e3}
-      \field{sortinit}{4}
-      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -1557,8 +1601,8 @@
       \strng{authorbibnamehash}{fc01a4ee7c149fd7053ae32206165f0f}
       \strng{authornamehash}{fc01a4ee7c149fd7053ae32206165f0f}
       \strng{authorfullhash}{fc01a4ee7c149fd7053ae32206165f0f}
-      \field{sortinit}{4}
-      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -1586,8 +1630,8 @@
       \strng{authorbibnamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authornamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authorfullhash}{a2fe9051fe051f819bd739ef3e340377}
-      \field{sortinit}{4}
-      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -1615,8 +1659,8 @@
       \strng{authorbibnamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authornamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authorfullhash}{a2fe9051fe051f819bd739ef3e340377}
-      \field{sortinit}{4}
-      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{sortinit}{7}
+      \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -1644,8 +1688,8 @@
       \strng{authorbibnamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authornamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authorfullhash}{a2fe9051fe051f819bd739ef3e340377}
-      \field{sortinit}{5}
-      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{sortinit}{7}
+      \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -1673,8 +1717,8 @@
       \strng{authorbibnamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authornamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authorfullhash}{a2fe9051fe051f819bd739ef3e340377}
-      \field{sortinit}{5}
-      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{sortinit}{7}
+      \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -1702,8 +1746,8 @@
       \strng{authorbibnamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authornamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authorfullhash}{a2fe9051fe051f819bd739ef3e340377}
-      \field{sortinit}{5}
-      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{sortinit}{7}
+      \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -1731,8 +1775,8 @@
       \strng{authorbibnamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authornamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authorfullhash}{a2fe9051fe051f819bd739ef3e340377}
-      \field{sortinit}{5}
-      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{sortinit}{7}
+      \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -1760,8 +1804,8 @@
       \strng{authorbibnamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authornamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authorfullhash}{a2fe9051fe051f819bd739ef3e340377}
-      \field{sortinit}{5}
-      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{sortinit}{8}
+      \field{sortinithash}{07edf88d4ea82509b9c4b4d13f41c452}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -1791,8 +1835,8 @@
       \strng{authorbibnamehash}{4f161a5d9427299c10bf5b021ed74321}
       \strng{authornamehash}{4f161a5d9427299c10bf5b021ed74321}
       \strng{authorfullhash}{4f161a5d9427299c10bf5b021ed74321}
-      \field{sortinit}{6}
-      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
+      \field{sortinit}{8}
+      \field{sortinithash}{07edf88d4ea82509b9c4b4d13f41c452}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -1820,8 +1864,8 @@
       \strng{authorbibnamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authornamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authorfullhash}{a2fe9051fe051f819bd739ef3e340377}
-      \field{sortinit}{6}
-      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
+      \field{sortinit}{8}
+      \field{sortinithash}{07edf88d4ea82509b9c4b4d13f41c452}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -1849,8 +1893,8 @@
       \strng{authorbibnamehash}{560bbd88ded1793b57afc13192a9c9f2}
       \strng{authornamehash}{560bbd88ded1793b57afc13192a9c9f2}
       \strng{authorfullhash}{560bbd88ded1793b57afc13192a9c9f2}
-      \field{sortinit}{6}
-      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
+      \field{sortinit}{9}
+      \field{sortinithash}{1dd72ab054147731c9d824b49aba0534}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -1880,8 +1924,8 @@
       \strng{authorbibnamehash}{5e01210a61aa0bae970da724b739cad9}
       \strng{authornamehash}{5e01210a61aa0bae970da724b739cad9}
       \strng{authorfullhash}{5e01210a61aa0bae970da724b739cad9}
-      \field{sortinit}{6}
-      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
+      \field{sortinit}{9}
+      \field{sortinithash}{1dd72ab054147731c9d824b49aba0534}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -1911,8 +1955,8 @@
       \strng{authorbibnamehash}{74ebe0fc06c0292871d5f756cfe5414d}
       \strng{authornamehash}{74ebe0fc06c0292871d5f756cfe5414d}
       \strng{authorfullhash}{74ebe0fc06c0292871d5f756cfe5414d}
-      \field{sortinit}{6}
-      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
+      \field{sortinit}{9}
+      \field{sortinithash}{1dd72ab054147731c9d824b49aba0534}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -1991,8 +2035,8 @@
       \strng{authorbibnamehash}{48541cb77a1c5eb9346db71a8131316f}
       \strng{authornamehash}{1e0bd05f71e05361714f090145866a5c}
       \strng{authorfullhash}{24c7257d2a5569012d15fa5e433937ea}
-      \field{sortinit}{7}
-      \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
+      \field{sortinit}{9}
+      \field{sortinithash}{1dd72ab054147731c9d824b49aba0534}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Proceedings of the 44th Annual International Symposium on Computer Architecture, {ISCA} 2017, Toronto, ON, Canada, June 24-28, 2017}

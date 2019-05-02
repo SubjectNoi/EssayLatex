@@ -10,7 +10,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {1.1}研究背景}{1}{subsection.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.2}目前展开的工作}{2}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.2}相关研究}{2}{subsection.1.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {1.3}我们的工作}{4}{subsection.1.3}
 \defcounter {refsection}{0}\relax 
@@ -116,6 +116,6 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{\numberline {III}针对稀疏矩阵优化的矩阵乘加指令}{59}{subparagraph.4.2.0.0.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{参考文献}{60}{section*.52}
+\contentsline {section}{参考文献}{61}{section*.52}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{致谢}{63}{section*.54}
+\contentsline {section}{致谢}{65}{section*.54}

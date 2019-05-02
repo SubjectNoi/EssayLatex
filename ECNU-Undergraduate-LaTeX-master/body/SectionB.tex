@@ -15,11 +15,11 @@
 	\centering
 	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
 	\renewcommand{\tablename}{表}
-	\caption{CUDA存储系统层级}
+	\caption{CUDA存储系统层级\cite{CUDAPROG}}
 	\addtocounter{table}{-1}
 	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
 	\renewcommand{\tablename}{Table}
-	\caption{CUDA storage system hierarchy}
+	\caption{CUDA storage system hierarchy\cite{CUDAPROG}}
 	\begin{tabular}{cccc}
 		\toprule
 		项目				&	大小			&	延迟(时钟周期)	&	访问权限	\\
@@ -61,11 +61,11 @@
 	\includegraphics[width=7cm, height=10cm]{figures/PascalSM.jpg}
 	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
 	\renewcommand{\figurename}{图}
-	\caption{伏特架构与帕斯卡架构的流多处理器示意图}
+	\caption{伏特架构与帕斯卡架构的流多处理器示意图\cite{VOLTAWHITEPAPER}\cite{PASCALWHITEPAPER}}
 	\addtocounter{figure}{-1}
 	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
 	\renewcommand{\figurename}{Figure}
-	\caption{SM diagram of Volta and Pascal architecture}
+	\caption{SM diagram of Volta and Pascal architecture\cite{VOLTAWHITEPAPER}\cite{PASCALWHITEPAPER}}
 	\label{Fig.VoltaPascal}
 \end{figure}
 \subparagraph{张量核心(Tensor Core)}~{}
@@ -81,7 +81,7 @@
 	\addtocounter{figure}{-1}
 	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
 	\renewcommand{\figurename}{Figure}
-	\caption{Hierarchy of GEMM using Tensor Core}
+	\caption{Hierarchy of GEMM using Tensor Core\cite{CUTLASS}}
 	\label{Fig.Tile}
 \end{figure}
 
@@ -96,11 +96,11 @@
 	\centering
 	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
 	\renewcommand{\tablename}{表}
-	\caption{线程组织形式}
+	\caption{线程组织形式\cite{BLOCKDIAG}}
 	\addtocounter{table}{-1}
 	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
 	\renewcommand{\tablename}{Table}
-	\caption{Type of organizing threads}
+	\caption{Type of organizing threads\cite{BLOCKDIAG}}
 	\begin{tabular}{ccc}
 		\toprule
 		粒度	&	调度者	& 	分配给 \\
@@ -112,7 +112,7 @@
 		\bottomrule
 	\end{tabular} \label{table-粒度}\\
 	
-	$ * $ 在本世代图灵架构及以前，TPC与SM可以等价，因为一个TPC上仅包含一个SM，然而自下一代安培架构开始，一个TPC中将会有若干个SM。虽然本文研究的图灵架构的硬件在逻辑上SM与TPC等价，但在硬件上还是会做区分，故在表中详细写出\cite{BLOCKDIAG}。
+	$ * $ 在本世代图灵架构及以前，TPC与SM可以等价，因为一个TPC上仅包含一个SM，然而自下一代安培架构开始，一个TPC中将会有若干个SM。虽然本文研究的图灵架构的硬件在逻辑上SM与TPC等价，但在硬件上还是会做区分，故在表中详细写出。
 \end{table}
 \subparagraph{调度方式}~{}
 \par 以上内容介绍了GPU线程的组织形式，这里将介绍GPU线程的调用方式，在介绍调用方式之前，需要先明确GPU与CPU的硬件上的差别，主要有如下几点。
@@ -198,7 +198,7 @@
 	\addtocounter{figure}{-1}
 	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
 	\renewcommand{\figurename}{Figure}
-	\caption{Modules in TensorRT}
+	\caption{Modules in TensorRT\cite{TENSORRT}}
 	\label{Fig.TensorRT}
 \end{figure}
 \par 优化过程的第一部分，也是较为重要的部分便是网络层和张量的合成，这一过程将会在不改变底层计算内容的情况下重构计算图来获得更高效的计算方式。DL框架在进行推理时会执行多个子过程，这些过程都需要GPU Kernel来运行，这就不可避免地带来会更多Kernel Launch，如前文所说，Kernel Launch所带来的上下文切换仍然是很大的开销。TensorRT主要从Kernel纵向融合(如卷积、偏置、激活层的Kernel可以融合为一个Kernel)；Kernel横向融合(挖掘输入数据形状相同但权重不同的层，使用一个Kernel而非原来的若干个Kernel提高效率)和消除Concatenation层(通过预分配输出缓存、不同的写入方式来避免转换)。

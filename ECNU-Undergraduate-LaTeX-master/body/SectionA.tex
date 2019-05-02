@@ -17,11 +17,11 @@
 	\addtocounter{figure}{-1}
 	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
 	\renewcommand{\figurename}{Figure}
-	\caption{Performance improvement in GEMM given by the official white paper and practical application}
+	\caption{Performance improvement in GEMM given by the official white paper and practical application\cite{VOLTAWHITEPAPER}\cite{TFCOMPARE}}
 	\label{fig.PerfCompare}
 \end{figure}
 \par 在最近刚结束的GTC 2019会议中，NVIDIA发布了若干面向机器学习的硬件、软件。包括专为张量计算设计的Turing Tensor Core GPU，嵌入式平台的Jetson Nano\cite{JETSONNANO}，将机器学习相关计算库整合的CUDA X\cite{CUDAX}，这些都将在后文提到，但由于这些本质上都基于目前的Turing架构，故不会单独进行详细地说明。
-\subsection{目前展开的工作}
+\subsection{相关研究}
 \par 本文的研究同时涉及硬件和软件：NVIDIA新架构的GPU与使用GPU加速计算的机器学习应用，注意这里的机器学习应用并不只是现在大行其道的深度学习，还包括传统的基于概率模型的方法等。
 \par 在近年来深度学习迅猛发展之前，关于使用GPU并行化机器学习算法的研究就已有很多，甚至可以说正是基于GPU的强大并行计算能力，深度学习才能发展如此迅速。早在2005年，D. Steinkraus等人便对在GPU上实现机器学习算法进行了研究， 当时实现的算法是OCR，如今OCR能够非常快速、方便地通过各种框架、语言实现。然而这一研究奠定了使用GPU加速机器学习应用的基础\cite{GPUFORML}。之后的几年中，除去OCR外，基于GPU的各种并行机器学习算法包括kNN\cite{KNNG}，支持向量机\cite{SMOSVM}都慢慢成熟。由于贝叶斯网络的精确推理是个NP难的问题，其性能受限于硬件水平，然而根据Md Vasimuddin等人的研究\cite{BAYESINF}，通过并行方法将延迟降低了许多。由于传统机器学习方法有着延迟低、模型小、训练时间短、可解释性强等优点，在深度学习迅猛发展的今天，传统机器学习方法仍然占有很大的市场，故评估GPU对传统机器学习加速的性能是十分有必要的。本文中在评估传统机器学习的部分便采用了并行的支持向量机算法(SMO-SVM)，如今，不管是在工业生产领域还是学术研究领域，该算法仍占有一席之地。
 \par 之后不久，深度学习、神经网络便迎来了爆炸式的发展。实际上在二十世纪末，便已经有完整的神经网络算法的理论基础；在1979年，日本学者福岛邦彦提出了Neocognition模型，其中使用多层网络以及神经元对图像特征进行提取和筛选被认为是启发了卷积神经网络的开创性研究\cite{JAPANESSAY}。1989年，LeCun首次在论文中提出了“卷积”一次，卷积神经网络因此得名\cite{LENET}。在1993年，贝尔实验室对LeCun的工作进行了代码实现，并大量部署于手写支票识别系统，然而限于当时计算能力低下，基于神经网络的研究也停滞在了理论阶段，其主要原因便是网络中需要训练的参数太多，网络结构复杂，在当时没有芯片能满足如此高的性能要求\cite{NNML}。然而，随着高性能GPU芯片的出现，基于神经网络的方法正如日中天地发展。从TinyCNN等较轻量级、功能单一的库，到Tensor Flow、PyTorch、Caffe、Chain等完整、易于使用的框架，这些工具或是本身就是基于GPU编写的，或是慢慢更新对GPU的支持；目前市面上的绝大部分该类产品均支持使用GPU运行，单单使用CPU进行深度学习训练已经成为历史。在本文中，卷积神经网络由于它的广泛性、高性能、典型性，在本文中被选为深度学习部分评估的主要载体。
@@ -34,9 +34,9 @@
 \par 同时，为了方便从业者搭建模型，各种框架层出不穷，考虑到计算量要求，这些框架陆续推出了GPU版本，对GPU硬件操作进行了抽象，然而对于硬件操作、细节的抽象使得框架无法完全利用硬件的性能，以及新硬件的特征，这也导致了理论性能与实际应用中的性能的巨大差距。
 \par 为尽可能提升在实际应用场景中硬件性能的利用率，发掘新架构的提升潜力，本文将自底向上结合硬件特征对机器学习应用进行研究与评估，挖掘理论与实际不符的原因并提出适当的或是程序编写方面的，或是硬件架构方面的建议与展望。本文将主要从如下三个层面研究。
 \begin{itemize}
-	\item 基于性能评估的Benchmark，涉及中间代码与机器代码，下一章将会简要介绍。
-	\item 基于CUDA源码的机器学习应用，分为深度学习应用和传统机器学习应用两部分。
-	\item 基于Tensor Flow-GPU框架的深度学习应用。
+	\item 基于性能评估的Benchmark，从指令、缓存、上下文切换等角度分析通用矩阵乘法、卷积运算在新架构GPU上的性能。
+	\item 基于CUDA源码搭建深度学习和传统机器学习应用(卷积神经网络、支持向量机)，分析较完整、涉及多种运算的应用在新架构GPU上的性能，并从纹理内存、调度方式上尝试优化。
+	\item 基于深度学习框架Tensor Flow-GPU搭建完整的卷积神经网络，分析在贴近实际开发情况下，新架构GPU所能带来的性能提升。除训练过程外，网络推理过程也在研究范围内。最后，结合基于Benchmark，CUDA源码的实验结果，从纹理内存、数据精度、超参数等方面对网络训练过程进行优化。并利用TensorRT与相应硬件平台Jetson对网络推理过程进行优化。
 \end{itemize}
 
 \subsection{本文的组织结构}
