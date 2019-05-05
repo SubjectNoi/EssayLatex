@@ -239,7 +239,7 @@ $$ C \leftarrow \alpha AB + \beta C $$
 	\caption{Performance of GEMM at Half and Single (Sorted by speed-up ratio)}
 	\label{Fig-PerfGemmByratio}
 \end{figure}
-\par 图 \ref{Fig-PerfGemmByratioTri}中根据实验中输入矩阵共享的维度$ k $对加速比进行着色。可见无法被8整除的测试样例的加速比较低，接近1；而能够被8整除的测试样例大部分都能被张量核心有效地加速；而随着$ K $值的上升，加速比也呈现上升趋势。结合GPU实际在线程调度中的特征，以及中间代码(PTX)中给出的子矩阵分割形状参数，如图 \ref{Fig.WMMADOC}所示(图中wmma指令为跨线程束矩阵乘加，而mma则非跨线程束)，在实际使用中应尽量确保输入矩阵共享的维度$ K $能够被8整除，且最好为32的倍数；且尽量不要使用太“扁”或太“长”的矩阵作为输入。
+\par 图 \ref{Fig-PerfGemmByratioTri}中根据实验中输入矩阵共享的维度$ k $对加速比进行着色。可见无法被8整除的测试样例的加速比较低，接近1；而能够被8整除的测试样例大部分都能被张量核心有效地加速；而随着$ K $值的上升，加速比也呈现上升趋势。结合GPU实际在线程调度中的特征，以及中间代码(PTX)中给出的子矩阵分割形状参数，如表 \ref{table-WMMADOC}所示(表中wmma指令为跨线程束矩阵乘加，而mma则非跨线程束)，在实际使用中应尽量确保输入矩阵共享的维度$ K $能够被8整除，且最好为32的倍数；且尽量不要使用太“扁”或太“长”的矩阵作为输入。
 \begin{figure}
 	\centering
 	\includegraphics[width=15cm]{figures/GEMM-Half-TF-Byratio-Tri.jpg}\\
@@ -253,18 +253,29 @@ $$ C \leftarrow \alpha AB + \beta C $$
 	\caption{Performance of GEMM at Half and Single (Sorted by speed-up ratio, colored with feature of K)}
 	\label{Fig-PerfGemmByratioTri}
 \end{figure}
-\begin{figure}
+
+\begin{table}
 	\centering
-	\includegraphics[width=15cm]{figures/WMMADOC.jpg}
-	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
-	\renewcommand{\figurename}{图}
+	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
+	\renewcommand{\tablename}{表}
 	\caption{官方文档给出的wmma指令支持的分割尺寸\cite{PTX}}
-	\addtocounter{figure}{-1}
-	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
-	\renewcommand{\figurename}{Figure}
-	\caption{Matrix size supported in wmma instruction based on official documentation}
-	\label{Fig.WMMADOC}
-\end{figure}
+	\addtocounter{table}{-1}
+	\renewcommand{\thetable}{\arabic{section}-\arabic{table} }
+	\renewcommand{\tablename}{Table}
+	\caption{Matrix size supported in wmma instruction based on official documentation\cite{PTX}}
+	\begin{tabular}{cccc}
+		\toprule
+		指令 & 形状 & 数据精度 & PTX代码版本 \\
+		\midrule
+		wmma & .m16n16k16 & INT8/FP16/FP32 & $ \geq 6.0 $\\ 
+		wmma & .m8n32k16/.m32n8k16 & INT8/FP16/FP32 & $ \geq 6.1 $\\ 
+		wmma & .m8n8k32 & INT4 & $ \geq 6.3 $\\ 
+		wmma & .m8n8k128 & One bit & $ \geq 6.3 $\\ 
+		mma & .m8n8k4 & FP16/FP32 & $ \geq 6.4 $\\ 
+		\bottomrule
+	\end{tabular} \label{table-WMMADOC} \\
+	
+\end{table}
 \par 由于以上评估进行时GPU均为到达满载，故使用CUTLASS库评估了GPU满载时的矩阵乘加性能，如图 \ref{Fig-GEMM-CUTLASS}所示，可见在CUTLASS中以半精度浮点进行运算，开启张量核心(hgemm-wmma)后性能相比未开启张量核心(hgemm)提升了约3倍，与前文实验中相符；而其输入矩阵数据分布方式对性能有一定影响，总体来看，在半精度情况下(FP16)，两矩阵均以行主元素存储的情况下性能较强(nt代表矩阵$ A $不进行转置，而矩阵$ B $进行转置，然而由于矩阵乘法运算的特征，矩阵$ B $转置表示其本身存储方式仍是行主元素存储；而tn则代表$ A $和$ B $都以列主元素存储)，而两矩阵均以列主元素存储时性能较弱；然而在单精度情况下(FP32)时，四种运算性能差距不大，而总体运算性能也低于半精度时的运算性能，这也与在硬件层面张量核心以半精度为操作单元有关；而在双精度下(dgemm, double gemm)性能较差，这也与其硬件特征有关，即需要若干个低精度核心同步、合作计算高精度结果。值得注意的是，相对于CUTLASS 1.2版本，1.3版本新增了$ m=8,n=8,k=4 $的非跨线程束矩阵乘加(mma-gemm)，这也是考虑到在数据规模较小时wmma会引发数量可观的同步、上下文切换，故新增了这一粒度的矩阵乘加。
 \par 在实验平台中的NVIDIA Geforce RTX 2080TI搭载的TU102核心中有68个流多处理器单元\cite{2080TI}，结合之前单个流处理器单元测试的性能，大约是60倍，这与硬件特征亦相符合，该结果将作为基准性能。从该试验得到的结果以及NVIDIA官方文档的资料，正如前文提到过，张量核心的计算最小粒度是$ 4\times 4 $然而在调度时仍然是以$ 16\times 16 $为单位，且两个线程束也被组织到一起进行执行；我们可以提出合理地猜想，在下一代架构的硬件中(安培架构)，将会出现规模更大、跨越更多个线程束的矩阵乘加的指令集，以提高并行度进而进一步增加计算密集型任务的性能；当然，这样的指令也会在线程束之间的同步带来挑战。
 
@@ -724,6 +735,19 @@ $$ C \leftarrow \alpha AB + \beta C $$
 	\renewcommand{\figurename}{Figure}
 	\caption{Training time of SMO-SVM}
 	\label{Fig-SMOSVMRES}
+\end{figure}
+\par 图 \ref{Fig-SVMSRC}为实验中的代码片段，包含以CSR格式存储的稀疏矩阵与传统矩阵的转化以及使用CUDA API进行相关计算的代码。
+\begin{figure}
+	\centering
+	\includegraphics[width=15cm]{figures/SMOSVMSRC.jpg}
+	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
+	\renewcommand{\figurename}{图}
+	\caption{稀疏矩阵转化以及相关矩阵计算的代码片段}
+	\addtocounter{figure}{-1}
+	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
+	\renewcommand{\figurename}{Figure}
+	\caption{Part of the code of converting CSR matrix to dense matrix and related matrix calculation}
+	\label{Fig-SVMSRC}
 \end{figure}
 \subparagraph{结果分析}~{}
 \par 针对实验结果中使用张量核心的GEMM的性能提升幅度，因支持向量机中除去算术运算，还存在诸多逻辑、分支和大量模板库，复杂、多样的计算无法避免，故提升幅度远小于Benchmark中使用张量核心的性能提升幅度。针对稀疏矩阵库cuSPARSE，随着数据集的增大，特征矩阵更为稀疏，采用CSR压缩存储的稀疏矩阵压缩比更高，故cuSPARSE表现较好。而数据集较小时CSR压缩存储的矩阵压缩比较小，节省的运算资源也较少，故性能不如使用张量核心的GEMM。在原始的ThunderSVM库中，采用的是cuSPARSE优化的稀疏矩阵计算方法。本实验中将源代码改为使用张量核心的GEMM方法，并取得了一些性能上的提升。

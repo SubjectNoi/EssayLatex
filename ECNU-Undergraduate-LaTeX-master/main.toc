@@ -92,30 +92,30 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{\numberline {II}结果分析}{50}{subparagraph.3.3.2.0.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4}基于TensorRT的神经网络推理}{51}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.4}基于TensorRT的神经网络推理}{52}{subsection.3.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {I}实验结果}{51}{subparagraph.3.4.0.0.1}
+\contentsline {subparagraph}{\numberline {I}实验结果}{52}{subparagraph.3.4.0.0.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {II}结果分析}{51}{subparagraph.3.4.0.0.2}
+\contentsline {subparagraph}{\numberline {II}结果分析}{52}{subparagraph.3.4.0.0.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.5}基于Tensor Flow-GPU框架的应用}{53}{subsection.3.5}
+\contentsline {subsection}{\numberline {3.5}基于Tensor Flow-GPU框架的应用}{54}{subsection.3.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {I}实验结果}{53}{subparagraph.3.5.0.0.1}
+\contentsline {subparagraph}{\numberline {I}实验结果}{54}{subparagraph.3.5.0.0.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {II}结果分析}{54}{subparagraph.3.5.0.0.2}
+\contentsline {subparagraph}{\numberline {II}结果分析}{55}{subparagraph.3.5.0.0.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {第四章}总结与展望}{57}{section.4}
+\contentsline {section}{\numberline {第四章}总结与展望}{58}{section.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1}总结}{57}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.1}总结}{58}{subsection.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2}展望}{59}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.2}展望}{60}{subsection.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {I}更细粒度的同步机制}{59}{subparagraph.4.2.0.0.1}
+\contentsline {subparagraph}{\numberline {I}更细粒度的同步机制}{60}{subparagraph.4.2.0.0.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {II}规模更大的矩阵乘加指令}{59}{subparagraph.4.2.0.0.2}
+\contentsline {subparagraph}{\numberline {II}规模更大的矩阵乘加指令}{60}{subparagraph.4.2.0.0.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{\numberline {III}针对稀疏矩阵优化的矩阵乘加指令}{59}{subparagraph.4.2.0.0.3}
+\contentsline {subparagraph}{\numberline {III}针对稀疏矩阵优化的矩阵乘加指令}{60}{subparagraph.4.2.0.0.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{参考文献}{60}{section*.52}
+\contentsline {section}{参考文献}{61}{section*.53}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{致谢}{63}{section*.54}
+\contentsline {section}{致谢}{64}{section*.55}

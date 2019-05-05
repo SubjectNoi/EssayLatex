@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.3.23)  2 MAY 2019 16:08
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.3.23)  5 MAY 2019 21:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -3023,8 +3023,6 @@ File: figures/GEMM-Half-TF-Byratio-Tri.jpg Graphic file (type bmp)
 <figures/GEMM-Half-TF-Byratio-Tri.jpg>
 File: figures/GEMM-Single-TF-Byratio-Tri.jpg Graphic file (type bmp)
 <figures/GEMM-Single-TF-Byratio-Tri.jpg>
-File: figures/WMMADOC.jpg Graphic file (type bmp)
-<figures/WMMADOC.jpg>
  [28] [29] [30]
 File: figures/CUBLASPerf.jpg Graphic file (type bmp)
 <figures/CUBLASPerf.jpg>
@@ -3037,7 +3035,7 @@ File: figures/CONVError.jpg Graphic file (type bmp)
 <figures/CONVError.jpg>
  [33]
 [34] [35] [36]
-Overfull \hbox (11.85452pt too wide) in paragraph at lines 492--501
+Overfull \hbox (11.85452pt too wide) in paragraph at lines 503--512
  [][] 
 
 \hbox(33.21555+28.21553)x455.24411
@@ -3103,13 +3101,16 @@ File: figures/CNN-CH-BS.jpg Graphic file (type bmp)
  [46] [47] [48]
 File: figures/SMOSVMRES.jpg Graphic file (type bmp)
 <figures/SMOSVMRES.jpg>
- [49] [50]
+ [49]
+File: figures/SMOSVMSRC.jpg Graphic file (type bmp)
+<figures/SMOSVMSRC.jpg>
+ [50] [51]
 File: figures/TENSORRTRES.jpg Graphic file (type bmp)
 <figures/TENSORRTRES.jpg>
 File: figures/TENSORRTRATIO.jpg Graphic file (type bmp)
 <figures/TENSORRTRATIO.jpg>
- [51]
-[52] [53] [54] [55]) (./body/SectionD.tex [56] [57] [58]) [59]
+
+[52] [53] [54] [55] [56]) (./body/SectionD.tex [57] [58] [59]) [60]
 \g__fontspec_family_FangSong_int=\count559
 .................................................
 . fontspec info: "no-font-shape"
@@ -3138,9 +3139,10 @@ File: figures/TENSORRTRATIO.jpg Graphic file (type bmp)
 . <->"FangSong/OT:script=hani;language=DFLT;"
 . - 'small caps'  (m/sc) with NFSS spec.: 
 .................................................
- [60
+ [61
 
-] [61]
+]
+[62]
 Overfull \hbox (2.37288pt too wide) in paragraph at lines 58--58
 []\TU/TimesNewRoman(0)/m/n/10 PLATT J. Sequential Minimal Optimization: A Fast 
 Algorithm for Training Support Vector Machines[R\TU/lmtt/m/n/10 /\TU/TimesNewRo
@@ -3165,7 +3167,7 @@ man(0)/m/n/10 OL].
 .\kern 0.0002
 .etc.
 
-[62] (./ending/Acknowledgement.tex [63
+[63] (./ending/Acknowledgement.tex [64
 
 
 
@@ -3173,14 +3175,14 @@ man(0)/m/n/10 OL].
 \tf@thm=\write11
 \openout11 = `main.thm'.
 
- [64]
+ [65]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 66.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 66.
  (./main.aux)
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 66.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 66.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: F6CE97BCA9DCB0FAA2181644832218EA.
+(rerunfilecheck)             Checksum: 39F771A31B08599E80B8687346185998.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -3190,12 +3192,12 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 55834 strings out of 492970
- 1154005 string characters out of 6134778
- 1710010 words of memory out of 5000000
- 59019 multiletter control sequences out of 15000+600000
+ 55836 strings out of 492970
+ 1154046 string characters out of 6134778
+ 1710183 words of memory out of 5000000
+ 59021 multiletter control sequences out of 15000+600000
  546814 words of font info for 143 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  63i,12n,93p,10500b,4712s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.pdf (69 pages).
+Output written on main.pdf (70 pages).
