@@ -1204,117 +1204,6 @@
       \range{pages}{13}
       \keyw{THEDESIGN}
     \endentry
-    \entry{PASCALWHITEPAPER}{online}{}
-      \name{author}{1}{}{%
-        {{hash=a2fe9051fe051f819bd739ef3e340377}{%
-           family={NVIDIA},
-           familyi={N\bibinitperiod}}}%
-      }
-      \list{institution}{1}{%
-        {NVIDIA Corp.}%
-      }
-      \list{language}{1}{%
-        {english}%
-      }
-      \list{publisher}{1}{%
-        {NVIDIA Corp.}%
-      }
-      \strng{namehash}{a2fe9051fe051f819bd739ef3e340377}
-      \strng{fullhash}{a2fe9051fe051f819bd739ef3e340377}
-      \strng{bibnamehash}{a2fe9051fe051f819bd739ef3e340377}
-      \strng{authorbibnamehash}{a2fe9051fe051f819bd739ef3e340377}
-      \strng{authornamehash}{a2fe9051fe051f819bd739ef3e340377}
-      \strng{authorfullhash}{a2fe9051fe051f819bd739ef3e340377}
-      \field{sortinit}{4}
-      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{langid}{english}
-      \field{month}{6}
-      \field{note}{report}
-      \field{title}{NVIDIA Tesla P100 GPU ARCHITECTURE}
-      \field{usera}{R}
-      \field{userd}{english}
-      \field{userf}{english}
-      \field{year}{2016}
-      \field{dateera}{ce}
-      \field{pages}{10\bibrangedash 13}
-      \range{pages}{4}
-      \verb{urlraw}
-      \verb https://images.nvidia.com/content/pdf/tesla/whitepaper/pascal-architecture-whitepaper-v1.2.pdf
-      \endverb
-      \verb{url}
-      \verb https://images.nvidia.com/content/pdf/tesla/whitepaper/pascal-architecture-whitepaper-v1.2.pdf
-      \endverb
-      \keyw{PASCALWHITEPAPER,report}
-    \endentry
-    \entry{HMMA}{manual}{}
-      \name{author}{1}{}{%
-        {{hash=6c065399255dd9e3d5099544c9f8bc40}{%
-           family={McCormark},
-           familyi={M\bibinitperiod},
-           given={Joel},
-           giveni={J\bibinitperiod}}}%
-      }
-      \list{language}{1}{%
-        {english}%
-      }
-      \strng{namehash}{6c065399255dd9e3d5099544c9f8bc40}
-      \strng{fullhash}{6c065399255dd9e3d5099544c9f8bc40}
-      \strng{bibnamehash}{6c065399255dd9e3d5099544c9f8bc40}
-      \strng{authorbibnamehash}{6c065399255dd9e3d5099544c9f8bc40}
-      \strng{authornamehash}{6c065399255dd9e3d5099544c9f8bc40}
-      \strng{authorfullhash}{6c065399255dd9e3d5099544c9f8bc40}
-      \field{sortinit}{5}
-      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{langid}{english}
-      \field{month}{3}
-      \field{title}{Volta HMMA.884 instruction(s) and GEMM}
-      \field{usera}{A}
-      \field{userd}{english}
-      \field{userf}{english}
-      \field{year}{2019}
-      \field{dateera}{ce}
-      \keyw{HMMA}
-    \endentry
-    \entry{AMPEREPOR}{manual}{}
-      \name{author}{2}{}{%
-        {{hash=2fefeafffb53d56973cff6dc225b982f}{%
-           family={Bezdany},
-           familyi={B\bibinitperiod},
-           given={Mark},
-           giveni={M\bibinitperiod}}}%
-        {{hash=033e1978ba23825a196e6284416fcb4a}{%
-           family={Kumar},
-           familyi={K\bibinitperiod},
-           given={Naveen},
-           giveni={N\bibinitperiod}}}%
-      }
-      \list{language}{1}{%
-        {english}%
-      }
-      \strng{namehash}{e38ac0787e4d607f0536f4c59722793a}
-      \strng{fullhash}{c8d255e1d8b07b382e8f6f8782da9cae}
-      \strng{bibnamehash}{c8d255e1d8b07b382e8f6f8782da9cae}
-      \strng{authorbibnamehash}{c8d255e1d8b07b382e8f6f8782da9cae}
-      \strng{authornamehash}{e38ac0787e4d607f0536f4c59722793a}
-      \strng{authorfullhash}{c8d255e1d8b07b382e8f6f8782da9cae}
-      \field{sortinit}{5}
-      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{langid}{english}
-      \field{month}{3}
-      \field{title}{Ampere SM SCH POR}
-      \field{usera}{A}
-      \field{userd}{english}
-      \field{userf}{english}
-      \field{year}{2019}
-      \field{dateera}{ce}
-      \keyw{AMPEREPOR}
-    \endentry
     \entry{FLYNN}{article}{}
       \name{author}{1}{}{%
         {{hash=2a08797308ff9f0a8442b81a135c866a}{%
@@ -1332,8 +1221,8 @@
       \strng{authorbibnamehash}{2a08797308ff9f0a8442b81a135c866a}
       \strng{authornamehash}{2a08797308ff9f0a8442b81a135c866a}
       \strng{authorfullhash}{2a08797308ff9f0a8442b81a135c866a}
-      \field{sortinit}{5}
-      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{IEEE Trans. Computers}
@@ -1368,8 +1257,8 @@
       \strng{authorbibnamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authornamehash}{a2fe9051fe051f819bd739ef3e340377}
       \strng{authorfullhash}{a2fe9051fe051f819bd739ef3e340377}
-      \field{sortinit}{5}
-      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -1413,8 +1302,8 @@
       \strng{authorbibnamehash}{73bb79365e406b3f4433e99889b47cd0}
       \strng{authornamehash}{2b223878db0030fd22276e1c3a4ed021}
       \strng{authorfullhash}{dd4343868023a8ff48ed351b8ddb474c}
-      \field{sortinit}{6}
-      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{langid}{english}
@@ -1449,8 +1338,8 @@
       \strng{authorbibnamehash}{a5f04d2b6e8839e1e8d694238647bb9f}
       \strng{authornamehash}{b8257324f1de81b52c0db2304e25a0e1}
       \strng{authorfullhash}{a5f04d2b6e8839e1e8d694238647bb9f}
-      \field{sortinit}{6}
-      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Proceedings of the 8th India Software Engineering Conference, ISEC 2015, Bangalore, India, February 18-20, 2015}
@@ -1495,8 +1384,8 @@
       \strng{authorbibnamehash}{e4a3d68e75a99356f066efe3a6bc8e6a}
       \strng{authornamehash}{daaeb7670772db8a47b015a37e6672bc}
       \strng{authorfullhash}{e4a3d68e75a99356f066efe3a6bc8e6a}
-      \field{sortinit}{6}
-      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{2014 IEEE International Conference on Big Data, Big Data 2014, Washington, DC, USA, October 27-30, 2014}
@@ -1536,8 +1425,8 @@
       \strng{authorbibnamehash}{f05b51623119c374c7300332cb110812}
       \strng{authornamehash}{b7202df943db8c13090366d00106955f}
       \strng{authorfullhash}{f05b51623119c374c7300332cb110812}
-      \field{sortinit}{6}
-      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{{IEEE} International Geoscience {\&} Remote Sensing Symposium, {IGARSS} 2006, July 31 - August 4, 2006, Denver, Colorado, USA, Proceedings}
@@ -1554,6 +1443,117 @@
       \verb 10.1109/IGARSS.2006.255
       \endverb
       \keyw{PAGELOCK}
+    \endentry
+    \entry{PASCALWHITEPAPER}{online}{}
+      \name{author}{1}{}{%
+        {{hash=a2fe9051fe051f819bd739ef3e340377}{%
+           family={NVIDIA},
+           familyi={N\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {NVIDIA Corp.}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \list{publisher}{1}{%
+        {NVIDIA Corp.}%
+      }
+      \strng{namehash}{a2fe9051fe051f819bd739ef3e340377}
+      \strng{fullhash}{a2fe9051fe051f819bd739ef3e340377}
+      \strng{bibnamehash}{a2fe9051fe051f819bd739ef3e340377}
+      \strng{authorbibnamehash}{a2fe9051fe051f819bd739ef3e340377}
+      \strng{authornamehash}{a2fe9051fe051f819bd739ef3e340377}
+      \strng{authorfullhash}{a2fe9051fe051f819bd739ef3e340377}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{langid}{english}
+      \field{month}{6}
+      \field{note}{report}
+      \field{title}{NVIDIA Tesla P100 GPU ARCHITECTURE}
+      \field{usera}{R}
+      \field{userd}{english}
+      \field{userf}{english}
+      \field{year}{2016}
+      \field{dateera}{ce}
+      \field{pages}{10\bibrangedash 13}
+      \range{pages}{4}
+      \verb{urlraw}
+      \verb https://images.nvidia.com/content/pdf/tesla/whitepaper/pascal-architecture-whitepaper-v1.2.pdf
+      \endverb
+      \verb{url}
+      \verb https://images.nvidia.com/content/pdf/tesla/whitepaper/pascal-architecture-whitepaper-v1.2.pdf
+      \endverb
+      \keyw{PASCALWHITEPAPER,report}
+    \endentry
+    \entry{HMMA}{manual}{}
+      \name{author}{1}{}{%
+        {{hash=6c065399255dd9e3d5099544c9f8bc40}{%
+           family={McCormark},
+           familyi={M\bibinitperiod},
+           given={Joel},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \strng{namehash}{6c065399255dd9e3d5099544c9f8bc40}
+      \strng{fullhash}{6c065399255dd9e3d5099544c9f8bc40}
+      \strng{bibnamehash}{6c065399255dd9e3d5099544c9f8bc40}
+      \strng{authorbibnamehash}{6c065399255dd9e3d5099544c9f8bc40}
+      \strng{authornamehash}{6c065399255dd9e3d5099544c9f8bc40}
+      \strng{authorfullhash}{6c065399255dd9e3d5099544c9f8bc40}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{langid}{english}
+      \field{month}{3}
+      \field{title}{Volta HMMA.884 instruction(s) and GEMM}
+      \field{usera}{A}
+      \field{userd}{english}
+      \field{userf}{english}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \keyw{HMMA}
+    \endentry
+    \entry{AMPEREPOR}{manual}{}
+      \name{author}{2}{}{%
+        {{hash=2fefeafffb53d56973cff6dc225b982f}{%
+           family={Bezdany},
+           familyi={B\bibinitperiod},
+           given={Mark},
+           giveni={M\bibinitperiod}}}%
+        {{hash=033e1978ba23825a196e6284416fcb4a}{%
+           family={Kumar},
+           familyi={K\bibinitperiod},
+           given={Naveen},
+           giveni={N\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \strng{namehash}{e38ac0787e4d607f0536f4c59722793a}
+      \strng{fullhash}{c8d255e1d8b07b382e8f6f8782da9cae}
+      \strng{bibnamehash}{c8d255e1d8b07b382e8f6f8782da9cae}
+      \strng{authorbibnamehash}{c8d255e1d8b07b382e8f6f8782da9cae}
+      \strng{authornamehash}{e38ac0787e4d607f0536f4c59722793a}
+      \strng{authorfullhash}{c8d255e1d8b07b382e8f6f8782da9cae}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{langid}{english}
+      \field{month}{3}
+      \field{title}{Ampere SM SCH POR}
+      \field{usera}{A}
+      \field{userd}{english}
+      \field{userf}{english}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \keyw{AMPEREPOR}
     \endentry
     \entry{TFBUILD}{manual}{}
       \name{author}{1}{}{%
