@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.3.23)  5 MAY 2019 21:16
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.3.23)  6 MAY 2019 19:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2957,15 +2957,7 @@ File: figures/GlobalM.jpg Graphic file (type bmp)
 <figures/GlobalM.jpg>
 
 [7]
-File: figures/VoltaSM.jpg Graphic file (type bmp)
-<figures/VoltaSM.jpg>
-File: figures/PascalSM.jpg Graphic file (type bmp)
-<figures/PascalSM.jpg>
- [8]
-File: figures/Tile.jpg Graphic file (type bmp)
-<figures/Tile.jpg>
- [9]
-Overfull \hbox (4.5594pt too wide) in paragraph at lines 90--91
+Overfull \hbox (4.5594pt too wide) in paragraph at lines 55--56
 \TU/TimesNewRoman(0)/m/n/12.045 GPU \TU/SimSun(1)/m/n/12.045 系 统 被 称 为 \TU/Time
 sNewRoman(0)/m/n/12.045 SIMT(Single Instruction Multiple Thread) \TU/SimSun(1)/
 m/n/12.045 即 单 指 令 多 线 程，|  与 \TU/TimesNewRoman(0)/m/n/12.045 SIMD(Single
@@ -2978,7 +2970,15 @@ m/n/12.045 即 单 指 令 多 线 程，|  与 \TU/TimesNewRoman(0)/m/n/12.045 
 .\TU/SimSun(1)/m/n/12.045 统
 .etc.
 
-[10] [11] [12] [13]
+[8] [9] [10]
+File: figures/VoltaSM.jpg Graphic file (type bmp)
+<figures/VoltaSM.jpg>
+File: figures/PascalSM.jpg Graphic file (type bmp)
+<figures/PascalSM.jpg>
+ [11]
+File: figures/Tile.jpg Graphic file (type bmp)
+<figures/Tile.jpg>
+ [12] [13]
 File: figures/Inst.jpg Graphic file (type bmp)
 <figures/Inst.jpg>
 File: figures/ActualInst.jpg Graphic file (type bmp)
@@ -3182,7 +3182,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 66.
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 66.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 66.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 39F771A31B08599E80B8687346185998.
+(rerunfilecheck)             Checksum: 50BE8FD2DDE4DA26C3894F584C33A1D8.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -3194,7 +3194,7 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 Here is how much of TeX's memory you used:
  55836 strings out of 492970
  1154046 string characters out of 6134778
- 1710183 words of memory out of 5000000
+ 1711181 words of memory out of 5000000
  59021 multiletter control sequences out of 15000+600000
  546814 words of font info for 143 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191

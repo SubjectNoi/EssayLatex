@@ -5,7 +5,7 @@
 
 \subsection{NVIDIA GPU硬件}
 \subsubsection{GPU芯片总体结构} 
-\par 在介绍新老架构区别之前，本节首先自顶向下简要介绍一下NVIDIA GPU芯片的结构。一块GPU芯片拥有若干图形处理器簇(Graphics Processing Cluster, GPC)，由外围总线进行调度管理；一个图形处理器簇上有若干纹理处理器簇(Texture Processing Cluster, TPC)；需要注意的是以上两种结构在编写CUDA程序时并不暴露。一个纹理处理器簇上有若干流多处理器单元(Stream Multiprocessor, SM)，也是本文关注的重点。流多处理器单元被一个线程块调度器管理，所有流多处理器单元通过全局内存总线经过L2缓存共享全局内存。每个流多处理器单元中由若干流处理器(Stream Processpr, SP)，然而这一概念随着流多处理器单元中运算单元种类的增加而被弱化了。在一个流多处理器单元内部的流处理器共享一个指令缓存，每个流处理器拥有自己的线程束调度器与寄存器文件；流处理器中包含若干种执行单元，有浮点单元，整数单元，在新架构中还加入了张量单元(Tensor Core)，在RTX 2080TI上具体的参数为：一个SM包含64个单精度浮点算术单元，32个双精度浮点算术单元，64个32位整形算术单元，8个混合精度张量单元，4个线程束调度器和16个特殊功能单元；所有流处理器通过显存纵横矩阵(CrossBar)访问共享内存，或被称为L1缓存\cite{EXPLORING}。
+\par 在介绍新老架构区别之前，本节首先自顶向下简要介绍一下NVIDIA GPU芯片的结构。一块GPU芯片拥有若干图形处理器簇(Graphics Processing Cluster, GPC)，由外围总线进行调度管理；一个图形处理器簇上有若干纹理处理器簇(Texture Processing Cluster, TPC)；需要注意的是以上两种结构在编写CUDA程序时并不暴露。一个纹理处理器簇上有若干流多处理器单元(Stream Multiprocessor, SM)，也是本文关注的重点。流多处理器单元被一个线程块调度器管理，所有流多处理器单元通过全局内存总线经过L2缓存共享全局内存。每个流多处理器单元中由若干流处理器(Stream Processor, SP)，然而这一概念随着流多处理器单元中运算单元种类的增加而被弱化了。在一个流多处理器单元内部的流处理器共享一个指令缓存，每个流处理器拥有自己的线程束调度与寄存器文件；流处理器中包含若干种执行单元，有浮点单元，整数单元，在新架构中还加入了张量单元(Tensor Core)，在RTX 2080TI上具体的参数为：一个SM包含64个单精度浮点算术单元，32个双精度浮点算术单元，64个32位整形算术单元，8个混合精度张量单元，4个线程束调度器和16个特殊功能单元；所有流处理器通过显存纵横矩阵(CrossBar)访问共享内存，或被称为L1缓存\cite{EXPLORING}。
 \subparagraph{流多处理器单元(SM)}~{}
 \par 上文提到过，流多处理器单元(SM)是本文关注的重点，其原因是每一次NVIDIA GPU芯片更新都会伴随着其计算能力(Compute Capability)的更新，计算能力指的是流多处理器单元(SM)支持的运算的等级，分为Major和Minor。其中Major代号代表架构的更新，这也会带来许多新的硬件支持的运算，而Minor代号则代表同一架构下不同定位的流多处理器产品。如伏特架构的计算能力为7.2，图灵架构的计算能力为7.5，Major代号一样就代表这两种架构其实并无太大修改，而Minor代号则代表伏特架构中流多处理器的类型是Heavy，图灵架构中流多处理器的类型是Lite。Lite和Heavy一般用于区分消费级/工作站级GPU，分别对应GeForce和Tesla代号。
 \par 流多处理器单元中的不同类型的流处理器对应了不同的流水线，不同流水线的延迟、吞吐量均不同。且有些流水线指令发射是互斥的，即互斥流水线的指令不能同一时间发射，这将在下文介绍新硬件架构时提到，本文中主要关注流多处理器上的计算指令流水线(M-Pipe)，光栅等其他计算涉及的流水线不做介绍。
@@ -48,41 +48,6 @@
 	\renewcommand{\figurename}{Figure}
 	\caption{Texture memory and other memory system}
 	\label{Fig.TextureAndGlobal}
-\end{figure}
-
-\subsubsection{伏特/图灵架构新硬件}     
-\subparagraph{伏特/图灵架构流处理器}~{}
-\par 图\ref{Fig.VoltaPascal}展示了伏特/图灵架构(Volta/Turing)与帕斯卡架构(Pascal)在流多处理器单元层面的异同，左侧为伏特/图灵架构、右侧为帕斯卡架构。
-\par 在调度方面，指令缓存、线程束调度器与寄存器并无太大差别，而指令分发器(Dispatch Unit)由帕斯卡架构中的每SM两个变为每SM一个，这是因为在处理分支时，如上文提到的在伏特架构以前为了减少线程束内部线程分化带来的性能下降，指令以十六个线程进行分发，故存在两个指令分发器；而后则采用CBU单元处理分支指令，故仅存在一个指令分发器。
-\par 在运算单元部分，帕斯卡架构简单的分为计算单元(Core)、访存单元(LD/ST, Load/Store)和特殊功能单元(SFU, Special Function Unit)三个部分，其中计算单元统一为单精度浮点计算单元，访存单元负责一组流处理器依赖数据的请求和结果的写回，特殊功能单元则负责逻辑判断、分支等操作。在新架构中，计算单元根据精度被分为双精度浮点计算单元(FP64)、单精度浮点计算单元(FP32)、整数计算单元(INT)以及最新加入的张量计算单元(Tensor Core)，也是本文的重点。在访存单元和特殊功能单元方面的变化本文并不做详细讨论。在新架构中，L1数据缓存的概念也与共享内存的概念统一了。
-\begin{figure}
-	\centering
-	\includegraphics[width=8cm, height=10cm]{figures/VoltaSM.jpg}
-	\includegraphics[width=7cm, height=10cm]{figures/PascalSM.jpg}
-	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
-	\renewcommand{\figurename}{图}
-	\caption{伏特架构与帕斯卡架构的流多处理器示意图\cite{VOLTAWHITEPAPER}\cite{PASCALWHITEPAPER}}
-	\addtocounter{figure}{-1}
-	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
-	\renewcommand{\figurename}{Figure}
-	\caption{SM diagram of Volta and Pascal architecture\cite{VOLTAWHITEPAPER}\cite{PASCALWHITEPAPER}}
-	\label{Fig.VoltaPascal}
-\end{figure}
-\subparagraph{张量核心(Tensor Core)}~{}
-\par 作为本文的重点，张量核心(Tensor Core)将在本文详细介绍。张量核心是一种专为通用矩阵乘法运算(GEMM, GEneral Matrix Multiple)设计的运算单元，对该运算进行了硬件、指令级别的优化，是与老架构最鲜明的区别所在。
-\par 在底层的实现中，张量核心以$ 4 \times 4 $的矩阵作为最小的计算单元，被称为$ tile $，任何输入都会被划分为$ tile $进行分块运算，如图\ref{Fig.Tile}所示\cite{CUTLASS}。在伏特架构以前(Volta)的帕斯卡架构(Pascal)，一次$ 4 \times 4 $矩阵乘加需要首先调用16次整数点积运算，再将结果累加到乘加矩阵中。而使用张量核心则仅通过一条指令直接完成。根据官方文档给出的描述，这种机制能使伏特架构相比帕斯卡架构再FP16, INT8, INT4精度中分别提供8倍、16倍、32倍的吞吐量提升。实际测试中，Tesla V100再FP16精度下的$ m=2048, k=2048, n = 2048 $规模的矩阵乘加中比Tesla P100块9.3倍\cite{VOLTAWHITEPAPER}，这也是上文提到的官方宣称的9倍。在基于Pascal架构以及之前的架构的GPU上，一次4x4矩阵乘法需要调用16次向量点积加和运算，在有idp4a指令支持的GPU上在16个周期内运算出乘积矩阵，若没有指令支持则需要64个周期，而运算得出的乘积矩阵还需要累加；而张量则在更少的周期内完成乘积和加和的运算，具体周期数由hmma指令的操作数决定，对于被分割为$ m=8,n=8,k=4 $的子矩阵的运算，张量核心仅需要八个周期完成所有乘积和加和运算\cite{HMMA}。本节将在各种规模、精度、形状的情况下考察张量实际能够带来的性能提升并探究相应原因。
-\par 值得注意的是，在流处理器单元中，张量核心是与其他运算单元包括浮点单元、整数单元共用调度器，调度器每个时钟向分支单元、张量核心阵列、数学分派单元或访存单元发出一个线程束调度指令，这就表明一个周期内硬件不能同时执行张量核心负责的的混合矩阵运算和其他运算，单一周期只能执行单一类型的运算\cite{AMPEREPOR}。张量核心有一定程度的可编程性，但是4x4矩阵仍然是操作的最小单元，在LLVM IR的级别观察其指令仍是如此。尽管被描述为最小4x4为单元的矩阵的混合运算，但实际上张量核心进行的运算总是使用16x16矩阵，并且跨两个Tensor Core进行处理\cite{TENSORCORE}，这与其最小调度单元为线程束，也就是32个线程有关。
-\begin{figure}
-	\centering
-	\includegraphics[width=15cm]{figures/Tile.jpg}
-	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
-	\renewcommand{\figurename}{图}
-	\caption{使用张量核心进行通用矩阵乘法计算的层级\cite{CUTLASS}}
-	\addtocounter{figure}{-1}
-	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
-	\renewcommand{\figurename}{Figure}
-	\caption{Hierarchy of GEMM using Tensor Core\cite{CUTLASS}}
-	\label{Fig.Tile}
 \end{figure}
 
 \subsubsection{线程组织形式与调度方式}
@@ -148,6 +113,41 @@
 \par GPU程序首先由内核(kernel)开始，一个内核代表一个需要在GPU上运行的程序，由CPU管理、分配给GPU上的图形处理簇(GPC)。一个大任务会被拆分为若干小任务，这些小任务被抽象为线程网格(grid)由图形处理簇上的调度器分配给纹理处理簇(TPC)。在纹理处理簇上的调度器将以线程块(block)为单位将线程分配给流多处理器单元(SM)。最后，具体的运算任务将由流多处理器单元内部的线程束调度器分配给不同流处理器(SP)。
 \par 在调度时，线程束作为最小的调度单元在一般情况下将会运行同一指令流，这一情况在发生分支时会有不同。线程束被分发到分支指令时，若线程束内部线程发生分化(即一部分执行分支，一部分不执行分支)，则两个分支都会被执行，分支结束时只有执行了正确分支目标的线程会被置未激活状态，执行了错误分支目标的线程被设置为未激活状态。由于线程束调度器每次只能为一个线程束取到一条指令，这意味着线程束内部发生线程分化时，未激活状态的线程会被阻塞，导致利用率、性能下降。自麦克斯韦架构开始，为了尽可能减小线程束内部线程分化对性能造成的影响，指令是以半个线程束即十六个线程进行分发的。之后，GPU引入了CBU单元(Convergence Barrier Unit)以保持通过同一分支的线程被组织在一起的方式尽可能减少分支带来的性能下降\cite{THREADS}。在实际编程中，GPU提供非常细致的线程、线程块、线程网格ID，故根据这些ID控制分支使得线程束内部线程分化尽可能减少是可行的\cite{DIVER}。
 \par 最后将介绍GPU中的流以及相应的锁页内存的概念。GPU中的流可以被看做一个GPU操作队列，该队列中的操作将会按顺序执行。这一特点使得在实际编写程序的过程中可以通过调整不同操作的顺序，如访存、密集计算、写回等来隐藏数据依赖和控制依赖带来的延迟\cite{STREAM}，通过异步操作(ASYNC)提高任务级并行度。CUDA流需要在支持设备重叠的GPU上运行，设备重叠使得GPU能够在执行一个核函数时在设备和主机间进行数据交互。而为了支持流，所有涉及流的内存需要在锁页内存上进行分配。锁页内存正如其字面含义，是分配在显存上、不允许被移动或被换页到磁盘上的设备内存。其好处是允许GPU上的DMA控制器绕过CPU直接请求主机传输数据，在延迟更低的基础上支持设备重叠\cite{PAGELOCK}。若不使用锁页内存，DMA控制器在定位内存页面时会造成困难。本文的部分实验中使用了流这一特性，将在具体实验章节详细介绍。
+
+\subsubsection{伏特/图灵架构新硬件}     
+\subparagraph{伏特/图灵架构流处理器}~{}
+\par 图\ref{Fig.VoltaPascal}展示了伏特/图灵架构(Volta/Turing)与帕斯卡架构(Pascal)在流多处理器单元层面的异同，左侧为伏特/图灵架构、右侧为帕斯卡架构。
+\par 在调度方面，指令缓存、线程束调度器与寄存器并无太大差别，而指令分发器(Dispatch Unit)由帕斯卡架构中的每SM两个变为每SM一个，这是因为在处理分支时，如上文提到的在伏特架构以前为了减少线程束内部线程分化带来的性能下降，指令以十六个线程进行分发，故存在两个指令分发器；而后则采用CBU单元处理分支指令，故仅存在一个指令分发器。
+\par 在运算单元部分，帕斯卡架构简单的分为计算单元(Core)、访存单元(LD/ST, Load/Store)和特殊功能单元(SFU, Special Function Unit)三个部分，其中计算单元统一为单精度浮点计算单元，访存单元负责一组流处理器依赖数据的请求和结果的写回，特殊功能单元则负责逻辑判断、分支等操作。在新架构中，计算单元根据精度被分为双精度浮点计算单元(FP64)、单精度浮点计算单元(FP32)、整数计算单元(INT)以及最新加入的张量计算单元(Tensor Core)，也是本文的重点。在访存单元和特殊功能单元方面的变化本文并不做详细讨论。在新架构中，L1数据缓存的概念也与共享内存的概念统一了。
+\begin{figure}
+	\centering
+	\includegraphics[width=8cm, height=10cm]{figures/VoltaSM.jpg}
+	\includegraphics[width=7cm, height=10cm]{figures/PascalSM.jpg}
+	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
+	\renewcommand{\figurename}{图}
+	\caption{伏特架构与帕斯卡架构的流多处理器示意图\cite{VOLTAWHITEPAPER}\cite{PASCALWHITEPAPER}}
+	\addtocounter{figure}{-1}
+	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
+	\renewcommand{\figurename}{Figure}
+	\caption{SM diagram of Volta and Pascal architecture\cite{VOLTAWHITEPAPER}\cite{PASCALWHITEPAPER}}
+	\label{Fig.VoltaPascal}
+\end{figure}
+\subparagraph{张量核心(Tensor Core)}~{}
+\par 作为本文的重点，张量核心(Tensor Core)将在本文详细介绍。张量核心是一种专为通用矩阵乘法运算(GEMM, GEneral Matrix Multiple)设计的运算单元，对该运算进行了硬件、指令级别的优化，是与老架构最鲜明的区别所在。
+\par 在底层的实现中，张量核心以$ 4 \times 4 $的矩阵作为最小的计算单元，被称为$ tile $，任何输入都会被划分为$ tile $进行分块运算，如图\ref{Fig.Tile}所示\cite{CUTLASS}。在伏特架构以前(Volta)的帕斯卡架构(Pascal)，一次$ 4 \times 4 $矩阵乘加需要首先调用16次整数点积运算，再将结果累加到乘加矩阵中。而使用张量核心则仅通过一条指令直接完成。根据官方文档给出的描述，这种机制能使伏特架构相比帕斯卡架构再FP16, INT8, INT4精度中分别提供8倍、16倍、32倍的吞吐量提升。实际测试中，Tesla V100再FP16精度下的$ m=2048, k=2048, n = 2048 $规模的矩阵乘加中比Tesla P100块9.3倍\cite{VOLTAWHITEPAPER}，这也是上文提到的官方宣称的9倍。在基于Pascal架构以及之前的架构的GPU上，一次4x4矩阵乘法需要调用16次向量点积加和运算，在有idp4a指令支持的GPU上在16个周期内运算出乘积矩阵，若没有指令支持则需要64个周期，而运算得出的乘积矩阵还需要累加；而张量则在更少的周期内完成乘积和加和的运算，具体周期数由hmma指令的操作数决定，对于被分割为$ m=8,n=8,k=4 $的子矩阵的运算，张量核心仅需要八个周期完成所有乘积和加和运算\cite{HMMA}。本节将在各种规模、精度、形状的情况下考察张量实际能够带来的性能提升并探究相应原因。
+\par 值得注意的是，在流处理器单元中，张量核心是与其他运算单元包括浮点单元、整数单元共用调度器，调度器每个时钟向分支单元、张量核心阵列、数学分派单元或访存单元发出一个线程束调度指令，这就表明一个周期内硬件不能同时执行张量核心负责的的混合矩阵运算和其他运算，单一周期只能执行单一类型的运算\cite{AMPEREPOR}。张量核心有一定程度的可编程性，但是4x4矩阵仍然是操作的最小单元，在LLVM IR的级别观察其指令仍是如此。尽管被描述为最小4x4为单元的矩阵的混合运算，但实际上张量核心进行的运算总是使用16x16矩阵，并且跨两个Tensor Core进行处理\cite{TENSORCORE}，这与其最小调度单元为线程束，也就是32个线程有关。
+\begin{figure}
+	\centering
+	\includegraphics[width=15cm]{figures/Tile.jpg}
+	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
+	\renewcommand{\figurename}{图}
+	\caption{使用张量核心进行通用矩阵乘法计算的层级\cite{CUTLASS}}
+	\addtocounter{figure}{-1}
+	\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} }
+	\renewcommand{\figurename}{Figure}
+	\caption{Hierarchy of GEMM using Tensor Core\cite{CUTLASS}}
+	\label{Fig.Tile}
+\end{figure}
 
 \subsection{NVIDIA GPU相关软件}
 \par 本节将自顶向下介绍NVIDIA GPU硬件对应的不同层级的编程平台。
