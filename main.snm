@@ -1,2 +1,12 @@
 \beamer@slide {Fig.COMPARE}{3}
 \beamer@slide {Fig.GEMM}{8}
+\beamer@slide {Fig.GEMMRATIO}{10}
+\beamer@slide {Fig.MM}{11}
+\beamer@slide {Fig.CONV}{13}
+\beamer@slide {table-CONVPROF}{14}
+\beamer@slide {Fig.CONV3PART}{16}
+\beamer@slide {Fig.CONVTEX}{17}
+\beamer@slide {table-SMOSVM}{18}
+\beamer@slide {Fig.SMOSVM}{19}
+\beamer@slide {Fig.TENSORRT}{21}
+\beamer@slide {table-TFRES}{22}
